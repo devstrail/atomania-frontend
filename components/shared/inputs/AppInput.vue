@@ -1,0 +1,228 @@
+<script setup>
+    import {computed, nextTick, ref, watch} from 'vue';
+    import {useField} from 'vee-validate';
+    import AppInputError from '~/components/shared/inputs/AppInputError.vue';
+
+    // Define props
+    const props = defineProps({
+        type: {
+            type: String,
+            default: 'text'
+        },
+        id: {
+            type: String,
+            default: ''
+        },
+        name: {
+            type: String,
+            required: true,
+        },
+        placeholder: {
+            type: String,
+            default: 'Type here'
+        },
+        autocomplete: {
+            type: String,
+            default: 'off'
+        },
+        readOnly: {
+            type: Boolean,
+            default: false
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        successMessage: {
+            type: String,
+            default: '',
+        },
+        label: {
+            type: String,
+            required: false,
+        },
+        labelClass: {
+            type: String,
+            default: 'text-grey-200',
+        },
+        inlineAlignment: {
+            type: Boolean,
+            default: true
+        },
+        inputWrapperStyle: {
+            type: String,
+            default: null
+        },
+        inputSize: {
+            type: String,
+            default: 'medium'
+        },
+        formGroupClass: {
+            type: String,
+            default: 'relative w-full mb-5 group'
+        },
+        menuPosition: {
+            type: String,
+            default: 'left'
+        },
+        dropdownMenuIcon: {
+            type: String,
+            default: 'icon-sort-down-regular'
+        },
+        inputIcon: {
+            type: String,
+            default: null
+        },
+        autofocus: {
+            type: Boolean,
+            default: false
+        },
+        modelValue: {},
+    });
+
+    // Define emits
+    const emit = defineEmits(['update:modelValue', 'onChange']);
+
+    const {value, errorMessage} = useField(() => props.name, undefined, {
+        syncVModel: true,
+    });
+
+    // Data
+    const passwordType = ref(props.type);
+    const phoneInputElementRef = ref(null);
+
+    // Define computed
+    const formControlSizeClass = computed(() => {
+        if (props.inputSize === 'small') {
+            return 'h-[36px] px-2.5 py-1.5 text-b5'
+        } else if (props.inputSize === 'xs-small') {
+            return 'h-[31px] px-2.5 py-1 text-b5'
+        } else {
+            return `${props.type === 'textarea' ? 'h-32' : 'h-[46px]'} pl-[14px] ${props.type === 'password' ? 'pr-10' : 'pr-[14px]'} text-b4`
+        }
+    });
+    const formControlClass = computed(() => {
+        return 'w-full border rounded-[6px] placeholder:text-placeholder text-dark focus:ring-transparent focus-visible:outline-none focus:shadow-input'
+    });
+
+    // Methods
+    const formatPhoneForFrontend = (phone) => {
+        try {
+            let phoneValue = phone
+                .replace(/\D/g, "")
+                .match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+
+            return !phoneValue[2]
+                ? phoneValue[1]
+                : '(' + phoneValue[1] + ')' + " " + phoneValue[2] + (phoneValue[3] ? "-" + phoneValue[3] : "");
+        } catch (e) {
+            return phone;
+        }
+    }
+
+    const handlePhoneInput = () => {
+        value.value = formatPhoneForFrontend(value.value);
+    }
+
+    // Watch effects
+    watch(() => props.modelValue, (val) => {
+        if (props.type === 'phone') {
+            value.value = formatPhoneForFrontend(value.value)
+        }
+    });
+
+    watch(() => props.autofocus, (val) => {
+        if (val && props.type === 'phone') {
+            nextTick(() => {
+                const inputElement = phoneInputElementRef?.value;
+                inputElement.focus();
+            });
+        }
+    }, {immediate: true});
+</script>
+
+<template>
+    <template v-if="type === 'text' || type === 'number' || type === 'email' || type === 'password'">
+        <div
+            :class="formGroupClass"
+        >
+            <label
+                v-if="label || $slots['label']"
+                :for="id"
+                :class="[
+                    `mb-[6px] block text-b5 font-semibold ${labelClass} capitalize bg-white`,
+                    {'text-danger': errorMessage}
+                ]">
+                <slot name="label">
+                    {{ label }}
+                </slot>
+            </label>
+            <div class="relative">
+                <input
+                    :type="type === 'password' ? passwordType : type"
+                    :id="id"
+                    :name="name"
+                    v-model="value"
+                    :placeholder="placeholder"
+                    :readonly="readOnly"
+                    :class="[
+                        formControlSizeClass,
+                        formControlClass,
+                        readOnly ? 'text-mid border-lighter focus:!border-lighter bg-background' : '',
+                        errorMessage ? 'border-danger focus:border-danger' : 'border-off-white-400 focus:border-info'
+                    ]"
+                />
+                <slot name="input-prepend-action"/>
+                <!--<button
+                    v-if="type === 'password'"
+                    type="button"
+                    class="absolute top-[10px] right-4 text-light text-b1"
+                    @click="passwordType = passwordType === 'password' ? 'text' : 'password'"
+                >
+                    <i :class="passwordType === 'password' ? 'icon-eye-regular' : 'icon-eye-slash-regular'"/>
+                </button>-->
+            </div>
+            <span
+                v-if="inputIcon && type !== 'password'"
+                type="button"
+                class="absolute top-[10px] right-4 text-light text-b1"
+            >
+                <i :class="inputIcon"/>
+            </span>
+            <app-input-error :error-message="errorMessage"/>
+        </div>
+    </template>
+
+    <template v-if="type === 'phone'">
+        <div
+            :class="formGroupClass"
+        >
+            <label
+                v-if="label"
+                :for="id"
+                :class="[
+                    `mb-[6px] block text-b5 font-semibold text-grey-200 capitalize bg-white`,
+                    {'text-danger': errorMessage}
+                ]">
+                {{ label }}
+            </label>
+            <input
+                ref="phoneInputElementRef"
+                :type="type"
+                :id="id"
+                :name="name"
+                v-model="value"
+                :placeholder="placeholder"
+                :readonly="readOnly"
+                :class="[
+                    formControlSizeClass,
+                    formControlClass,
+                    readOnly ? 'text-mid border-lighter focus:!border-lighter bg-background' : '',
+                    errorMessage ? 'border-danger focus:border-danger' : 'border-off-white-400 focus:border-info'
+                ]"
+                @input="handlePhoneInput"
+            />
+            <app-input-error :error-message="errorMessage"/>
+        </div>
+    </template>
+</template>

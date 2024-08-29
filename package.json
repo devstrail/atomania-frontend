@@ -14,12 +14,20 @@
     "@nuxt/image": "^1.7.1",
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/i18n": "^8.5.1",
+    "@pinia/nuxt": "^0.5.4",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@tailwindcss/typography": "^0.5.14",
+    "@vuepic/vue-datepicker": "^9.0.2",
     "@vueuse/motion": "^2.2.3",
+    "axios": "^1.7.5",
+    "dayjs": "^1.11.13",
     "nuxt": "^3.13.0",
-    "vue": "latest"
+    "pinia": "^2.2.2",
+    "sweetalert2": "^11.12.4",
+    "vee-validate": "^4.13.2",
+    "vue": "^3.4.15",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

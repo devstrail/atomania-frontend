@@ -1,7 +1,11 @@
 <script setup lang="ts">
-    import AppLogin from "~/components/features/auth/AppLogin.vue";
+    definePageMeta({
+        layout: 'auth'
+    })
+
+    import AppLoginForm from '~/components/features/auth/AppLoginForm.vue'
 </script>
 
 <template>
-    <AppLogin/>
+    <AppLoginForm/>
 </template>
