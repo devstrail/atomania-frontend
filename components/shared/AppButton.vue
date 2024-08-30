@@ -1,6 +1,6 @@
 <script setup>
-    import {computed} from 'vue';
-    import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue';
+    import {computed} from 'vue'
+    import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue'
 
     // Define props
     const props = defineProps({
@@ -22,7 +22,7 @@
         },
         buttonSize: {
             type: String,
-            default: 'small'
+            default: 'medium'
         },
         buttonColor: {
             type: String,
@@ -47,26 +47,26 @@
         let color = '',
             size = '';
 
-        if (props.buttonColor === 'primary') color = `text-white border-primary bg-primary hover:shadow-btn-primary`;
-        else if (props.buttonColor === 'danger') color = `text-white border border-danger bg-danger hover:shadow-btn-primary`;
-        else if (props.buttonColor === 'secondary') color = `text-grey-300 border border-off-white-200 hover:border-off-white-300 bg-off-white-200 hover:bg-off-white-300`;
-        else if (props.buttonColor === 'secondary-dark') color = `text-white border border-grey-200 bg-grey-200 hover:shadow-btn-primary`;
-        else if (props.buttonColor === 'secondary-outline') color = `text-grey-300 hover:text-primary border border-off-white-300 hover:border-primary bg-white hover:shadow-btn-primary`;
+        if (props.buttonColor === 'primary') color = `text-white border border-primary-600 disabled:border-primary-200 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-200 disabled:cursor-not-allowed`;
+        else if (props.buttonColor === 'danger') color = `text-white border border-error-600 disabled:border-error-200 bg-error-600 hover:bg-error-700 disabled:bg-error-200 disabled:cursor-not-allowed`;
+        else if (props.buttonColor === 'secondary') color = `text-gray-700 disabled:text-gray-300 border border-gray-300 disabled:border-gray-200 bg-white hover:bg-gray-200 disabled:bg-white disabled:cursor-not-allowed`;
 
-        if (props.buttonSize === 'medium') size = `py-[9px] text-b4`;
-        else if (props.buttonSize === 'large') size = `py-[12px] text-b4`;
-        else if (props.buttonSize === 'small') size = `h-[36px] py-[7px] text-b5`;
-        else if (props.buttonSize === 'x-small') size = `h-[32px] py-[7px] text-b6`;
+        if (props.buttonSize === 'x-small') size = `h-[36px] py-[9px] px-[15px] text-[14px] leading-[20px]`;
+        else if (props.buttonSize === 'small') size = `h-[40px] py-[11px] px-[17px] text-[14px] leading-[20px]`;
+        else if (props.buttonSize === 'medium') size = `h-[44px] py-[12px] px-[18px] text-[16px] leading-[24px]`;
+        else if (props.buttonSize === 'large') size = `h-[48px] py-[15px] px-[21px] text-[16px] leading-[24px]`;
+        else if (props.buttonSize === 'x-large') size = `h-[60px] py-[18px] px-[28px] text-[18px] leading-[28px]`;
 
-        return `${props.fullWidth ? 'w-full flex' : 'inline-flex'} gap-2 ${color} font-semibold items-center justify-center ${size} px-[14px] rounded-[6px] transition disabled:pointer-events-none disabled:opacity-80`
+
+
+        return `${props.fullWidth ? 'w-full flex' : 'inline-flex'} gap-2 ${color} font-medium items-center justify-center ${size} rounded-[8px] transition-all`
     });
 
     const loaderClass = computed(() => {
         let color = '';
 
-        if (props.buttonColor === 'primary') color = `text-primary-lighter fill-white`;
-        else if (props.buttonColor === 'secondary') color = `text-grey-100 fill-primary`;
-        else if (props.buttonColor === 'secondary-outline') color = `text-grey-100 fill-primary`;
+        if (props.buttonColor === 'primary') color = `text-primary-300 fill-white`;
+        else if (props.buttonColor === 'secondary') color = `text-gray-100 fill-primary-600`;
 
         return `w-4 h-4 ${color}`;
     });
@@ -95,7 +95,10 @@
     >
         <slot>
             {{ title }}
-            <app-spinner-loader v-if="loading" :spinner-style="loaderClass"/>
+            <app-spinner-loader
+                v-if="loading"
+                :spinner-style="loaderClass"
+            />
         </slot>
     </button>
 </template>

@@ -1,7 +1,7 @@
 <script setup>
-    import {computed, nextTick, ref, watch} from 'vue';
-    import {useField} from 'vee-validate';
-    import AppInputError from '~/components/shared/inputs/AppInputError.vue';
+    import {computed, nextTick, ref, watch} from 'vue'
+    import {useField} from 'vee-validate'
+    import AppInputError from '~/components/shared/inputs/AppInputError.vue'
 
     // Define props
     const props = defineProps({
@@ -43,7 +43,7 @@
         },
         labelClass: {
             type: String,
-            default: 'text-grey-200',
+            default: '',
         },
         inlineAlignment: {
             type: Boolean,
@@ -59,7 +59,7 @@
         },
         formGroupClass: {
             type: String,
-            default: 'relative w-full mb-5 group'
+            default: 'mb-5'
         },
         menuPosition: {
             type: String,
@@ -94,15 +94,13 @@
     // Define computed
     const formControlSizeClass = computed(() => {
         if (props.inputSize === 'small') {
-            return 'h-[36px] px-2.5 py-1.5 text-b5'
-        } else if (props.inputSize === 'xs-small') {
-            return 'h-[31px] px-2.5 py-1 text-b5'
+            return 'h-[36px] px-2.5 py-1.5'
         } else {
-            return `${props.type === 'textarea' ? 'h-32' : 'h-[46px]'} pl-[14px] ${props.type === 'password' ? 'pr-10' : 'pr-[14px]'} text-b4`
+            return `${props.type === 'textarea' ? 'h-32' : 'h-[44px]'} pl-[14px] ${props.type === 'password' ? 'pr-10' : 'pr-[14px]'}`
         }
     });
     const formControlClass = computed(() => {
-        return 'w-full border rounded-[6px] placeholder:text-placeholder text-dark focus:ring-transparent focus-visible:outline-none focus:shadow-input'
+        return 'w-full text-[16px] leading-[24px] border rounded-[8px] placeholder:text-gray-500 text-gray-900 focus:ring-transparent focus-visible:outline-none focus:shadow-input'
     });
 
     // Methods
@@ -144,14 +142,18 @@
 <template>
     <template v-if="type === 'text' || type === 'number' || type === 'email' || type === 'password'">
         <div
-            :class="formGroupClass"
+            :class="[
+                `relative w-full group`,
+                formGroupClass
+            ]"
         >
             <label
                 v-if="label || $slots['label']"
                 :for="id"
                 :class="[
-                    `mb-[6px] block text-b5 font-semibold ${labelClass} capitalize bg-white`,
-                    {'text-danger': errorMessage}
+                    `block mb-[6px] font-medium text-[14px] leading-[20px]`,
+                    errorMessage ? 'text-error-600' : 'text-gray-700',
+                    labelClass
                 ]">
                 <slot name="label">
                     {{ label }}
@@ -168,15 +170,15 @@
                     :class="[
                         formControlSizeClass,
                         formControlClass,
-                        readOnly ? 'text-mid border-lighter focus:!border-lighter bg-background' : '',
-                        errorMessage ? 'border-danger focus:border-danger' : 'border-off-white-400 focus:border-info'
+                        readOnly ? 'text-gray-500 focus:!border-gray-300' : '',
+                        errorMessage ? 'border-error-600 focus:border-error-600' : 'border-gray-300 focus:border-primary-300'
                     ]"
                 />
                 <slot name="input-prepend-action"/>
                 <!--<button
                     v-if="type === 'password'"
                     type="button"
-                    class="absolute top-[10px] right-4 text-light text-b1"
+                    class="absolute top-[10px] right-4 text-light"
                     @click="passwordType = passwordType === 'password' ? 'text' : 'password'"
                 >
                     <i :class="passwordType === 'password' ? 'icon-eye-regular' : 'icon-eye-slash-regular'"/>
@@ -185,7 +187,7 @@
             <span
                 v-if="inputIcon && type !== 'password'"
                 type="button"
-                class="absolute top-[10px] right-4 text-light text-b1"
+                class="absolute top-[10px] right-4 text-light"
             >
                 <i :class="inputIcon"/>
             </span>
@@ -198,13 +200,16 @@
             :class="formGroupClass"
         >
             <label
-                v-if="label"
+                v-if="label || $slots['label']"
                 :for="id"
                 :class="[
-                    `mb-[6px] block text-b5 font-semibold text-grey-200 capitalize bg-white`,
-                    {'text-danger': errorMessage}
+                    `block mb-[6px] font-medium text-[14px] leading-[20px]`,
+                    errorMessage ? 'text-error-600' : 'text-gray-700',
+                    labelClass
                 ]">
-                {{ label }}
+                <slot name="label">
+                    {{ label }}
+                </slot>
             </label>
             <input
                 ref="phoneInputElementRef"
@@ -217,8 +222,8 @@
                 :class="[
                     formControlSizeClass,
                     formControlClass,
-                    readOnly ? 'text-mid border-lighter focus:!border-lighter bg-background' : '',
-                    errorMessage ? 'border-danger focus:border-danger' : 'border-off-white-400 focus:border-info'
+                    readOnly ? 'text-gray-500 focus:!border-gray-300' : '',
+                    errorMessage ? 'border-error-600 focus:border-error-600' : 'border-gray-300 focus:border-primary-300'
                 ]"
                 @input="handlePhoneInput"
             />

@@ -384,6 +384,7 @@ export default {
                 'drop-5': '0px 4px 30px 0px #00000066',
                 'drop-6': '0px 10px 30px 0px #00000040',
                 'drop-red': '0px 2px 14px 0px #CD302666',
+                'input': '0px 0px 0px 4px #D0D7D5',
             },
         },
     },

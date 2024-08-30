@@ -1,6 +1,6 @@
 <script setup>
-    import {useField} from 'vee-validate';
-    import AppInputError from '~/components/shared/inputs/AppInputError.vue';
+    import {useField} from 'vee-validate'
+    import AppInputError from '~/components/shared/inputs/AppInputError.vue'
 
     // Define props
     const props = defineProps({
