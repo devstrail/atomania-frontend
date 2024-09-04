@@ -151,7 +151,7 @@
                 v-if="label || $slots['label']"
                 :for="id"
                 :class="[
-                    `block mb-[6px] font-medium text-[14px] leading-[20px]`,
+                    `block mb-[6px] text-b4 font-medium`,
                     errorMessage ? 'text-error-600' : 'text-gray-700',
                     labelClass
                 ]">
@@ -197,13 +197,16 @@
 
     <template v-if="type === 'phone'">
         <div
-            :class="formGroupClass"
+            :class="[
+                `relative w-full group`,
+                formGroupClass
+            ]"
         >
             <label
                 v-if="label || $slots['label']"
                 :for="id"
                 :class="[
-                    `block mb-[6px] font-medium text-[14px] leading-[20px]`,
+                    `block mb-[6px] text-b4 font-medium`,
                     errorMessage ? 'text-error-600' : 'text-gray-700',
                     labelClass
                 ]">

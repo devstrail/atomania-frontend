@@ -15,7 +15,7 @@
         leave-to-class="transform -translate-y-0.5 opacity-0">
         <div
             v-if="errorMessage"
-            class="absolute top-full left-0 flex items-center gap-1 mt-0.5 text-b6 text-danger"
+            class="absolute top-full left-0 flex items-center gap-1 mt-0.5 text-b5 text-error-600"
         >
             <i class="icon-circle-exclamation-regular text-b6"/>
             <span class="first-letter:capitalize">{{ errorMessage }}</span>

@@ -24,6 +24,7 @@
     }
 
     const onSubmit = async (values, actions) => {
+        console.log(values)
         loading.value = true;
         // await authStore.login(values);
         loading.value = false;
@@ -66,6 +67,7 @@
             />
             <NuxtLink
                 to="/forgot-password"
+                class="text-gray-700 text-b4 font-medium"
             >
                 Forgot Password?
             </NuxtLink>
