@@ -84,6 +84,12 @@
             full-width
             :loading="loading"
         />
+        <div class="flex items-center justify-center mt-8 gap-1 text-gray-500 text-b4">
+            Don’t have an account?
+            <NuxtLink to="/" class="text-primary-600 font-medium">
+                Sign up
+            </NuxtLink>
+        </div>
     </Form>
     <!--    <button
             @click="loginAs('admin')"

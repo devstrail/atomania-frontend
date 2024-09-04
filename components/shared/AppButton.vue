@@ -67,6 +67,7 @@
 
         if (props.buttonColor === 'primary') color = `text-primary-300 fill-white`;
         else if (props.buttonColor === 'secondary') color = `text-gray-100 fill-primary-600`;
+        else if (props.buttonColor === 'secondary') color = `text-gray-100 fill-primary-600`;
 
         return `w-4 h-4 ${color}`;
     });

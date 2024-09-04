@@ -52,7 +52,7 @@
 </script>
 
 <template>
-    <div :class="['relative group', inputWrapperStyle, { 'has-error': !!errorMessage }]">
+    <div :class="['relative flex group', inputWrapperStyle, { 'has-error': !!errorMessage }]">
         <div class="inline-flex items-center gap-2.5">
             <input
                 :id="id || name"
