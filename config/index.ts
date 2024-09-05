@@ -1,3 +1,5 @@
 export * from './pagination.config'
 export * from './item.config'
 export * from './navItems'
+export * from './services'
+export * from './machines'

@@ -5,7 +5,22 @@
 </script>
 
 <template>
-    <header class="bg-white">
+    <header
+        class="bg-white"
+        v-motion="{
+          initial: {
+            y: -80,
+            opacity: 0
+          },
+          enter: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 500
+            },
+          }
+        }"
+    >
         <div class="container">
             <div class="laptop:h-[96px] grid laptop:grid-cols-[245px_auto_245px] items-center gap-4">
                 <NuxtLink to="/">

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+    useHead({
+        title: 'Atomania'
+    })
+
     // Motion properties
     const initialMotion = ref({
         y: 30,
@@ -11,7 +15,7 @@
 </script>
 
 <template>
-    <section class="laptop:py-[60px]">
+    <section class="laptop:py-[60px] bg-gray-100">
         <div class="container">
             <div class="grid laptop:grid-cols-[641px_auto] items-center laptop:gap-[52px]">
                 <div>
@@ -33,32 +37,26 @@
                         class="text-royal-flycatcher-crest-500">Expertise</span> They Need, When They Need It.
                     </h2>
                 </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="grid gap-3">
-                        <NuxtImg
-                            src="/images/banners/banner-image-1.jpg"
-                            alt="Atomania Logo"
-                            quality="100"
-                        />
-                        <NuxtImg
-                            src="/images/banners/banner-image-2.jpg"
-                            alt="Atomania Logo"
-                            quality="100"
-                        />
-                    </div>
-                    <div class="grid gap-3">
-                        <NuxtImg
-                            src="/images/banners/banner-image-3.jpg"
-                            alt="Atomania Logo"
-                            quality="100"
-                        />
-                        <NuxtImg
-                            src="/images/banners/banner-image-4.jpg"
-                            alt="Atomania Logo"
-                            quality="100"
-                        />
-                    </div>
-                </div>
+                <NuxtImg
+                    width="560"
+                    height="640"
+                    src="/images/banners/banner-image-1.png"
+                    alt="Atomania Logo"
+                    quality="100"
+                    v-motion="{
+                      initial: {
+                        scale: 0.9,
+                        opacity: 0
+                      },
+                      enter: {
+                        scale: 1,
+                        opacity: 1,
+                        transition: {
+                            duration: 500
+                        },
+                      }
+                    }"
+                />
             </div>
         </div>
     </section>
