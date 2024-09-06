@@ -4,7 +4,6 @@
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
 
-
     const container = ref<HTMLElement | null>(null)
     const isotopeInstance = ref<Isotope | null>(null)
     const activeFilter = ref('*')
@@ -12,7 +11,7 @@
     // Extract unique machine types for dynamic filter buttons
     const machineTypes = computed(() => {
         const types = machines.map((machine) => machine.type)
-        return ['All Machines', ...new Set(types)]
+        return ['*', ...new Set(types)]
     })
 
     // Set the active filter and rearrange the Isotope layout
@@ -20,7 +19,7 @@
         activeFilter.value = filter
         nextTick(() => {
             isotopeInstance.value?.arrange({
-                filter: filter === 'All Machines' ? '*' : `.${filter.replace(/\s+/g, '')}`,
+                filter: filter === '*' ? '*' : `.${filter.replace(/\s+/g, '')}`,
             })
         })
     }
@@ -58,7 +57,7 @@
                         activeFilter === type ? 'bg-royal-flycatcher-crest-600 border-royal-flycatcher-crest-600 text-white' : 'text-gray-500 border-gray-200 bg-transparent',
                     ]"
                 >
-                    {{ type }}
+                    {{ type === '*' ? 'All Machine' : type }}
                 </button>
             </div>
 
@@ -67,7 +66,7 @@
                 <div
                     v-for="(machine, machineIndex) in machines"
                     :key="machine.id"
-                    class="isotope-item w-full tablet:w-1/2 laptop:w-1/3 px-4 mb-16"
+                    class="isotope-item w-full block tablet:w-1/2 laptop:w-1/3 px-4 mb-16"
                     :class="`${machine.type.replace(/\s+/g, '')}`"
                 >
                     <app-machine-card :machine="machine"/>
@@ -76,10 +75,3 @@
         </div>
     </section>
 </template>
-
-<style scoped>
-    .isotope-item {
-        /* This ensures items maintain correct sizing with Flexbox */
-        display: block;
-    }
-</style>

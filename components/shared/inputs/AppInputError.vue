@@ -17,7 +17,7 @@
             v-if="errorMessage"
             class="absolute top-full left-0 flex items-center gap-1 mt-0.5 text-b5 text-error-600"
         >
-            <i class="icon-circle-exclamation-regular text-b6"/>
+            <i class="dt-icon-alert-circle"/>
             <span class="first-letter:capitalize">{{ errorMessage }}</span>
         </div>
     </transition>
