@@ -2,9 +2,9 @@
     import {Form} from 'vee-validate'
     import {loginSchema} from '~/config/validationSchema'
     import {useAuthStore, useErrorStore} from '~/store'
-    import AppInput from '~/components/shared/inputs/AppInput'
-    import AppButton from '~/components/shared/AppButton'
-    import AppCheckboxInput from "~/components/shared/inputs/AppCheckboxInput.vue";
+    import AppInput from '~/components/shared/inputs/AppInput.vue'
+    import AppButton from '~/components/shared/AppButton.vue'
+    import AppCheckboxInput from '~/components/shared/inputs/AppCheckboxInput.vue'
 
     const {login} = useAuth()
     const router = useRouter()

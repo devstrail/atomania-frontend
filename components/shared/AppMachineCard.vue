@@ -1,4 +1,6 @@
 <script setup lang="ts">
+    import AppButton from "~/components/shared/AppButton.vue";
+
     const props = defineProps({
         machine: {
             type: Object,
@@ -16,16 +18,16 @@
             :alt="machine?.name"
             class="mb-4 rounded-2xl"
         />
-        <div class="flex items-center gap-1">
+        <div class="mb-1 flex items-center gap-1">
             <h6 class="text-royal-flycatcher-crest-500 font-semibold">
                 {{ machine?.cost }}
             </h6>
             <span class="text-gray-500 text-b5">/ {{ machine?.cost_unit }}</span>
         </div>
-        <h4 class="text-gray-900 font-semibold">
+        <h6  class="mb-2 text-gray-900 font-semibold">
             {{ machine?.name }}
-        </h4>
-        <div class="flex items-center justify-between">
+        </h6>
+        <div class="mb-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <NuxtImg
                     width="28"
@@ -41,6 +43,28 @@
                     {{ machine?.address }}
                 </span>
             </div>
+        </div>
+        <p class="mb-4 text-gray-500 text-b3">{{ machine?.description }}</p>
+        <div class="mb-6 flex items-center flex-wrap gap-2">
+            <div class="py-1 px-3 text-gray-500 text-b5 rounded-3xl border border-gray-200">
+                {{ machine?.available_unit }} Unit Available
+            </div>
+            <template v-for="(machineConfig, machineConfigIndex) in machine?.configurations">
+                <div class="py-1 px-3 text-gray-500 text-b5 rounded-3xl border border-gray-200">
+                    {{ machineConfig?.value }} {{ machineConfig?.key === 'horsepower' ? 'HP' : '' }}
+                </div>
+            </template>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+            <app-button
+                title="View details"
+                full-width
+                button-color="secondary"
+            />
+            <app-button
+                title="Order now"
+                full-width
+            />
         </div>
     </div>
 </template>

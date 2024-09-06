@@ -6,7 +6,7 @@
 
 <template>
     <header
-        class="bg-white"
+        class="border-b border-gray-100 bg-white"
         v-motion="{
           initial: {
             y: -80,

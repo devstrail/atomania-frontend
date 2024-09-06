@@ -21,7 +21,7 @@ export const resetPasswordSchema = Yup.object().shape({
 
 export const phoneSchema = Yup.object().shape({
     phone: Yup.string()
-        .required('Phone is required'),
+        .required('Please enter your phone number to get started'),
 });
 
 export const staffSchema = (id) => Yup.object().shape({

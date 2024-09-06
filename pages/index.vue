@@ -7,5 +7,7 @@
 <template>
     <home-page-section-one/>
     <home-page-section-two/>
-    <home-page-section-three/>
+    <ClientOnly>
+        <home-page-section-three/>
+    </ClientOnly>
 </template>
