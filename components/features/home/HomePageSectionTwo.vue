@@ -5,11 +5,11 @@
 </script>
 
 <template>
-    <section class="laptop:py-[96px] bg-white">
+    <section class="py-10 laptop:py-[96px] bg-white">
         <div class="container">
             <div class="max-w-[780px]">
                 <app-breadcrumb
-                    class="laptop:mb-16"
+                    class="mb-8 laptop:mb-16"
                     title="Our Services"
                     description="Atomania connects Romanian farmers with the machinery, expertise, and technology they need, when they need it. Our platform offers on-demand access to equipment, skilled operators, and advanced tools, making farming more efficient and cost-effective."
                 />

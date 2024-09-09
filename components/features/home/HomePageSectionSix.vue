@@ -8,7 +8,7 @@
 <template>
     <section class="py-10 laptop:py-[96px] bg-wispy-white-50">
         <div class="container">
-            <div class="mb-7 laptop:mb-14 flex items-center justify-between gap-5">
+            <div class="mb-7 laptop:mb-14 flex flex-col laptop:flex-row laptop:items-center justify-between gap-5">
                 <app-breadcrumb
                     class="max-w-[780px]"
                     title="Elevate Your Farming with Drone Technology"

@@ -39,7 +39,7 @@
 </script>
 
 <template>
-    <section class="laptop:py-[96px] bg-wispy-white-25">
+    <section class="py-10 laptop:py-[96px] bg-wispy-white-25">
         <div class="container">
             <app-breadcrumb
                 class="mb-8"
@@ -47,7 +47,7 @@
                 description="All machines are available to us."
             />
 
-            <div class="flex flex-wrap gap-3 laptop:mb-16">
+            <div class="flex flex-wrap gap-3 mb-8 laptop:mb-16">
                 <button
                     v-for="(type, index) in machineTypes"
                     :key="index"
@@ -66,7 +66,7 @@
                 <div
                     v-for="(machine, machineIndex) in machines"
                     :key="machine.id"
-                    class="isotope-item w-full block tablet:w-1/2 laptop:w-1/3 px-4 mb-16"
+                    class="isotope-item w-full block tablet:w-1/2 laptop:w-1/3 px-4 mb-8 laptop:mb-16"
                     :class="`${machine.type.replace(/\s+/g, '')}`"
                 >
                     <app-machine-card :machine="machine"/>

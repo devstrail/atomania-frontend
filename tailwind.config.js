@@ -165,33 +165,33 @@ export default {
                 css: {
                     h1: {
                         fontFamily: 'Figtree, sans-serif',
-                        fontSize: '72px',
-                        lineHeight: '90px',
-                    },
-                    h2: {
-                        fontFamily: 'Figtree, sans-serif',
-                        fontSize: '60px',
-                        lineHeight: '72px',
-                    },
-                    h3: {
-                        fontFamily: 'Figtree, sans-serif',
-                        fontSize: '48px',
-                        lineHeight: '60px',
-                    },
-                    h4: {
-                        fontFamily: 'Figtree, sans-serif',
                         fontSize: '36px',
                         lineHeight: '44px',
                     },
-                    h5: {
+                    h2: {
                         fontFamily: 'Figtree, sans-serif',
                         fontSize: '30px',
                         lineHeight: '38px',
                     },
-                    h6: {
+                    h3: {
+                        fontFamily: 'Figtree, sans-serif',
+                        fontSize: '26px',
+                        lineHeight: '32px',
+                    },
+                    h4: {
                         fontFamily: 'Figtree, sans-serif',
                         fontSize: '24px',
-                        lineHeight: '32px',
+                        lineHeight: '30px',
+                    },
+                    h5: {
+                        fontFamily: 'Figtree, sans-serif',
+                        fontSize: '22px',
+                        lineHeight: '28px',
+                    },
+                    h6: {
+                        fontFamily: 'Figtree, sans-serif',
+                        fontSize: '20px',
+                        lineHeight: '26px',
                     },
                 },
             },

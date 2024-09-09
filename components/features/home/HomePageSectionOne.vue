@@ -40,10 +40,10 @@
 </script>
 
 <template>
-    <section class="laptop:py-[60px] bg-gray-50">
+    <section class="py-3 laptop:py-[60px] bg-gray-50">
         <div class="container">
-            <div class="grid laptop:grid-cols-[641px_auto] items-center laptop:gap-[52px]">
-                <div>
+            <div class="grid laptop:grid-cols-[641px_auto] items-center gap-5 laptop:gap-[52px]">
+                <div class="order-2 laptop:order-1">
                     <h2
                         class="mb-6 text-gray-900 font-bold"
                         v-motion="{
@@ -62,7 +62,7 @@
                         class="text-royal-flycatcher-crest-500">Expertise</span> They Need, When They Need It.
                     </h2>
                     <p
-                        class="mb-12 text-gray-500 text-b2"
+                        class="mb-6 laptop:mb-12 text-gray-500 text-b2"
                         v-motion="{
                           initial: initialMotion,
                           enter: {
@@ -95,7 +95,7 @@
                             @submit="onSubmit"
                             :validation-schema="phoneSchema"
                         >
-                            <div class="flex items-center gap-4">
+                            <div class="flex flex-col laptop:flex-row items-center gap-5 laptop:gap-4">
                                 <app-input
                                     id="phone"
                                     type="phone"
@@ -105,7 +105,7 @@
                                     v-model="formData.phone"
                                 />
                                 <app-button
-                                    class="shrink-0"
+                                    class="w-full laptop:w-[initial] shrink-0"
                                     button-type="submit"
                                     title="Get started"
                                     :loading="loading"
@@ -120,6 +120,7 @@
                     src="/images/banners/banner-image-1.png"
                     alt="Atomania Logo"
                     quality="100"
+                    class="order-1 laptop:order-2"
                     v-motion="{
                       initial: {
                         scale: 0.9,
