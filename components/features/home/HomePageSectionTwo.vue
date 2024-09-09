@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import {services} from '~/config'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
+    import AppIcon from "~/components/shared/AppIcon.vue";
 </script>
 
 <template>
@@ -15,25 +16,7 @@
             </div>
             <div class="grid laptop:grid-cols-3 gap-x-8 gap-y-8 laptop:gap-y-16">
                 <div v-for="(service, serviceIndex) in services">
-                    <NuxtImg
-                        width="48"
-                        height="48"
-                        src="/images/icons/service-icon.svg"
-                        class="mb-5"
-                        v-motion="{
-                          initial: {
-                            scale: 0.7,
-                            opacity: 0
-                          },
-                          visibleOnce: {
-                            scale: 1,
-                            opacity: 1,
-                            transition: {
-                                duration: 500
-                            },
-                          }
-                        }"
-                    />
+                    <app-icon class="mb-5" icon="dt-icon-zap"/>
                     <p
                         class="mb-2 text-gray-900 font-medium text-b1"
                         v-motion="{

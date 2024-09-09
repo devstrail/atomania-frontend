@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import AppButton from "~/components/shared/AppButton.vue";
+    import AppButton from '~/components/shared/AppButton.vue'
 
     const props = defineProps({
         machine: {
@@ -10,7 +10,22 @@
 </script>
 
 <template>
-    <div class="flex flex-col justify-between">
+    <div
+        class="flex flex-col justify-between"
+        v-motion="{
+          initial: {
+            y: 30,
+            opacity: 0
+          },
+          visibleOnce: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 700
+            },
+          }
+        }"
+    >
         <NuxtImg
             width="384"
             height="220"
@@ -20,7 +35,7 @@
         />
         <div class="mb-1 flex items-center gap-1">
             <h6 class="text-royal-flycatcher-crest-500 font-semibold">
-                {{ machine?.cost }}
+                €{{ machine?.cost }}
             </h6>
             <span class="text-gray-500 text-b5">/ {{ machine?.cost_unit }}</span>
         </div>
