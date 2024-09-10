@@ -5,7 +5,7 @@ export const testimonials = [
         quote: 'Love the simplicity of the service and the prompt customer support. We can’t imagine working without it.',
         thumbnail: '/images/testimonials/thumbnail-1.jpg',
         client: {
-            avatar: '/images/testimonials/client-avatar-1.jpg',
+            avatar: '/images/testimonials/client-avatar-1.png',
             name: 'Mihai Popescu',
             designation: 'Cluj-Napoca',
         }
@@ -14,9 +14,9 @@ export const testimonials = [
         id: 2,
         rating: 4,
         quote: 'Love the simplicity of the service and the prompt customer support. We can’t imagine working without it.',
-        thumbnail: '/images/testimonials/thumbnail-2.jpg',
+        thumbnail: '/images/testimonials/thumbnail-1.jpg',
         client: {
-            avatar: '/images/testimonials/client-avatar-2.jpg',
+            avatar: '/images/testimonials/client-avatar-1.png',
             name: 'Mihai Popescu',
             designation: 'Cluj-Napoca',
         }
@@ -25,9 +25,9 @@ export const testimonials = [
         id: 3,
         rating: 3,
         quote: 'Love the simplicity of the service and the prompt customer support. We can’t imagine working without it.',
-        thumbnail: '/images/testimonials/thumbnail-3.jpg',
+        thumbnail: '/images/testimonials/thumbnail-1.jpg',
         client: {
-            avatar: '/images/testimonials/client-avatar-3.jpg',
+            avatar: '/images/testimonials/client-avatar-1.png',
             name: 'Mihai Popescu',
             designation: 'Cluj-Napoca',
         }

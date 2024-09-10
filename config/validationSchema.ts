@@ -24,6 +24,11 @@ export const phoneSchema = Yup.object().shape({
         .required('Please enter your phone number to get started'),
 });
 
+export const subscriptionSchema = Yup.object().shape({
+    email: Yup.string()
+        .required('Please enter your email'),
+});
+
 export const staffSchema = (id) => Yup.object().shape({
     name: Yup.string()
         .required('Name is required'),

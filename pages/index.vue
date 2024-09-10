@@ -7,8 +7,9 @@
     import HomePageSectionSix from '~/components/features/home/HomePageSectionSix.vue'
     import HomePageSectionSeven from '~/components/features/home/HomePageSectionSeven.vue'
     import HomePageSectionEight from '~/components/features/home/HomePageSectionEight.vue'
-    import HomePageSectionNine from "~/components/features/home/HomePageSectionNine.vue";
-    import HomePageSectionTen from "~/components/features/home/HomePageSectionTen.vue";
+    import HomePageSectionNine from '~/components/features/home/HomePageSectionNine.vue'
+    import HomePageSectionTen from '~/components/features/home/HomePageSectionTen.vue'
+    import HomePageSectionEleven from '~/components/features/home/HomePageSectionEleven.vue'
 </script>
 
 <template>
@@ -24,4 +25,5 @@
     <home-page-section-eight/>
     <home-page-section-nine/>
     <home-page-section-ten/>
+    <home-page-section-eleven/>
 </template>
