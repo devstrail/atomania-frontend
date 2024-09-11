@@ -39,7 +39,7 @@
 </script>
 
 <template>
-    <section class="py-10 laptop:py-[96px] bg-wispy-white-25">
+    <section class="pt-10 pb-2 laptop:pt-[96px] laptop:pb-8 bg-wispy-white-25">
         <div class="container">
             <app-breadcrumb
                 class="mb-8"
@@ -47,7 +47,22 @@
                 description="All machines are available to us."
             />
 
-            <div class="flex flex-wrap gap-3 mb-8 laptop:mb-16">
+            <div
+                class="flex flex-wrap gap-3 mb-8 laptop:mb-16"
+                v-motion="{
+                  initial: {
+                    y: 30,
+                    opacity: 0
+                  },
+                  visible: {
+                    y: 0,
+                    opacity: 1,
+                    transition: {
+                        duration: 400
+                    },
+                  }
+                }"
+            >
                 <button
                     v-for="(type, index) in machineTypes"
                     :key="index"

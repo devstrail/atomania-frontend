@@ -29,7 +29,7 @@
     <div :class="textAlign">
         <h4 :class="[
                 `text-gray-900 font-bold`,
-                {'mb-5': description}
+                {'mb-2 laptop:mb-5': description}
             ]"
             v-motion="{
               initial: {
@@ -49,7 +49,7 @@
         </h4>
         <p
             v-if="description"
-            class="text-gray-500 text-b1"
+            class="text-gray-500 laptop:text-b1"
             v-motion="{
               initial: {
                 y: 30,

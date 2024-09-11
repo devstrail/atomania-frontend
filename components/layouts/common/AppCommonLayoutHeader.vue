@@ -6,6 +6,7 @@
 
     // Data
     let lastScrollTop = 0
+    const scrollThreshold = 50
     const isHeaderVisible = ref(true)
     const isScrollingUp = ref(false)
     const isMobileMenuOpen = ref(false)
@@ -14,10 +15,10 @@
     const handleScroll = () => {
         const currentScrollTop = window.scrollY || document.documentElement.scrollTop
 
-        if (currentScrollTop > lastScrollTop) {
+        if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
             isHeaderVisible.value = false
             isScrollingUp.value = false
-        } else {
+        } else if (currentScrollTop < lastScrollTop) {
             isHeaderVisible.value = true
             isScrollingUp.value = true
         }
