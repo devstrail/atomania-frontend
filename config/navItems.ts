@@ -13,10 +13,10 @@ export const navItems = [
     },
     {
         title: 'About',
-        url: '/'
+        url: '/about'
     },
     {
         title: 'Contact',
-        url: '/'
+        url: '/contact'
     }
 ]

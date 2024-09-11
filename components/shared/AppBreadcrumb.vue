@@ -4,6 +4,9 @@
             type: String,
             required: true
         },
+        subtitle: {
+            type: String
+        },
         description: {
             type: String,
             required: false
@@ -27,6 +30,22 @@
 
 <template>
     <div :class="textAlign">
+        <p
+            v-if="subtitle"
+            class="mb-3 text-primary-600 font-medium"
+            v-motion="{
+              initial: initialMotion,
+              enter: {
+                ...initialMotionEnter,
+                transition: {
+                    duration: 600,
+                    delay: 500
+                },
+              }
+            }"
+        >
+            {{ subtitle }}
+        </p>
         <h4 :class="[
                 `text-gray-900 font-bold`,
                 {'mb-2 laptop:mb-5': description}
