@@ -14,7 +14,7 @@
                     title="Stay Ahead with Expert Market Insights"
                     description="Dive into our comprehensive blog posts for in-depth analysis, trends, and updates on the agricultural market. Gain valuable knowledge to make informed decisions, understand market dynamics, and stay ahead of industry changes to enhance your farming strategy and profitability."
                 />
-                <app-button title="View All Posts"/>
+                <app-button title="View All Posts" url="/blog"/>
             </div>
             <div class="grid laptop:grid-cols-3 gap-8">
                 <template v-for="(blog, blogIndex) in blogs.slice(0, 3)">
