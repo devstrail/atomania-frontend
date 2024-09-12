@@ -7,7 +7,9 @@
 
 <template>
     <about-page-section-one/>
-    <about-page-section-two/>
+    <ClientOnly>
+        <about-page-section-two/>
+    </ClientOnly>
     <about-page-section-three/>
     <about-page-section-four/>
 </template>

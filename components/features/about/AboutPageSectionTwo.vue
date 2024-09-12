@@ -1,41 +1,64 @@
 <script setup lang="ts">
+    import CountUp from 'vue-countup-v3'
 
+    const isInView = ref(false)
+
+    const observeViewport = (element: HTMLElement | null) => {
+        if (!element) return;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    isInView.value = true;
+                    observer.disconnect();
+                }
+            },
+            {threshold: 0.1}
+        );
+        observer.observe(element);
+    };
+
+    onMounted(() => {
+        const section = document.querySelector('#counter-section');
+        observeViewport(section as HTMLElement);
+    });
 </script>
 
 <template>
     <section
         v-motion="{
           initial: {
-              y: 30,
-              opacity: 0
+            y: 30,
+            opacity: 0
           },
           enter: {
             y: 0,
             opacity: 1,
             transition: {
-                duration: 600,
-                delay: 500
+              duration: 600,
+              delay: 500
             },
           }
         }"
     >
         <div class="container">
             <div class="p-8 laptop:p-16 grid laptop:grid-cols-3 gap-8 justify-center rounded-2xl bg-warning-50">
-                <div class="text-center">
-                    <h2 class="mb-3 text-primary-600 font-semibold">
-                        200+
+                <div id="counter-section" class="text-center">
+                    <h2 class="flex items-center justify-center mb-3 text-primary-600 font-semibold">
+                        <count-up v-if="isInView" :end-val="200" :duration="10"/>
+                        +
                     </h2>
                     <p class="text-primary-900">Farmers joined</p>
                 </div>
                 <div class="text-center">
                     <h2 class="mb-3 text-primary-600 font-semibold">
-                        8000
+                        <count-up v-if="isInView" :end-val="8000" :duration="10"/>
                     </h2>
                     <p class="text-primary-900">HA Land covered</p>
                 </div>
                 <div class="text-center">
-                    <h2 class="mb-3 text-primary-600 font-semibold">
-                        350+
+                    <h2 class="flex items-center justify-center mb-3 text-primary-600 font-semibold">
+                        <count-up v-if="isInView" :end-val="350" :duration="10"/>
+                        +
                     </h2>
                     <p class="text-primary-900">Machines Listed</p>
                 </div>
