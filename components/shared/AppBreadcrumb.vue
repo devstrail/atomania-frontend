@@ -17,6 +17,16 @@
         }
     })
 
+    // Motion properties
+    const initialMotion = ref({
+        y: 20,
+        opacity: 0
+    })
+    const initialMotionEnter = ref({
+        y: 0,
+        opacity: 1,
+    })
+
     const textAlign = computed(() => {
         if (props.align === 'left') {
             return 'text-left'
@@ -38,8 +48,7 @@
               enter: {
                 ...initialMotionEnter,
                 transition: {
-                    duration: 600,
-                    delay: 500
+                    duration: 500
                 },
               }
             }"
@@ -52,14 +61,15 @@
             ]"
             v-motion="{
               initial: {
-                y: 30,
+                y: 20,
                 opacity: 0
               },
               visibleOnce: {
                 y: 0,
                 opacity: 1,
                 transition: {
-                    duration: 500
+                    duration: 500,
+                    delay: 550
                 },
               }
             }"
@@ -71,7 +81,7 @@
             class="text-gray-500 laptop:text-b1"
             v-motion="{
               initial: {
-                y: 30,
+                y: 20,
                 opacity: 0
               },
               visibleOnce: {
@@ -79,7 +89,7 @@
                 opacity: 1,
                 transition: {
                     duration: 500,
-                    delay: 550
+                    delay: 600
                 },
               }
             }"

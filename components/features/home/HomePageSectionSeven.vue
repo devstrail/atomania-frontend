@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import {blogs} from '~/config';
+    import {blogs} from '~/config'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppButton from '~/components/shared/AppButton.vue'
     import AppBlogCard from '~/components/shared/AppBlogCard.vue'

@@ -5,6 +5,10 @@
 
     // Define props
     const props = defineProps({
+        type: {
+            type: String,
+            default: 'textarea'
+        },
         id: {
             type: String,
             default: ''
@@ -37,13 +41,17 @@
             type: String,
             required: false,
         },
+        labelClass: {
+            type: String,
+            default: '',
+        },
         inputWrapperStyle: {
             type: String,
             default: null
         },
         formGroupClass: {
             type: String,
-            default: 'relative w-full mb-8 group'
+            default: 'mb-5'
         },
         modelValue: {}
     });
@@ -56,33 +64,29 @@
     });
 
     // Define computed
-    const formControlSizeClass = computed(() => {
-        if (props.inputSize === 'small') {
-            return 'h-[34px] px-2.5 py-1.5 text-b4'
-        } else if (props.inputSize === 'xs-small') {
-            return 'h-[31px] px-2.5 py-1 text-b4'
-        } else {
-            return `${props.type === 'textarea' ? 'h-32' : 'h-11'} pl-4 ${props.type === 'password' ? 'pr-10' : 'pr-4'} text-b2`
-        }
-    });
-
     const formControlClass = computed(() => {
-        return 'w-full border rounded placeholder:text-placeholder text-dark focus:ring-transparent focus-visible:outline-none'
+        return 'w-full h-[134px] px-[14px] text-[16px] leading-[24px] border rounded-[8px] placeholder:text-gray-500 text-gray-900 focus:ring-transparent focus-visible:outline-none focus:shadow-input'
     });
 </script>
 
 <template>
     <div
-        :class="formGroupClass"
+        :class="[
+            `relative w-full group`,
+            formGroupClass
+        ]"
     >
         <label
-            v-if="label"
+            v-if="label || $slots['label']"
             :for="id"
             :class="[
-                `text-b6 font-semibold text-dark uppercase bg-white`,
-                {'text-danger': errorMessage}
+                `block mb-[6px] text-b4 font-medium`,
+                errorMessage ? 'text-error-600' : 'text-gray-700',
+                labelClass
             ]">
-            {{ label }}
+            <slot name="label">
+                {{ label }}
+            </slot>
         </label>
         <textarea
             :id="id"
@@ -91,10 +95,9 @@
             :placeholder="placeholder"
             :readonly="readOnly"
             :class="[
-                formControlSizeClass,
                 formControlClass,
-                readOnly ? 'text-mid border-lighter focus:!border-lighter bg-background' : '',
-                errorMessage ? 'border-danger focus:border-danger' : 'border-grey focus:border-primary'
+                readOnly ? 'text-gray-500 focus:!border-gray-300' : '',
+                errorMessage ? 'border-error-600 focus:border-error-600' : 'border-gray-300 focus:border-primary-300'
             ]"
         />
         <app-input-error :error-message="errorMessage"/>
