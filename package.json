@@ -36,6 +36,7 @@
     "@types/isotope-layout": "^3.0.13",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
+    "sass": "^1.78.0",
     "tailwindcss": "^3.4.10"
   }
 }
