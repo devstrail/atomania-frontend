@@ -27,6 +27,7 @@
     "pinia": "^2.2.2",
     "sweetalert2": "^11.12.4",
     "swiper": "^11.1.12",
+    "tippy.js": "^6.3.7",
     "vee-validate": "^4.13.2",
     "vue": "^3.4.15",
     "vue-countup-v3": "^1.4.2",

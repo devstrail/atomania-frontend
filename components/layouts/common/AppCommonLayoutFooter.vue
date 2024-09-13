@@ -9,7 +9,7 @@
 
     const {locale, setLocale} = useI18n()
 
-    // Handle subscribe
+    /* -- Handle Subscription -- */
     const loading = ref(false)
     const formData = reactive({
         email: ''

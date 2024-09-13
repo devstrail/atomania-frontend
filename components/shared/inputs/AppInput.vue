@@ -49,6 +49,10 @@
             type: Boolean,
             default: true
         },
+        showErrorMessage: {
+            type: Boolean,
+            default: true
+        },
         inputWrapperStyle: {
             type: String,
             default: null
@@ -191,7 +195,7 @@
             >
                 <i :class="inputIcon"/>
             </span>
-            <app-input-error :error-message="errorMessage"/>
+            <app-input-error v-if="showErrorMessage" :error-message="errorMessage"/>
         </div>
     </template>
 
@@ -230,7 +234,7 @@
                 ]"
                 @input="handlePhoneInput"
             />
-            <app-input-error :error-message="errorMessage"/>
+            <app-input-error v-if="showErrorMessage" :error-message="errorMessage"/>
         </div>
     </template>
 </template>
