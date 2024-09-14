@@ -6,7 +6,7 @@
 </script>
 
 <template>
-    <section class="py-10 laptop:py-[96px] bg-white">
+    <section id="blogSection" class="py-10 laptop:py-[96px] bg-white">
         <div class="container">
             <div class="mb-7 laptop:mb-14 flex flex-col laptop:flex-row laptop:items-center justify-between gap-5">
                 <app-breadcrumb

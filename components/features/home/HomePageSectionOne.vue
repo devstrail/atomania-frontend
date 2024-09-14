@@ -44,7 +44,7 @@
         <div class="container">
             <div class="grid laptop:grid-cols-[641px_auto] items-center gap-5 laptop:gap-[52px]">
                 <div class="order-2 laptop:order-1">
-                    <h2
+                    <h3
                         class="mb-6 text-gray-900 font-bold"
                         v-motion="{
                           initial: initialMotion,
@@ -60,7 +60,7 @@
                         Connecting Romanian <span class="text-royal-flycatcher-crest-500">Farmers</span> with the <span
                         class="text-royal-flycatcher-crest-500">Machinery</span> and <span
                         class="text-royal-flycatcher-crest-500">Expertise</span> They Need, When They Need It.
-                    </h2>
+                    </h3>
                     <p
                         class="mb-6 laptop:mb-12 text-gray-500 text-b2"
                         v-motion="{
@@ -79,6 +79,25 @@
                         technology, we’re making farming more efficient and profitable.
                     </p>
                     <div
+                        class="max-w-[504px]"
+                        v-motion="{
+                          initial: initialMotion,
+                          enter: {
+                            ...initialMotionEnter,
+                            transition: {
+                                duration: 600,
+                                delay: 600
+                            },
+                          }
+                        }"
+                    >
+                        <app-button
+                            url="/login"
+                            class="!px-10"
+                            title="Get started"
+                        />
+                    </div>
+                    <!--<div
                         class="max-w-[504px]"
                         v-motion="{
                           initial: initialMotion,
@@ -112,7 +131,7 @@
                                 />
                             </div>
                         </Form>
-                    </div>
+                    </div>-->
                 </div>
                 <NuxtImg
                     width="560"

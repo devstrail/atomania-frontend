@@ -5,7 +5,7 @@
 </script>
 
 <template>
-    <section class="py-10 laptop:py-[96px] bg-white">
+    <section id="serviceSection" class="py-10 laptop:py-[96px] bg-white">
         <div class="container">
             <div class="max-w-[780px]">
                 <app-breadcrumb

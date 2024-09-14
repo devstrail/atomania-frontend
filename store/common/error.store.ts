@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia'
-import { useRouter } from '#app'
-import { showWarningMessage } from '~/utils'
-import { useAuthStore } from '~/store'
+import {defineStore} from 'pinia'
+import {useRouter} from '#app'
+import {showWarningMessage} from '~/utils'
+import {useAuthStore} from '~/store'
 
 export const useErrorStore = defineStore('error', {
     state: () => ({
@@ -44,20 +44,19 @@ export const useErrorStore = defineStore('error', {
                 setTimeout(() => {
                     const currentRoute = router.currentRoute.value;
                     if (currentRoute.name && currentRoute.name != 'auth-login') {
-                        const query = { ...currentRoute.query, redirectFrom: currentRoute.name };
-                        useAuthStore().resetAuth();
+                        const query = {...currentRoute.query, redirectFrom: currentRoute.name};
 
                         router.push({
                             name: 'auth-login',
                             query: query,
                         });
                     } else {
-                        router.push({ name: 'auth-login' });
+                        router.push({name: 'auth-login'});
                     }
                 }, 200);
             }
             if (this.errorCode == 406 || this.errorCode == 500) {
-                showWarningMessage({ title: this.errorMessage, text: '' });
+                showWarningMessage({title: this.errorMessage, text: ''});
             }
         },
         setErrorCode(code) {

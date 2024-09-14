@@ -3,9 +3,9 @@
         layout: 'auth'
     })
 
-    import AppLoginForm from '~/components/features/auth/AppLoginForm.vue'
+    import AppForgotPasswordForm from '~/components/features/auth/AppForgotPasswordForm.vue';
 </script>
 
 <template>
-    <AppLoginForm/>
+    <app-forgot-password-form/>
 </template>

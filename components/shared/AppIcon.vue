@@ -11,6 +11,10 @@
         radius: {
             type: String,
             default: 'rounded-full'
+        },
+        delay: {
+            type: Number,
+            default: 500
         }
     })
 </script>
@@ -28,7 +32,7 @@
             opacity: 1,
             transition: {
                 duration: 500,
-                delay: 500
+                delay
             },
           }
         }"

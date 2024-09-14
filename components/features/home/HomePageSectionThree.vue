@@ -1,9 +1,17 @@
 <script setup lang="ts">
     import Isotope from 'isotope-layout'
     import {machines} from '~/config'
+    import {useAuthStore} from '~/store'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
+    import AppButton from '~/components/shared/AppButton.vue'
+    import AppAuthAlertModal from '~/components/shared/AppAuthAlertModal.vue'
 
+    // Define stores
+    const authStore = useAuthStore()
+
+    const router = useRouter()
+    const isAlertModalOpen = ref(false)
     const container = ref<HTMLElement | null>(null)
     const isotopeInstance = ref<Isotope | null>(null)
     const activeFilter = ref('*')
@@ -36,16 +44,30 @@
             }
         })
     })
+
+    const handleShowAllMachine = () => {
+        if (authStore.type === 2) {
+            router.push('/marketplace')
+        } else {
+            isAlertModalOpen.value = true
+        }
+    }
 </script>
 
 <template>
-    <section class="pt-10 pb-2 laptop:pt-[96px] laptop:pb-8 bg-wispy-white-25">
+    <section id="marketplaceSection" class="pt-10 pb-2 laptop:pt-[96px] laptop:pb-8 bg-wispy-white-25">
         <div class="container">
-            <app-breadcrumb
-                class="mb-8"
-                title="Find machines"
-                description="All machines are available to us."
-            />
+            <div class="flex gap-5 items-center justify-between">
+                <app-breadcrumb
+                    class="mb-8"
+                    title="Find machines"
+                    description="All machines are available to us."
+                />
+                <app-button
+                    title="Show all machine"
+                    :on-click-button="() => handleShowAllMachine()"
+                />
+            </div>
 
             <div
                 class="flex flex-wrap gap-3 mb-8 laptop:mb-16"
@@ -88,5 +110,7 @@
                 </div>
             </div>
         </div>
+
+        <app-auth-alert-modal v-model:isOpen="isAlertModalOpen" />
     </section>
 </template>

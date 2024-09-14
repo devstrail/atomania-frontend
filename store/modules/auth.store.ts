@@ -1,6 +1,7 @@
-import { defineStore } from 'pinia'
-import { authService } from '~/services'
-import { handleCommonActions } from '~/utils'
+import {defineStore} from 'pinia'
+import {authService} from '~/services'
+import {handleCommonActions} from '~/utils'
+import { useRouter } from 'nuxt/app'
 
 export const useAuthStore = defineStore({
     id: 'auth',
@@ -26,21 +27,26 @@ export const useAuthStore = defineStore({
                 });
             }
         },
-        async getAuthUser(){
+        async getAuthUser() {
+            // this.type = 2;
             const response = await authService.authorize();
+            console.log(response)
             this.user = response.data?.data ?? null;
             this.type = this.user?.type ?? null;
+            console.log(this.type)
         },
-        redirectAfterLoginBasedOnType(){
-            switch(this.type){
+        redirectAfterLoginBasedOnType() {
+            const router = useRouter()
+            console.log(this.type)
+            switch (this.type) {
                 case 1:
-                    return this.router.push({name: "dashboard"});
+                    return router.push('/dashboard');
                     break;
                 case 2:
-                    return this.router.push({name: "prep-sheet.index"});
+                    return router.push('/');
                     break;
                 default:
-                    return this.router.push({name: 'auth.login'});
+                    return router.push('/');
                     break;
             }
         },

@@ -1,9 +1,9 @@
 <script setup lang="ts">
     import {Form} from 'vee-validate'
-    import {loginSchema} from '~/config/validationSchema'
+    import {forgotPasswordSchema} from '~/config/validationSchema'
     import {useAuthStore, useErrorStore} from '~/store'
-    import AppInput from '~/components/shared/inputs/AppInput'
-    import AppButton from '~/components/shared/AppButton'
+    import AppInput from '~/components/shared/inputs/AppInput.vue'
+    import AppButton from '~/components/shared/AppButton.vue'
 
     const {login} = useAuth()
     const router = useRouter()
@@ -12,14 +12,8 @@
 
     const loading = ref(false);
     const formData = reactive({
-        email: '',
-        password: ''
+        email: ''
     });
-
-    const loginAs = async (userType: 'admin' | 'farmer') => {
-        await login(userType)
-        router.push('/dashboard')
-    }
 
     const onSubmit = async (values, actions) => {
         loading.value = true;
@@ -33,60 +27,58 @@
 </script>
 
 <template>
-    <Form
-        @submit="onSubmit"
-        :validation-schema="loginSchema"
+    <div
+        v-motion="{
+          initial: {
+            scale: 0.97,
+            opacity: 0
+          },
+          enter: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+                duration: 400
+            },
+          }
+        }"
     >
-        <app-input
-            id="email"
-            type="email"
-            name="email"
-            label="Email address"
-            placeholder="example@axilweb.com"
-            input-icon="icon-envelope-regular"
-            v-model="formData.email"
-        />
-        <app-input
-            id="password"
-            type="password"
-            name="password"
-            label="Password"
-            placeholder="Password"
-            form-group-class="relative mb-2"
-            v-model="formData.password"
-        />
-        <div class="mb-10 text-right">
-<!--            <router-link
-                :to="{name: 'auth.forgot_password'}"
-                class="text-b4 text-info font-semibold hover:text-teal"
-            >
-                Forgot Password?
-            </router-link>-->
-        </div>
-        <p
-            v-if="![401,422].includes(errorStore.errorCode) && errorStore.errorMessage"
-            class="text-b6 mt-[0] mb-3 text-danger"
-        >
-            {{ errorStore.errorMessage }}
+        <p class="mb-8 text-gray-500 text-center">
+            Enter the email address associated with your account and we'll send you a link to reset your password.
         </p>
-        <app-button
-            button-type="submit"
-            button-size="large"
-            title="Login"
-            full-width
-            :loading="loading"
-        />
-    </Form>
-<!--    <button
-        @click="loginAs('admin')"
-        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full"
-    >
-        Login as Admin
-    </button>
-    <button
-        @click="loginAs('farmer')"
-        class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full"
-    >
-        Login as Farmer
-    </button>-->
+        <Form
+            @submit="onSubmit"
+            :validation-schema="forgotPasswordSchema"
+        >
+            <app-input
+                id="email"
+                type="email"
+                name="email"
+                label="Email address"
+                placeholder="example@axilweb.com"
+                input-icon="icon-envelope-regular"
+                v-model="formData.email"
+            />
+            <div class="mb-3 text-right">
+                <NuxtLink
+                    to="/login"
+                    class="text-gray-700 text-b4 font-medium"
+                >
+                    Back to Login
+                </NuxtLink>
+            </div>
+            <p
+                v-if="errorStore.errorCode !== null && ![401,422].includes(errorStore.errorCode) && errorStore.errorMessage"
+                class="text-b6 mt-[0] mb-3 text-danger"
+            >
+                {{ errorStore.errorMessage }}
+            </p>
+            <app-button
+                button-type="submit"
+                button-size="large"
+                title="Send Email"
+                full-width
+                :loading="loading"
+            />
+        </Form>
+    </div>
 </template>
