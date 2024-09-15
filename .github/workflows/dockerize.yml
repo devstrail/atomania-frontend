@@ -1,7 +1,7 @@
 name: Docker Image CI
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened]
   push:
     branches:
       - main
@@ -11,8 +11,6 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    strategy:
-      fail-test: true
     steps:
       # Checkout the code
       - name: Checkout repository
