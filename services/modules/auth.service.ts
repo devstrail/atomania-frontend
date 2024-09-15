@@ -5,7 +5,7 @@ export const authService = {
         return apiClient.get('/sanctum/csrf-cookie')
     },
     async login(payload) {
-        return apiClient.post('/login', payload)
+        return apiClient.post('/auth/login', payload)
     },
     async authorize() {
         return apiClient.get('/authorize')

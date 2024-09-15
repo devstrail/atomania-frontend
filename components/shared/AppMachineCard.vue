@@ -1,5 +1,9 @@
 <script setup lang="ts">
+    import {useAuthStore} from '~/store'
     import AppButton from '~/components/shared/AppButton.vue'
+
+    const authStore = useAuthStore()
+    const router = useRouter()
 
     const props = defineProps({
         machine: {
@@ -7,6 +11,22 @@
             required: true
         }
     })
+
+    const handleViewDetails = (id) => {
+        if (authStore.type === 2) {
+            router.push(`/machine/${id}`)
+        } else {
+            authStore.isAuthAlertModalOpen = true
+        }
+    }
+
+    const handleOrderNow = () => {
+        if (authStore.type === 2) {
+
+        } else {
+            authStore.isAuthAlertModalOpen = true
+        }
+    }
 </script>
 
 <template>
@@ -75,10 +95,12 @@
                 title="View details"
                 full-width
                 button-color="secondary"
+                :on-click-button="() => handleViewDetails(machine?.id)"
             />
             <app-button
                 title="Order now"
                 full-width
+                :on-click-button="() => handleOrderNow()"
             />
         </div>
     </div>

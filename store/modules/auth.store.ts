@@ -6,6 +6,7 @@ import { useRouter } from 'nuxt/app'
 export const useAuthStore = defineStore({
     id: 'auth',
     state: () => ({
+        isAuthAlertModalOpen: false,
         isAuthCalled: false,
         type: null,
         user: null,
@@ -51,6 +52,10 @@ export const useAuthStore = defineStore({
             }
         },
         async logout() {
+            const router = useRouter()
+            router.push('/login');
+            this.type = null;
+            return
             return await handleCommonActions(async () => {
                 await authService.logout();
                 this.$reset();

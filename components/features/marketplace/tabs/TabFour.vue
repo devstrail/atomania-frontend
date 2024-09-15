@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import {machines} from '~/config';
+    import {machines} from '~/config'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
     import AppButton from '~/components/shared/AppButton.vue'

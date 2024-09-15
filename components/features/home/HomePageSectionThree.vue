@@ -5,13 +5,11 @@
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
     import AppButton from '~/components/shared/AppButton.vue'
-    import AppAuthAlertModal from '~/components/shared/AppAuthAlertModal.vue'
 
     // Define stores
     const authStore = useAuthStore()
 
     const router = useRouter()
-    const isAlertModalOpen = ref(false)
     const container = ref<HTMLElement | null>(null)
     const isotopeInstance = ref<Isotope | null>(null)
     const activeFilter = ref('*')
@@ -49,7 +47,7 @@
         if (authStore.type === 2) {
             router.push('/marketplace')
         } else {
-            isAlertModalOpen.value = true
+            authStore.isAuthAlertModalOpen = true
         }
     }
 </script>
@@ -110,7 +108,5 @@
                 </div>
             </div>
         </div>
-
-        <app-auth-alert-modal v-model:isOpen="isAlertModalOpen" />
     </section>
 </template>

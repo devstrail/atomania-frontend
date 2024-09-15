@@ -284,7 +284,7 @@
                                             <button
                                                 type="button"
                                                 class="flex items-center gap-2 px-4 py-2 text-error-500 text-b4 hover:bg-gray-50 transition-all"
-                                                @click="router.push('/orders')"
+                                                @click="router.push('/login')"
                                             >
                                                 <i class="dt-icon-log-out-01"/> Logout
                                             </button>

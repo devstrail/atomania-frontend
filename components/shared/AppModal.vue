@@ -35,7 +35,7 @@
                 <div class="fixed z-[100] inset-0 bg-black bg-opacity-25"/>
             </TransitionChild>
 
-            <div class="fixed z-[101] inset-0 overflow-y-auto">
+            <div class="fixed z-[101] inset-0 overflow-y-auto prose tablet:prose-tablet laptop:prose-laptop desktop:prose-desktop">
                 <div class="flex min-h-full items-center justify-center p-4 text-center">
                     <TransitionChild
                         as="template"
