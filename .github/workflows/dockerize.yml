@@ -1,0 +1,61 @@
+name: Docker Image CI
+on:
+  pull_request:
+    types: [opened, synchronize]
+  push:
+    branches:
+      - main
+env:
+  DOCKER_IMAGE_NAME: devstrail/atomania-app
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-test: true
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.ACTIONS_PAT }}
+          fetch-depth: 0  # Fetch all history for branches and tags
+
+      # Set up Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      # Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Determine the tag for the image
+      - name: Set Docker image tag
+        id: docker_tag
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            BUILD_NUMBER=$(cat build_number.txt || echo "0")
+            BUILD_NUMBER=$((BUILD_NUMBER + 1))
+            echo $BUILD_NUMBER > build_number.txt
+            echo "BUILD_TAG=build-${BUILD_NUMBER}" >> $GITHUB_ENV
+          else
+            echo "BUILD_TAG=latest" >> $GITHUB_ENV
+          fi
+
+      # Build and push the Docker image
+      - name: Build and push Docker image
+        run: |
+          docker buildx build --push --tag ${{ env.DOCKER_IMAGE_NAME }}:${{ env.BUILD_TAG }} .
+
+      # Update build number file if pull request
+      - name: Save build number
+        if: github.event_name == 'pull_request'
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add build_number.txt
+          git commit -m "Increment build number"
+          git push origin HEAD:${{ github.head_ref }}
