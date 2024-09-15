@@ -1,4 +1,9 @@
 <script setup lang="ts">
+    import TabOne from '~/components/features/marketplace/tabs/TabOne.vue'
+    import TabTwo from '~/components/features/marketplace/tabs/TabTwo.vue'
+    import TabThree from '~/components/features/marketplace/tabs/TabThree.vue'
+    import TabFour from '~/components/features/marketplace/tabs/TabFour.vue'
+
     const tabs = [
         {
             id: 1,
@@ -19,15 +24,25 @@
     ]
     const activeTab = ref(1)
 
-    const handleTabChange = (index) => {
-        activeTab.value = index + 1;
+    const handleTabChange = (index: number) => {
+        activeTab.value = index + 1
     }
+
+    const getActiveComponent = computed(() => {
+        switch (activeTab.value) {
+            case 1: return TabOne
+            case 2: return TabTwo
+            case 3: return TabThree
+            case 4: return TabFour
+            default: return TabOne
+        }
+    })
 </script>
 
 <template>
     <section class="py-8 laptop:py-10 bg-white">
         <div class="container">
-            <div class="border-b border-gray-200">
+            <div class="mb-10 border-b border-gray-200">
                 <ul class="flex gap-4 flex-col laptop:flex-row">
                     <li v-for="(tab, tabIndex) in tabs">
                         <button
@@ -43,7 +58,17 @@
                     </li>
                 </ul>
             </div>
-
+            <transition
+                enter-active-class="transition duration-200 ease-out"
+                enter-from-class="transform translate-y-5 opacity-0"
+                enter-to-class="transform translate-y-0 opacity-100"
+                leave-active-class="transition duration-150 ease-in"
+                leave-from-class="transform translate-y-0 opacity-100"
+                leave-to-class="transform translate-y-5 opacity-0"
+                mode="out-in"
+            >
+                <component :is="getActiveComponent" :key="activeTab" />
+            </transition>
         </div>
     </section>
 </template>

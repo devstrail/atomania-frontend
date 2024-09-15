@@ -4,6 +4,10 @@
             type: String,
             required: true
         },
+        titleClass: {
+            type: String,
+            default: ''
+        },
         subtitle: {
             type: String
         },
@@ -57,7 +61,8 @@
         </p>
         <h4 :class="[
                 `text-gray-900 font-bold`,
-                {'mb-2 laptop:mb-5': description}
+                {'mb-2 laptop:mb-5': description},
+                titleClass
             ]"
             v-motion="{
               initial: {

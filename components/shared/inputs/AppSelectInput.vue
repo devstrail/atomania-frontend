@@ -1,8 +1,8 @@
 <script setup>
-    import {computed, nextTick, ref, watch} from 'vue';
-    import {useField} from 'vee-validate';
-    import {onClickOutside as vOnClickOutside} from '~/directives/clickOutsideDirective';
-    import AppInputError from '~/components/shared/inputs/AppInputError.vue';
+    import {useField} from 'vee-validate'
+    import {onClickOutside as vOnClickOutside} from '~/directives/clickOutsideDirective'
+    import AppInputError from '~/components/shared/inputs/AppInputError.vue'
+    import {computed} from "vue";
 
     // Define props
     const props = defineProps({
@@ -40,7 +40,7 @@
         },
         labelClass: {
             type: String,
-            default: 'text-grey-200',
+            default: '',
         },
         inputWrapperStyle: {
             type: String,
@@ -96,7 +96,7 @@
         },
         formGroupClass: {
             type: String,
-            default: 'relative w-full mb-5 group'
+            default: 'mb-5'
         },
         menuPosition: {
             type: String,
@@ -104,7 +104,7 @@
         },
         dropdownMenuIcon: {
             type: String,
-            default: 'icon-chevron-selector-vertical'
+            default: 'dt-icon-chevron-down'
         },
         inputIcon: {
             type: String,
@@ -137,15 +137,13 @@
     // Define computed
     const formControlSizeClass = computed(() => {
         if (props.inputSize === 'small') {
-            return 'h-[36px] px-2.5 py-1.5 text-b5'
-        } else if (props.inputSize === 'xs-small') {
-            return 'h-[31px] px-2.5 py-1 text-b5'
+            return 'h-[36px] px-2.5 py-1.5'
         } else {
-            return `${props.type === 'textarea' ? 'h-32' : 'h-[46px]'} pl-[14px] ${props.type === 'password' ? 'pr-10' : 'pr-[14px]'} text-b4`
+            return `h-[44px] pl-[14px] pr-[14px]`
         }
     });
     const formControlClass = computed(() => {
-        return 'w-full border rounded-[6px] focus:ring-transparent focus-visible:outline-none focus:shadow-input'
+        return 'w-full text-[16px] leading-[24px] border rounded-[8px] placeholder:text-gray-500 focus:ring-transparent focus-visible:outline-none focus:shadow-input'
     });
     const menuAlignmentClass = computed(() => {
         if (props.menuPosition === 'right') return 'right-0';
@@ -244,14 +242,18 @@
 
 <template>
     <div
-        :class="formGroupClass"
+        :class="[
+            `relative w-full group`,
+            formGroupClass
+        ]"
     >
         <label
             v-if="label || $slots['label']"
             :for="id"
             :class="[
-                `mb-[6px] block text-b5 font-semibold ${labelClass} capitalize bg-white`,
-                {'text-danger': errorMessage}
+                `block mb-[6px] text-b4 font-medium`,
+                errorMessage ? 'text-error-600' : 'text-gray-700',
+                labelClass
             ]">
             <slot name="label">
                 {{ label }}
@@ -265,11 +267,11 @@
                     `relative whitespace-nowrap text-ellipsis overflow-hidden text-left`,
                     formControlSizeClass,
                     formControlClass,
-                    !isEmptyModelValue ? 'text-dark' : 'text-placeholder opacity-80',
-                    readOnly ? 'text-mid border-lighter focus:!border-lighter bg-background' : '',
-                    errorMessage ? 'border-danger focus:border-danger' : 'border-off-white-400 focus:border-info',
+                    !isEmptyModelValue ? 'text-gray-900' : 'text-gray-500',
+                    readOnly ? 'text-gray-500 focus:!border-gray-300' : '',
+                    errorMessage ? 'border-error-600 focus:border-error-600' : 'border-gray-300 focus:border-primary-300',
                     {'pr-12': multiselect},
-                    {'bg-off-white-200': appearanceFilter && !isEmptyModelValue}
+                    // {'bg-gray-100': appearanceFilter && !isEmptyModelValue}
                 ]"
                 @click="toggleSelectMenu($event)"
             >
@@ -333,7 +335,7 @@
                         <i class="icon-search absolute top-1/2 left-2.5 -translate-y-1/2"/>
                         <input
                             type="search"
-                            class="w-full h-[36px] py-1.5 px-2.5 pl-8 text-dark placeholder:text-placeholder text-b5 rounded-[6px] border border-off-white-400 focus:border-info focus:ring-transparent focus-visible:outline-none focus:shadow-input"
+                            class="w-full h-[36px] py-1.5 px-2.5 pl-8 text-gray-900 placeholder:text-gray-500 text-b5 rounded-[6px] border border-gray-300 focus:border-primary-300 focus:ring-transparent focus-visible:outline-none focus:shadow-input"
                             :placeholder="searchSelectPlaceholder"
                             v-model="searchQuery"
                         />
@@ -342,14 +344,14 @@
                         <template v-if="multiselect && checkAll">
                             <button
                                 type="button"
-                                class="w-full py-2 px-4 flex items-center text-mid text-b4 transition hover:text-primary hover:bg-artboard"
+                                class="w-full py-2 px-4 flex items-center text-gray-500 text-b4 transition hover:text-primary hover:bg-artboard"
                             >
                                 <input
                                     :id="`${id}_check_all`"
                                     type="checkbox"
                                     v-model="checkAllItem"
                                     @change="toggleCheckAllItem"
-                                    class='h-4 w-4 mr-2 cursor-pointer border-2 border-off-white-300 rounded-xsm text-orange focus:ring-0 focus:ring-transparent focus-visible:outline-none'
+                                    class='h-4 w-4 mr-2 cursor-pointer border-2 border-gray-300 rounded-xsm text-orange focus:ring-0 focus:ring-transparent focus-visible:outline-none'
                                 />
                                 <label :for="`${id}_check_all`">
                                     All
@@ -362,7 +364,7 @@
                         >
                             <button
                                 type="button"
-                                class="w-full py-2 px-4 flex items-center text-mid text-b4 transition hover:text-primary"
+                                class="w-full py-2 px-4 flex items-center text-gray-500 text-b4 transition hover:text-primary"
                                 :class="{'text-primary': option[listTrackBy] === value}"
                                 @click="selectDropdownMenuItem(option)"
                             >
@@ -372,7 +374,7 @@
                                         type="checkbox"
                                         :value="option[listTrackBy]"
                                         v-model="selectedItems"
-                                        class='h-4 w-4 mr-2 cursor-pointer border-2 border-off-white-300 rounded-xsm text-orange focus:ring-0 focus:ring-transparent focus-visible:outline-none'
+                                        class='h-4 w-4 mr-2 cursor-pointer border-2 border-gray-300 rounded-xsm text-orange focus:ring-0 focus:ring-transparent focus-visible:outline-none'
                                     />
                                     <label :for="option[listTrackBy]">
                                         <slot name="option" :item="option">
@@ -389,7 +391,7 @@
                         </template>
                         <template v-else>
                             <span
-                                class="w-full py-2 px-4 flex items-center justify-center text-mid text-b4">
+                                class="w-full py-2 px-4 flex items-center justify-center text-gray-500 text-b4">
                                 No items found
                             </span>
                         </template>
