@@ -53,3 +53,16 @@ export const FARM_ACTIVITIES = [
     {id: 9, name: "Sunflower Field"},
     {id: 10, name: "Olive Orchard"}
 ]
+
+export const EXPERT_DESIGNATIONS = [
+    { id: 1, name: "Agronomist" },
+    { id: 2, name: "Horticulturist" },
+    { id: 3, name: "Livestock Specialist" },
+    { id: 4, name: "Dairy Specialist" },
+    { id: 5, name: "Poultry Specialist" },
+    { id: 6, name: "Agricultural Engineer" },
+    { id: 7, name: "Agricultural Economist" },
+    { id: 8, name: "Soil Scientist" },
+    { id: 9, name: "Plant Pathologist" },
+    { id: 10, name: "Entomologist" }
+]

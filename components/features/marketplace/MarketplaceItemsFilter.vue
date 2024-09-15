@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import AppSelectInput from '~/components/shared/inputs/AppSelectInput.vue'
-    import {FARM_ACTIVITIES, FARM_TYPES, LOCATIONS, MACHINE_TYPES} from '~/config/constants'
+    import {EXPERT_DESIGNATIONS, FARM_ACTIVITIES, FARM_TYPES, LOCATIONS, MACHINE_TYPES} from '~/config/constants'
 
     const props = defineProps({
         searchable: {
@@ -10,6 +10,26 @@
         searchPlaceholder: {
             type: String,
             default: 'Search'
+        },
+        showLocation: {
+            type: Boolean,
+            default: true
+        },
+        showFarmType: {
+            type: Boolean,
+            default: true
+        },
+        showFarmActivity: {
+            type: Boolean,
+            default: true
+        },
+        showMachineType: {
+            type: Boolean,
+            default: true
+        },
+        showDesignation: {
+            type: Boolean,
+            default: false
         },
     })
 
@@ -30,6 +50,7 @@
         farm_type: '',
         farm_activity: '',
         machine_type: '',
+        designation: '',
     })
     watch(() => filters, (val) => {
         const filterPayload = {}
@@ -38,6 +59,7 @@
         filterPayload.farm_type = val.farm_type ? val.farm_type : null
         filterPayload.farm_activity = val.farm_activity ? val.farm_activity : null
         filterPayload.machine_type = val.machine_type ? val.machine_type : null
+        filterPayload.designation = val.designation ? val.designation : null
 
         emit('change:payload', filterPayload)
     }, {deep: true})
@@ -60,7 +82,7 @@
           }
         }"
     >
-        <div class="relative">
+        <div v-if="searchable" class="relative">
             <i class="dt-icon-search-lg text-gray-500 text-b1 absolute top-1/2 left-[14px] -translate-y-1/2"/>
             <input
                 type="search"
@@ -70,7 +92,7 @@
                 @input="handleSearch"
             />
         </div>
-        <div class="w-full laptop:max-w-[195px]">
+        <div v-if="showLocation" class="w-full laptop:max-w-[195px]">
             <app-select-input
                 id="location"
                 type="select"
@@ -82,7 +104,7 @@
                 v-model="filters.location"
             />
         </div>
-        <div class="w-full laptop:max-w-[195px]">
+        <div v-if="showFarmType" class="w-full laptop:max-w-[195px]">
             <app-select-input
                 id="farm_type"
                 type="select"
@@ -94,7 +116,7 @@
                 v-model="filters.farm_type"
             />
         </div>
-        <div class="w-full laptop:max-w-[195px]">
+        <div v-if="showFarmActivity" class="w-full laptop:max-w-[195px]">
             <app-select-input
                 id="farm_activity"
                 type="select"
@@ -106,7 +128,7 @@
                 v-model="filters.farm_activity"
             />
         </div>
-        <div class="w-full laptop:max-w-[195px]">
+        <div v-if="showMachineType" class="w-full laptop:max-w-[195px]">
             <app-select-input
                 id="machine_type"
                 type="select"
@@ -116,6 +138,18 @@
                 form-group-class="mb-0"
                 :options="MACHINE_TYPES?.map(machine => ({ id: machine?.id, value: machine?.name }))"
                 v-model="filters.machine_type"
+            />
+        </div>
+        <div v-if="showDesignation" class="w-full laptop:max-w-[195px]">
+            <app-select-input
+                id="designation"
+                type="select"
+                name="designation"
+                :appearance-filter="true"
+                placeholder="Designation"
+                form-group-class="mb-0"
+                :options="EXPERT_DESIGNATIONS?.map(designation => ({ id: designation?.id, value: designation?.name }))"
+                v-model="filters.designation"
             />
         </div>
     </div>

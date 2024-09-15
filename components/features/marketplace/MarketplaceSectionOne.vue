@@ -37,6 +37,10 @@
             default: return TabOne
         }
     })
+
+    const switchTab = (tabId: number) => {
+        activeTab.value = tabId
+    }
 </script>
 
 <template>
@@ -67,7 +71,11 @@
                 leave-to-class="transform translate-y-5 opacity-0"
                 mode="out-in"
             >
-                <component :is="getActiveComponent" :key="activeTab" />
+                <component
+                    :is="getActiveComponent"
+                    :key="activeTab"
+                    @switchTab="switchTab"
+                />
             </transition>
         </div>
     </section>
