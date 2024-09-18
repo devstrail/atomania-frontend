@@ -1,8 +1,9 @@
 <script setup lang="ts">
-    import {useAuthStore} from '~/store'
+    import {useAuthStore, useMachineStore} from '~/store'
     import AppButton from '~/components/shared/AppButton.vue'
 
     const authStore = useAuthStore()
+    const machineStore = useMachineStore()
     const router = useRouter()
 
     const props = defineProps({
@@ -22,7 +23,7 @@
 
     const handleOrderNow = () => {
         if (authStore.type === 2) {
-
+            machineStore.isOrderMachineModalOpen = true
         } else {
             authStore.isAuthAlertModalOpen = true
         }

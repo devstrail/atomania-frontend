@@ -1,13 +1,15 @@
 <script setup lang="ts">
     import Isotope from 'isotope-layout'
     import {machines} from '~/config'
-    import {useAuthStore} from '~/store'
+    import {useAuthStore, useMachineStore} from '~/store'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
     import AppButton from '~/components/shared/AppButton.vue'
+    import AppOrderMachineModal from "~/components/shared/AppOrderMachineModal.vue";
 
     // Define stores
     const authStore = useAuthStore()
+    const machineStore = useMachineStore()
 
     const router = useRouter()
     const container = ref<HTMLElement | null>(null)
@@ -109,4 +111,8 @@
             </div>
         </div>
     </section>
+
+    <app-order-machine-modal
+        v-model:isOpen="machineStore.isOrderMachineModalOpen"
+    />
 </template>

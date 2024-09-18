@@ -135,7 +135,7 @@
                               }
                             }"
                         >
-                            <NuxtImg :src="testimonial.thumbnail"/>
+                            <NuxtImg width="576" height="592" :src="testimonial.thumbnail"/>
                         </div>
                     </div>
                 </SwiperSlide>

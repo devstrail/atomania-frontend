@@ -1,9 +1,9 @@
 <script setup>
-    import {computed} from 'vue';
-    import {useField} from 'vee-validate';
-    import VueDatePicker from '@vuepic/vue-datepicker';
-    import {formatDateRangeForFrontend} from '~/utils/index.ts';
-    import AppInputError from '~/components/shared/inputs/AppInputError.vue';
+    import {computed, watch} from 'vue'
+    import {useField} from 'vee-validate'
+    import VueDatePicker from '@vuepic/vue-datepicker'
+    import {formatDateForFrontend, formatDateRangeForFrontend} from '~/utils'
+    import AppInputError from '~/components/shared/inputs/AppInputError.vue'
 
     // Define props
     const props = defineProps({
@@ -43,6 +43,10 @@
             type: String,
             required: false,
         },
+        labelClass: {
+            type: String,
+            default: '',
+        },
         inputWrapperStyle: {
             type: String,
             default: null
@@ -53,7 +57,7 @@
         },
         formGroupClass: {
             type: String,
-            default: 'relative w-full mb-8 group'
+            default: 'mb-5'
         },
         appearanceFilter: {
             type: Boolean,
@@ -115,13 +119,13 @@
     // Define computed
     const formControlSizeClass = computed(() => {
         if (props.inputSize === 'small') {
-            return '!h-[34px] px-2.5 !py-1.5 !text-b4 !leading-[34px]';
+            return 'h-[36px] px-2.5 py-1.5'
         } else {
-            return '!h-[36px] px-3 !py-[10px] !text-b4 !leading-[36px]';
+            return `${props.type === 'textarea' ? 'h-32' : 'h-[44px]'} pl-[14px] ${props.type === 'password' ? 'pr-10' : 'pr-[14px]'}`
         }
     });
     const formControlClass = computed(() => {
-        return '!w-full !border !rounded-[6px] !placeholder:text-placeholder !focus:ring-transparent !focus-visible:outline-none !focus:shadow-input'
+        return 'w-full text-[16px] leading-[24px] border rounded-[8px] placeholder:text-gray-500 text-gray-900 focus:ring-transparent focus-visible:outline-none focus:shadow-input'
     });
 
     // Define methods
@@ -129,27 +133,39 @@
         if (props.range) {
             return formatDateRangeForFrontend(date);
         }
-
+        if (!props.range && !props.weekPicker) {
+            return formatDateForFrontend(date);
+        }
         if (props.weekPicker) {
             return formatDateRangeForFrontend(value.value);
         }
     }
+
+    watch(() => value.value, (val) => {
+        emits('onChange', val)
+    });
 </script>
 
 <template>
-    <div :class="[`range-picker`, formGroupClass]">
+    <div
+        :class="[
+            `range-picker relative w-full group`,
+            formGroupClass
+        ]">
         <label
-            v-if="label"
+            v-if="label || $slots['label']"
             :for="id"
             :class="[
-                `text-b6 font-semibold text-dark uppercase bg-white`,
-                {'text-danger': errorMessage}
-            ]">
-            {{ label }}
+                    `block mb-[6px] text-b4 font-medium`,
+                    errorMessage ? 'text-error-600' : 'text-gray-700',
+                    labelClass
+                ]">
+            <slot name="label">
+                {{ label }}
+            </slot>
         </label>
         <div :class="[
-            `relative flex items-center gap-[10px] text-grey-300`,
-
+            `relative flex items-center gap-[10px] text-gray-300`,
         ]">
             <template v-if="showNavigationButton">
                 <button
@@ -178,16 +194,16 @@
                 :multi-calendars="range"
                 :position="menuPosition"
                 :hide-input-icon="hideInputIcon"
-                :input-class-name="`${formControlSizeClass} ${formControlClass} !font-sans ${errorMessage ? 'border-danger focus:border-danger' : 'border-off-white-400 focus:border-info'} ${hideInputIcon ? '' : 'pl-8'} ${hideClearIcon ? 'hide-clear-icon' : '!pr-[30px]'} ${hideInputIcon && hideClearIcon ? '!text-center' : 'text-left'} ${showNavigationButton ? '!px-10' : ''} ${appearanceFilter && value ? '!bg-off-white-200' : ''}`"
+                :input-class-name="`${formControlSizeClass} ${formControlClass} !font-sans ${errorMessage ? 'border-error-600 focus:border-error-600' : 'border-gray-300 focus:border-primary-300'} ${hideInputIcon ? '' : 'pl-8'} ${hideClearIcon ? 'hide-clear-icon' : '!pr-[30px]'} ${hideInputIcon && hideClearIcon ? '!text-center' : 'text-left'} ${showNavigationButton ? '!px-10' : ''} ${appearanceFilter && value ? '!bg-gray-200' : ''}`"
                 :menu-class-name="`!p-2 !font-sans shadow-lg ${menuPosition === 'right' ? 'dp--menu-wrapper_right' : null} ${monthPicker ? 'dp--menu-wrapper_month' : null}`"
                 calendar-cell-class-name="!font-sans !text-b4"
+                :timezone="'UTC'"
                 :placeholder="placeholder"
                 :format="formatDate"
-                @update:model-value="emits('onChange', value)"
             >
                 <template #clear-icon="{ clear }">
                     <div class="pr-3">
-                        <i class="icon-x-circle" @click="clear"/>
+                        <i class="dt-icon-x-circle" @click="clear"/>
                     </div>
                 </template>
             </VueDatePicker>

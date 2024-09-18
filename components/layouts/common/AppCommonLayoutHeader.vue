@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import {ref, onMounted, onUnmounted} from 'vue'
+    import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
     import {useAuthStore, useNotificationStore} from '~/store'
     import {navItems, navItemsFarmer} from '~/config'
     import AppLogo from '~/components/shared/AppLogo.vue'
     import AppButton from '~/components/shared/AppButton.vue'
-    import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
 
     /* -- Define Utilities -- */
     const router = useRouter()
@@ -53,6 +53,17 @@
             document.body.style.overflow = 'hidden'
         } else {
             document.body.style.overflow = ''
+        }
+    }
+
+    const navigateToSection = (sectionId) => {
+        const currentRoute = router.currentRoute.value
+        if (currentRoute.path === '/') {
+            // If already on the homepage, simply scroll to the section
+            document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' })
+        } else {
+            // Navigate to the home page with the section ID
+            router.push({ path: '/', hash: sectionId })
         }
     }
 
@@ -118,8 +129,8 @@
                             </NuxtLink>
                             <a
                                 v-else
-                                :href="navItem?.sectionId"
-                                class="p-2 text-gray-500 hover:text-gray-600 font-medium text-b3 transition"
+                                @click.prevent="navigateToSection(navItem?.sectionId)"
+                                class="p-2 text-gray-500 hover:text-gray-600 font-medium cursor-pointer text-b3 transition"
                             >
                                 {{ navItem?.title }}
                             </a>
@@ -306,7 +317,7 @@
                         </li>
                         <li>
                             <AppButton
-                                url="/login"
+                                url="/sign-up"
                             >
                                 Sign up
                             </AppButton>

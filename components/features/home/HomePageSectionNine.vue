@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <section class="pb-16">
+    <section class="pb-16 bg-wispy-white-25">
         <div class="container">
             <div
                 class="flex flex-col items-center justify-center gap-4 laptop:gap-8 p-5 px-2 laptop:p-8 rounded-2xl bg-[url(/images/backgrounds/cta-green-background.png)] bg-cover bg-center"
@@ -36,6 +36,7 @@
                     </p>
                 </div>
                 <app-button
+                    url="/sign-up"
                     title="Join us"
                     class="!text-primary-700 !bg-primary-50 hover:!bg-primary-100"
                 />

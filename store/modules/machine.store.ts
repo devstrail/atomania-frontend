@@ -11,6 +11,7 @@ export const useMachineStore = defineStore({
         },
         machines: [],
         machine: null,
+        isOrderMachineModalOpen: false,
     }),
     actions: {
         initiateSearchParam(payload = {}){

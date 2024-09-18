@@ -1,8 +1,18 @@
 <script setup lang="ts">
-    import {drones} from '~/config';
+    import {drones} from '~/config'
+    import {useAuthStore} from '~/store'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppButton from '~/components/shared/AppButton.vue'
     import AppDroneCard from '~/components/shared/AppDroneCard.vue'
+
+    const authStore = useAuthStore()
+    const handleHireDrone = () => {
+        if (authStore.type === 2) {
+
+        } else {
+            authStore.isAuthAlertModalOpen = true
+        }
+    }
 </script>
 
 <template>
@@ -14,7 +24,10 @@
                     title="Elevate Your Farming with Drone Technology"
                     description="Leverage Cutting-Edge Aerial Drones to Gain Comprehensive Insights into Crop Health, Optimize Field Management, and Maximize Efficiency Across Your Farm Operations."
                 />
-                <app-button title="Hire Drone"/>
+                <app-button
+                    title="Hire Drone"
+                    :on-click-button="() => handleHireDrone()"
+                />
             </div>
             <div class="grid laptop:grid-cols-3 gap-8">
                 <template v-for="(drone, droneIndex) in drones.slice(0, 3)">

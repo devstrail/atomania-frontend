@@ -1,9 +1,11 @@
 <script setup lang="ts">
     import {Form} from 'vee-validate'
     import {phoneSchema} from '~/config/validationSchema'
-    import {useErrorStore} from '~/store'
+    import {useAuthStore, useErrorStore} from '~/store'
     import AppInput from '~/components/shared/inputs/AppInput.vue'
     import AppButton from '~/components/shared/AppButton.vue'
+
+    const authStore = useAuthStore();
 
     useHead({
         title: 'Atomania'
@@ -40,9 +42,18 @@
 </script>
 
 <template>
-    <section class="py-3 laptop:py-[60px] bg-gray-50">
+    <section
+        :class="[
+            `py-3 laptop:py-[60px]`,
+            authStore.type === 2 ? 'bg-wispy-white-25' : 'bg-gray-50'
+        ]">
         <div class="container">
-            <div class="grid laptop:grid-cols-[641px_auto] items-center gap-5 laptop:gap-[52px]">
+            <div
+                :class="[
+                    `grid items-center gap-5`,
+                    authStore.type === 2 ? 'laptop:grid-cols-[630px_auto] laptop:gap-[131px]' : 'laptop:grid-cols-[641px_auto] laptop:gap-[52px]'
+                ]"
+            >
                 <div class="order-2 laptop:order-1">
                     <h3
                         class="mb-6 text-gray-900 font-bold"
@@ -57,9 +68,15 @@
                           }
                         }"
                     >
-                        Connecting Romanian <span class="text-royal-flycatcher-crest-500">Farmers</span> with the <span
-                        class="text-royal-flycatcher-crest-500">Machinery</span> and <span
-                        class="text-royal-flycatcher-crest-500">Expertise</span> They Need, When They Need It.
+                        <template v-if="authStore.type === 2">
+                            We offer <span class="text-royal-flycatcher-crest-500">Smart & Affordable</span>
+                            Machines for Better <span class="text-royal-flycatcher-crest-500">Farming.</span>
+                        </template>
+                        <template v-else>
+                            Connecting Romanian <span class="text-royal-flycatcher-crest-500">Farmers</span> with the <span
+                            class="text-royal-flycatcher-crest-500">Machinery</span> and <span
+                            class="text-royal-flycatcher-crest-500">Expertise</span> They Need, When They Need It.
+                        </template>
                     </h3>
                     <p
                         class="mb-6 laptop:mb-12 text-gray-500 text-b2"
@@ -92,6 +109,13 @@
                         }"
                     >
                         <app-button
+                            v-if="authStore.type === 2"
+                            url="/marketplace"
+                            class="!px-10"
+                            title="Explore marketplace"
+                        />
+                        <app-button
+                            v-else
                             url="/login"
                             class="!px-10"
                             title="Get started"
@@ -134,9 +158,9 @@
                     </div>-->
                 </div>
                 <NuxtImg
-                    width="560"
-                    height="640"
-                    src="/images/banners/banner-image-1.png"
+                    :width="authStore.type === 2 ? 444 : 560"
+                    :height="authStore.type === 2 ? 276 : 602"
+                    :src="authStore.type === 2 ? '/images/banners/banner-image-3.jpg' : '/images/banners/banner-image-1.png'"
                     alt="Atomania Logo"
                     quality="100"
                     class="order-1 laptop:order-2"
