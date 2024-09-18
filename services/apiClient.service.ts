@@ -6,6 +6,7 @@ export const apiClient = axios.create({
     withXSRFToken: true,
     headers: {
         'Cache-Control': 'no-cache',
-        'Accept'       : 'application/json'
+        'Accept'       : 'application/json',
+        'Access-Control-Allow-Origin': import.meta.env.VITE_ALLOWED_DOMAIN
     },
 });

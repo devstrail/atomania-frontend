@@ -26,6 +26,10 @@
     const handleFilter = (payload: object) => {
         fetchMachines(payload)
     }
+
+    onMounted(() => {
+        fetchMachines();
+    })
 </script>
 
 <template>
@@ -41,7 +45,7 @@
             @change:search="handleSearch"
             @change:payload="handleFilter"
         />
-        <div class="grid grid-cols-3 gap-8">
+        <div class="grid laptop:grid-cols-3 gap-8">
             <template
                 v-for="(machine, machineIndex) in machines"
                 :key="machine.id"

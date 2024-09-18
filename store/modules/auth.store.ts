@@ -29,26 +29,22 @@ export const useAuthStore = defineStore({
             }
         },
         async getAuthUser() {
-            // this.type = 2;
             const response = await authService.authorize();
-            console.log(response)
             this.user = response.data?.data ?? null;
             this.type = this.user?.type ?? null;
-            console.log(this.type)
         },
         redirectAfterLoginBasedOnType() {
             const router = useRouter()
-            console.log(this.type)
             switch (this.type) {
                 case 1:
-                    return router.push('/dashboard');
-                    break;
+                    return router.push('/dashboard')
+                    break
                 case 2:
-                    return router.push('/');
-                    break;
+                    return router.push('/')
+                    break
                 default:
-                    return router.push('/');
-                    break;
+                    return router.push('/')
+                    break
             }
         },
         async logout() {

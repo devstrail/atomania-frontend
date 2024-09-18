@@ -67,7 +67,7 @@
 
 <template>
     <div
-        class="relative z-50 flex items-center gap-4 mb-10"
+        class="relative z-50 flex flex-wrap laptop:flex-nowrap items-center gap-4 mb-10"
         v-motion="{
           initial: {
             y: 30,

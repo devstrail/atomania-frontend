@@ -25,9 +25,9 @@
 
     const onSubmit = async (values, actions) => {
         loading.value = true;
-        authStore.type = 2;
-        router.push('/');
-        // await authStore.login(values);
+        // authStore.type = 2;
+        // router.push('/');
+        await authStore.login(values);
         loading.value = false;
 
         if (errorStore.errorCode === 422) {
