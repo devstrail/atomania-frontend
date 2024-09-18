@@ -15,6 +15,7 @@
     const container = ref<HTMLElement | null>(null)
     const isotopeInstance = ref<Isotope | null>(null)
     const activeFilter = ref('*')
+    const selectedMachine = ref(null)
 
     // Extract unique machine types for dynamic filter buttons
     const machineTypes = computed(() => {
@@ -106,7 +107,10 @@
                     class="isotope-item w-full block tablet:w-1/2 laptop:w-1/3 px-4 mb-8 laptop:mb-16"
                     :class="`${machine.type.replace(/\s+/g, '')}`"
                 >
-                    <app-machine-card :machine="machine"/>
+                    <app-machine-card
+                        :machine="machine"
+                        @open-order-modal="(value) => selectedMachine = value"
+                    />
                 </div>
             </div>
         </div>
@@ -114,5 +118,6 @@
 
     <app-order-machine-modal
         v-model:isOpen="machineStore.isOrderMachineModalOpen"
+        :machine="selectedMachine"
     />
 </template>

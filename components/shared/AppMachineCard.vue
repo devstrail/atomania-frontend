@@ -13,6 +13,8 @@
         }
     })
 
+    const emit = defineEmits(['openOrderModal'])
+
     const handleViewDetails = (id) => {
         if (authStore.type === 2) {
             router.push(`/machine/${id}`)
@@ -21,9 +23,10 @@
         }
     }
 
-    const handleOrderNow = () => {
+    const handleOrderNow = (val) => {
         if (authStore.type === 2) {
             machineStore.isOrderMachineModalOpen = true
+            emit('openOrderModal', val)
         } else {
             authStore.isAuthAlertModalOpen = true
         }
@@ -101,7 +104,7 @@
             <app-button
                 title="Order now"
                 full-width
-                :on-click-button="() => handleOrderNow()"
+                :on-click-button="() => handleOrderNow(machine)"
             />
         </div>
     </div>
