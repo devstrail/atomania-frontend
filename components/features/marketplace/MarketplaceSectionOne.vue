@@ -4,6 +4,8 @@
     import TabThree from '~/components/features/marketplace/tabs/TabThree.vue'
     import TabFour from '~/components/features/marketplace/tabs/TabFour.vue'
 
+    const route = useRoute()
+    const router = useRouter()
     const tabs = [
         {
             id: 1,
@@ -22,10 +24,11 @@
             title: 'Saved machine',
         }
     ]
-    const activeTab = ref(1)
+    const activeTab = ref(Number(route.query.tab) || 1)
 
     const handleTabChange = (index: number) => {
         activeTab.value = index + 1
+        router.push({ query: { tab: activeTab.value } })
     }
 
     const getActiveComponent = computed(() => {
@@ -41,6 +44,12 @@
     const switchTab = (tabId: number) => {
         activeTab.value = tabId
     }
+
+    watch(() => route.query, (newQuery, oldQuery) => {
+        if (newQuery.tab) {
+            activeTab.value = Number(newQuery.tab)
+        }
+    });
 </script>
 
 <template>

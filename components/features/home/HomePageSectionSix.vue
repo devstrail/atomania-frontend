@@ -6,9 +6,11 @@
     import AppDroneCard from '~/components/shared/AppDroneCard.vue'
 
     const authStore = useAuthStore()
+    const router = useRouter()
+
     const handleHireDrone = () => {
         if (authStore.type === 2) {
-
+            router.push({ path: '/marketplace', query: { tab: 3 } })
         } else {
             authStore.isAuthAlertModalOpen = true
         }

@@ -159,7 +159,7 @@
                 </div>
                 <NuxtImg
                     :width="authStore.type === 2 ? 444 : 560"
-                    :height="authStore.type === 2 ? 276 : 602"
+                    :height="authStore.type === 2 ? 276 : 640"
                     :src="authStore.type === 2 ? '/images/banners/banner-image-3.jpg' : '/images/banners/banner-image-1.png'"
                     alt="Atomania Logo"
                     quality="100"
