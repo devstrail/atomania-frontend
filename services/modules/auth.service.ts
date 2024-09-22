@@ -7,8 +7,11 @@ export const authService = {
     async login(payload) {
         return apiClient.post('/auth/login', payload)
     },
+    async register(payload) {
+        return apiClient.post('/auth/register', payload)
+    },
     async authorize() {
-        return apiClient.get('/authorize')
+        return apiClient.post('/auth/authenticate')
     },
     async forgotPassword(payload) {
         return apiClient.post('/forgot-password', payload)

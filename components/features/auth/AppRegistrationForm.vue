@@ -14,15 +14,15 @@
     const formData = reactive({
         phone: '',
         email: '',
-        full_name: '',
+        name: '',
         password: '',
-        confirm_password: '',
+        password_confirmation: '',
     })
 
     const onSubmit = async (values, actions) => {
         console.log(values)
         loading.value = true;
-        await authStore.login(values);
+        await authStore.register(values);
         loading.value = false;
 
         if (errorStore.errorCode === 422) {
@@ -70,12 +70,12 @@
                 v-model="formData.email"
             />
             <app-input
-                id="full_name"
+                id="name"
                 type="text"
-                name="full_name"
+                name="name"
                 label="Full Name"
                 placeholder="Enter your full name"
-                v-model="formData.full_name"
+                v-model="formData.name"
             />
             <app-input
                 id="password"
@@ -86,13 +86,13 @@
                 v-model="formData.password"
             />
             <app-input
-                id="confirm_password"
+                id="password_confirmation"
                 type="password"
-                name="confirm_password"
+                name="password_confirmation"
                 label="Confirm Password"
                 placeholder="Re-enter password"
                 form-group-class="relative mb-6"
-                v-model="formData.confirm_password"
+                v-model="formData.password_confirmation"
             />
             <p
                 v-if="errorStore.errorCode !== null && ![401,422].includes(errorStore.errorCode) && errorStore.errorMessage"

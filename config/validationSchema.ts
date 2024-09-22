@@ -13,12 +13,12 @@ export const signUpSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
-    full_name: Yup.string()
+    name: Yup.string()
         .required('Full name is required'),
     password: Yup.string()
         .min(6, 'Password must be at least 8 characters')
         .required('Password is required'),
-    confirm_password: Yup.string()
+    password_confirmation: Yup.string()
         .when('password', {
             is: (password) => password && password.length > 0,
             then: (schema) => schema

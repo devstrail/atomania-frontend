@@ -14,10 +14,15 @@ export const useAuthStore = defineStore({
     actions: {
         async login(payload) {
             return await handleCommonActions(async () => {
-                await authService.getCookieCredential();
+                // await authService.getCookieCredential();
                 await authService.login(payload);
                 await this.authorize();
                 this.redirectAfterLoginBasedOnType();
+            });
+        },
+        async register(payload) {
+            return await handleCommonActions(async () => {
+                await authService.register(payload);
             });
         },
         async authorize() {
