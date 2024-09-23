@@ -15,8 +15,11 @@ export const useAuthStore = defineStore({
         async login(payload) {
             return await handleCommonActions(async () => {
                 // await authService.getCookieCredential();
-                await authService.login(payload);
-                await this.authorize();
+                const response = await authService.login(payload);
+                if (response?.data?.data?.token) {
+                    localStorage.setItem('auth_token', response?.data?.data?.token);
+                    await this.authorize();
+                }
                 this.redirectAfterLoginBasedOnType();
             });
         },
@@ -34,9 +37,14 @@ export const useAuthStore = defineStore({
             }
         },
         async getAuthUser() {
-            const response = await authService.authorize();
-            this.user = response.data?.data ?? null;
-            this.type = this.user?.type ?? null;
+            // Retrieve the token from localStorage
+            const token = localStorage.getItem('auth_token');
+            if (token) {
+                // Use the token in the authorization request
+                const response = await authService.authorize(token);
+                this.user = response.data?.data ?? null;
+                this.type = this.user?.type ?? null;
+            }
         },
         redirectAfterLoginBasedOnType() {
             const router = useRouter()

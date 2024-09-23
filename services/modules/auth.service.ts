@@ -10,8 +10,8 @@ export const authService = {
     async register(payload) {
         return apiClient.post('/auth/register', payload)
     },
-    async authorize() {
-        return apiClient.post('/auth/authenticate')
+    async authorize(payload) {
+        return apiClient.post('/auth/authenticate', payload)
     },
     async forgotPassword(payload) {
         return apiClient.post('/forgot-password', payload)
