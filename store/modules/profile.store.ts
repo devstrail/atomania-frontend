@@ -2,6 +2,7 @@ import {defineStore} from 'pinia'
 import {profileService} from '~/services'
 import {handleCommonActions} from '~/utils'
 import {useAuthStore} from '~/store'
+import {useCookie} from 'nuxt/app'
 
 export const useProfileStore = defineStore({
     id: 'profile',
@@ -15,12 +16,10 @@ export const useProfileStore = defineStore({
             return await handleCommonActions(async () => {
                 const response = await profileService.get();
                 this.user = response.data?.data ?? null;
-                authStore.user.avatar = this.user?.avatar;
             });
         },
         async updateAvatar(payload) {
             return await handleCommonActions(async () => {
-                console.log(payload)
                 await profileService.updateAvatar(payload);
                 this.fetchProfile();
             });

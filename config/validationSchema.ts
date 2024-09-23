@@ -34,11 +34,11 @@ export const profileSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email address')
         .required('Email is required'),
-    full_name: Yup.string()
+    name: Yup.string()
         .required('Full name is required'),
-    password: Yup.string()
+    /*password: Yup.string()
         .min(6, 'Password must be at least 8 characters')
-        .required('Password is required'),
+        .required('Password is required'),*/
 });
 
 export const contactSchema = Yup.object().shape({
