@@ -23,7 +23,7 @@ export const useMachineStore = defineStore({
             }
         },
         getPayload(payload = {}){
-            const paginationStore = usePaginationStore();
+            const paginationStore = usePaginationStore()
 
             return {
                 ...paginationStore.paginationDataForRequest,
@@ -32,12 +32,18 @@ export const useMachineStore = defineStore({
             }
         },
         async fetchMachines(payload = {}) {
-            const paginationStore = usePaginationStore();
+            const paginationStore = usePaginationStore()
 
             return await handleCommonActions(async () => {
-                const response = await machineService.get(this.getPayload(payload));
-                this.machines = response.data?.data ?? [];
-                paginationStore.setPaginationData(response.data?.meta ?? {});
+                const response = await machineService.get(this.getPayload(payload))
+                this.machines = response.data?.data?.data ?? []
+                paginationStore.setPaginationData(response.data?.meta ?? {})
+            });
+        },
+        async getMachine(id) {
+            return await handleCommonActions(async () => {
+                const response = await machineService.show(id)
+                this.machine = response.data?.data ?? null
             });
         },
         async storeMachine(payload) {
@@ -46,28 +52,22 @@ export const useMachineStore = defineStore({
                 this.fetchMachines();
             });
         },
-        async getMachine(id) {
-            return await handleCommonActions(async () => {
-                const response = await machineService.show(id);
-                this.machine = response.data?.data ?? null;
-            });
-        },
         async updateMachine(id, payload) {
             return await handleCommonActions(async () => {
-                await machineService.update(id, payload);
-                this.fetchMachines();
+                await machineService.update(id, payload)
+                this.fetchMachines()
             });
         },
         async deleteMachine(id, type = 1) {
             return await handleCommonActions(async () => {
-                await machineService.delete(id, type);
-                this.fetchMachines();
+                await machineService.delete(id, type)
+                this.fetchMachines()
             });
         },
         async restoreMachine(id) {
             return await handleCommonActions(async () => {
-                await machineService.restore(id);
-                this.fetchMachines();
+                await machineService.restore(id)
+                this.fetchMachines()
             });
         },
     }

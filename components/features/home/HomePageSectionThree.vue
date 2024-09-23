@@ -1,29 +1,53 @@
 <script setup lang="ts">
     import Isotope from 'isotope-layout'
-    import {machines} from '~/config'
     import {useAuthStore, useMachineStore} from '~/store'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
     import AppButton from '~/components/shared/AppButton.vue'
-    import AppOrderMachineModal from "~/components/shared/AppOrderMachineModal.vue";
+    import AppOrderMachineModal from '~/components/shared/AppOrderMachineModal.vue'
+    import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue'
 
-    // Define stores
+    /* -- Define stores -- */
     const authStore = useAuthStore()
     const machineStore = useMachineStore()
 
+    /* -- Define utils -- */
     const router = useRouter()
+
+    const handleShowAllMachine = () => {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
+            router.push('/marketplace')
+        } else {
+            authStore.isAuthAlertModalOpen = true
+        }
+    }
+
+    /* -- Fetch Machines -- */
+    const loading = ref(false)
+    const machineTypes = computed(() => {
+        const types = machineStore.machines?.slice(0, 6)?.map((machine) => machine.type)
+        return ['*', ...new Set(types)]
+    })
+    const fetchMachines = async () => {
+        loading.value = true
+        await machineStore.fetchMachines()
+        loading.value = false
+
+        initiateIsotope()
+
+        if (errorStore.errorCode === 422) {
+            actions.setErrors(errorStore.formErrors)
+        }
+    }
+    onMounted(() => {
+        fetchMachines();
+    })
+
+    /* -- Handle Isotope Filter -- */
     const container = ref<HTMLElement | null>(null)
     const isotopeInstance = ref<Isotope | null>(null)
     const activeFilter = ref('*')
     const selectedMachine = ref(null)
-
-    // Extract unique machine types for dynamic filter buttons
-    const machineTypes = computed(() => {
-        const types = machines.map((machine) => machine.type)
-        return ['*', ...new Set(types)]
-    })
-
-    // Set the active filter and rearrange the Isotope layout
     const setFilter = (filter: string) => {
         activeFilter.value = filter
         nextTick(() => {
@@ -32,9 +56,7 @@
             })
         })
     }
-
-    // Initialize Isotope after component is mounted
-    onMounted(() => {
+    const initiateIsotope = () => {
         nextTick(() => {
             if (container.value) {
                 isotopeInstance.value = new Isotope(container.value, {
@@ -44,14 +66,6 @@
                 })
             }
         })
-    })
-
-    const handleShowAllMachine = () => {
-        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
-            router.push('/marketplace')
-        } else {
-            authStore.isAuthAlertModalOpen = true
-        }
     }
 </script>
 
@@ -70,47 +84,55 @@
                 />
             </div>
 
-            <div
-                class="flex flex-wrap gap-3 mb-8 laptop:mb-16"
-                v-motion="{
-                  initial: {
-                    y: 30,
-                    opacity: 0
-                  },
-                  visible: {
-                    y: 0,
-                    opacity: 1,
-                    transition: {
-                        duration: 400
-                    },
-                  }
-                }"
-            >
-                <button
-                    v-for="(type, index) in machineTypes"
-                    :key="index"
-                    @click="setFilter(type)"
-                    :class="[
-                        'py-2 px-5 text-b2 rounded-3xl border transition-all',
-                        activeFilter === type ? 'bg-royal-flycatcher-crest-600 border-royal-flycatcher-crest-600 text-white' : 'text-gray-500 border-gray-200 bg-transparent',
-                    ]"
-                >
-                    {{ type === '*' ? 'All Machine' : type }}
-                </button>
-            </div>
-
-            <!-- Isotope Flexbox Container -->
-            <div ref="container" class="flex flex-wrap -mx-4">
+            <div class="relative">
                 <div
-                    v-for="(machine, machineIndex) in machines"
-                    :key="machine.id"
-                    class="isotope-item w-full block tablet:w-1/2 laptop:w-1/3 px-4 mb-8 laptop:mb-16"
-                    :class="`${machine.type.replace(/\s+/g, '')}`"
+                    v-if="loading"
+                    class="w-full h-full absolute top-0 left-0 z-10 grid place-items-center rounded-lg bg-primary-25"
                 >
-                    <app-machine-card
-                        :machine="machine"
-                        @open-order-modal="(value) => selectedMachine = value"
-                    />
+                    <app-spinner-loader spinner-style="w-10 h-10 text-primary-600 fill-white"/>
+                </div>
+                <div v-else>
+                    <div
+                        class="flex flex-wrap gap-3 mb-8 laptop:mb-16"
+                        v-motion="{
+                          initial: {
+                            y: 30,
+                            opacity: 0
+                          },
+                          visible: {
+                            y: 0,
+                            opacity: 1,
+                            transition: {
+                                duration: 400
+                            },
+                          }
+                        }"
+                    >
+                        <button
+                            v-for="(type, index) in machineTypes"
+                            :key="index"
+                            @click="setFilter(type)"
+                            :class="[
+                                'py-2 px-5 text-b2 capitalize rounded-3xl border transition-all',
+                                activeFilter === type ? 'bg-royal-flycatcher-crest-600 border-royal-flycatcher-crest-600 text-white' : 'text-gray-500 border-gray-200 bg-transparent',
+                            ]"
+                        >
+                            {{ type === '*' ? 'All Machine' : type }}
+                        </button>
+                    </div>
+                    <div ref="container" class="flex flex-wrap -mx-4">
+                        <div
+                            v-for="(machine, machineIndex) in machineStore.machines.slice(0, 6)"
+                            :key="machine.id"
+                            class="isotope-item w-full block tablet:w-1/2 laptop:w-1/3 px-4 mb-8 laptop:mb-16"
+                            :class="`${machine.type.replace(/\s+/g, '')}`"
+                        >
+                            <app-machine-card
+                                :machine="machine"
+                                @open-order-modal="(value) => selectedMachine = value"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
