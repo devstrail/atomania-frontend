@@ -45,13 +45,13 @@
     <section
         :class="[
             `py-3 laptop:py-[60px]`,
-            authStore.type === 2 ? 'bg-wispy-white-25' : 'bg-gray-50'
+            authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 'bg-wispy-white-25' : 'bg-gray-50'
         ]">
         <div class="container">
             <div
                 :class="[
                     `grid items-center gap-5`,
-                    authStore.type === 2 ? 'laptop:grid-cols-[630px_auto] laptop:gap-[131px]' : 'laptop:grid-cols-[641px_auto] laptop:gap-[52px]'
+                    authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 'laptop:grid-cols-[630px_auto] laptop:gap-[131px]' : 'laptop:grid-cols-[641px_auto] laptop:gap-[52px]'
                 ]"
             >
                 <div class="order-2 laptop:order-1">
@@ -68,7 +68,7 @@
                           }
                         }"
                     >
-                        <template v-if="authStore.type === 2">
+                        <template v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'">
                             We offer <span class="text-royal-flycatcher-crest-500">Smart & Affordable</span>
                             Machines for Better <span class="text-royal-flycatcher-crest-500">Farming.</span>
                         </template>
@@ -109,7 +109,7 @@
                         }"
                     >
                         <app-button
-                            v-if="authStore.type === 2"
+                            v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'"
                             url="/marketplace"
                             class="!px-10"
                             title="Explore marketplace"
@@ -158,9 +158,9 @@
                     </div>-->
                 </div>
                 <NuxtImg
-                    :width="authStore.type === 2 ? 444 : 560"
-                    :height="authStore.type === 2 ? 276 : 640"
-                    :src="authStore.type === 2 ? '/images/banners/banner-image-3.jpg' : '/images/banners/banner-image-1.png'"
+                    :width="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 444 : 560"
+                    :height="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 276 : 640"
+                    :src="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? '/images/banners/banner-image-3.jpg' : '/images/banners/banner-image-1.png'"
                     alt="Atomania Logo"
                     quality="100"
                     class="order-1 laptop:order-2"

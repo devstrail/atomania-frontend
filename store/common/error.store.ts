@@ -56,7 +56,7 @@ export const useErrorStore = defineStore('error', {
                 }, 200);
             }
             if (this.errorCode == 406 || this.errorCode == 500) {
-                showWarningMessage({title: this.errorMessage, text: ''});
+                // showWarningMessage({title: this.errorMessage, text: ''});
             }
         },
         setErrorCode(code) {

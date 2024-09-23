@@ -1,4 +1,8 @@
 <script setup lang="ts">
+    definePageMeta({
+        middleware: 'auth'
+    })
+
     import {machines} from '~/config'
     import AppButton from '~/components/shared/AppButton.vue'
     import AppModal from '~/components/shared/AppModal.vue'

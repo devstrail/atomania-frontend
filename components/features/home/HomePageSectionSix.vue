@@ -9,7 +9,7 @@
     const router = useRouter()
 
     const handleHireDrone = () => {
-        if (authStore.type === 2) {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             router.push({ path: '/marketplace', query: { tab: 3 } })
         } else {
             authStore.isAuthAlertModalOpen = true

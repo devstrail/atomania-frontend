@@ -18,18 +18,13 @@
     })
     const rememberMe = ref(false)
 
-    const loginAs = async (userType: 'admin' | 'farmer') => {
-        await login(userType)
-        router.push('/dashboard')
-    }
-
     const onSubmit = async (values, actions) => {
-        loading.value = true;
-        await authStore.login(values);
-        loading.value = false;
+        loading.value = true
+        await authStore.login(values)
+        loading.value = false
 
         if (errorStore.errorCode === 422) {
-            actions.setErrors(errorStore.formErrors);
+            actions.setErrors(errorStore.formErrors)
         }
     }
 </script>
@@ -70,10 +65,10 @@
                 name="password"
                 label="Password"
                 placeholder="Password"
-                form-group-class="relative mb-2"
                 v-model="formData.password"
             />
-            <div class="flex items-center justify-between gap-4 my-6">
+            <!--form-group-class="relative mb-2"-->
+            <!--<div class="flex items-center justify-between gap-4 my-6">
                 <app-checkbox-input
                     name="rememberMe"
                     id="rememberMe"
@@ -86,10 +81,10 @@
                 >
                     Forgot Password?
                 </NuxtLink>
-            </div>
+            </div>-->
             <p
                 v-if="errorStore.errorCode !== null && ![401,422].includes(errorStore.errorCode) && errorStore.errorMessage"
-                class="text-b6 mt-[0] mb-3 text-danger"
+                class="py-2 px-3 mb-3 text-error-600 text-b4 rounded-md bg-error-50"
             >
                 {{ errorStore.errorMessage }}
             </p>
@@ -107,16 +102,4 @@
             </div>
         </Form>
     </div>
-    <!--    <button
-            @click="loginAs('admin')"
-            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded w-full"
-        >
-            Login as Admin
-        </button>
-        <button
-            @click="loginAs('farmer')"
-            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full"
-        >
-            Login as Farmer
-        </button>-->
 </template>

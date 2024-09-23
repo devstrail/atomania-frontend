@@ -22,7 +22,7 @@
 
     // Computed
     const menuItems = computed(() => {
-        if (authStore.type === 2) {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             return navItemsFarmer
         } else {
             return navItems
@@ -69,13 +69,13 @@
 
     /* -- Handle Notification -- */
     const fetchNotifications = async () => {
-        if (authStore.type === 2) {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             await notificationStore.fetchAdminNotifications()
         }
     }
     const handleSeenAdminNotification = async (id) => {
         if (!id) return;
-        if (authStore.type === 2) {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             await notificationStore.seenAdminNotification(id)
         }
         await fetchNotifications()
@@ -83,6 +83,11 @@
     onMounted(() => {
         fetchNotifications();
     })
+
+    /* -- Handle Logout -- */
+    const handleLogout = async () => {
+        await authStore.logout()
+    }
 
     // Watchers
     watch(isMobileMenuOpen, (newValue) => {
@@ -159,7 +164,7 @@
                 </button>
 
                 <ul class="hidden laptop:flex items-center justify-center laptop:justify-end gap-3">
-                    <template v-if="authStore.type === 2">
+                    <template v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'">
                         <li>
                             <Menu as="div" class="relative inline-block">
                                 <div>
@@ -231,9 +236,9 @@
                                             :alt="authStore?.user?.name"
                                             class="rounded-full"
                                         />
-                                        <div>
-                                            <p class="text-gray-700 text-b4">{{ authStore?.user?.first_name }}</p>
-                                            <p class="text-gray-500 text-b5">+4089823279</p>
+                                        <div class="text-right">
+                                            <p class="text-gray-700 text-b4">{{ authStore?.user?.name }}</p>
+                                            <p class="text-gray-500 text-b5">{{ authStore?.user?.phone }}</p>
                                         </div>
                                         <i class="dt-icon-chevron-down text-b5"/>
                                     </MenuButton>
@@ -295,7 +300,7 @@
                                             <button
                                                 type="button"
                                                 class="flex items-center gap-2 px-4 py-2 text-error-500 text-b4 hover:bg-gray-50 transition-all"
-                                                @click="router.push('/login')"
+                                                @click="handleLogout"
                                             >
                                                 <i class="dt-icon-log-out-01"/> Logout
                                             </button>

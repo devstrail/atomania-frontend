@@ -19,7 +19,7 @@ export const authService = {
     async resetPassword(payload) {
         return apiClient.post('/reset-password', payload)
     },
-    async logout() {
-        return apiClient.post('/logout')
+    async logout(payload) {
+        return apiClient.post('/auth/logout', payload)
     },
 };

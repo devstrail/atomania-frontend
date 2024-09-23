@@ -47,7 +47,7 @@
     })
 
     const handleShowAllMachine = () => {
-        if (authStore.type === 2) {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             router.push('/marketplace')
         } else {
             authStore.isAuthAlertModalOpen = true

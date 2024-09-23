@@ -16,7 +16,7 @@
     const emit = defineEmits(['openOrderModal'])
 
     const handleViewDetails = (id) => {
-        if (authStore.type === 2) {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             router.push(`/machine/${id}`)
         } else {
             authStore.isAuthAlertModalOpen = true
@@ -24,7 +24,7 @@
     }
 
     const handleOrderNow = (val) => {
-        if (authStore.type === 2) {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             machineStore.isOrderMachineModalOpen = true
             emit('openOrderModal', val)
         } else {
