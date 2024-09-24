@@ -104,16 +104,18 @@
                                     <span
                                         :class="[
                                             `inline-flex gap-1 items-center py-1 px-3 font-medium text-b5 capitalize rounded-2xl`,
-                                            {'text-success-700 bg-success-50': order?.status === 'completed'},
+                                            {'text-pale-sky-800 bg-pale-sky-50': order?.status === 'completed'},
                                             {'text-fuzzy-duckling-700 bg-fuzzy-duckling-50': order?.status === 'in_cart'},
                                             {'text-royal-flycatcher-crest-700 bg-royal-flycatcher-crest-50': order?.status === 'in_progress'},
                                             {'text-success-700 bg-success-50': order?.status === 'confirmed'},
+                                            {'text-creamy-avocado-800 bg-creamy-avocado-50': order?.status === 'delivered'},
                                         ]"
                                     >
-                                        <i v-if="order?.status === 'completed'" class="dt-icon-check"/>
+                                        <i v-if="order?.status === 'completed'" class="dt-icon-check-circle-broken"/>
                                         <i v-if="order?.status === 'in_cart'" class="dt-icon-shopping-bag-02"/>
                                         <i v-if="order?.status === 'in_progress'" class="dt-icon-rocket-02"/>
                                         <i v-if="order?.status === 'confirmed'" class="dt-icon-check"/>
+                                        <i v-if="order?.status === 'delivered'" class="dt-icon-check-heart"/>
                                         {{ order?.status.replace('_', ' ') }}
                                     </span>
                                     </td>

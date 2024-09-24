@@ -20,7 +20,7 @@ export const useProfileStore = defineStore({
         },
         async updateAvatar(payload) {
             return await handleCommonActions(async () => {
-                await profileService.updateAvatar(payload);
+                return await profileService.updateAvatar(payload);
                 this.fetchProfile();
             });
         },

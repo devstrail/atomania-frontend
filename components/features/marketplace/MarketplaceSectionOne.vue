@@ -19,10 +19,10 @@
             id: 3,
             title: 'Drones',
         },
-        {
+        /*{
             id: 4,
             title: 'Saved machine',
-        }
+        }*/
     ]
     const activeTab = ref(Number(route.query.tab) || 1)
 
@@ -36,7 +36,7 @@
             case 1: return TabOne
             case 2: return TabTwo
             case 3: return TabThree
-            case 4: return TabFour
+            // case 4: return TabFour
             default: return TabOne
         }
     })

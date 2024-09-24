@@ -26,7 +26,7 @@
             const formData = new FormData()
             formData.append('avatar', selectedImage.value)
 
-            await profileStore.updateAvatar(formData);
+            await profileStore.updateAvatar(formData)
 
             if (errorStore.errorMessage) {
                 errorMessage.value = errorStore.errorMessage
@@ -67,8 +67,8 @@
             actions.setErrors(errorStore.formErrors)
         }
     }
-    onMounted(() => {
-        fetchProfile();
+    onMounted(async () => {
+        await fetchProfile();
 
         formData.phone = profileStore?.user?.phone ?? ''
         formData.email = profileStore?.user?.email ?? ''

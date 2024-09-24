@@ -129,7 +129,7 @@
     // Watch effects
     watch(() => props.modelValue, (val) => {
         if (props.type === 'phone') {
-            value.value = formatPhoneForFrontend(value.value)
+            // value.value = formatPhoneForFrontend(value.value)
         }
     });
 
@@ -218,22 +218,28 @@
                     {{ label }}
                 </slot>
             </label>
-            <input
-                ref="phoneInputElementRef"
-                :type="type"
-                :id="id"
-                :name="name"
-                v-model="value"
-                :placeholder="placeholder"
-                :readonly="readOnly"
-                :class="[
-                    formControlSizeClass,
-                    formControlClass,
-                    readOnly ? 'text-gray-500 focus:!border-gray-300' : '',
-                    errorMessage ? 'border-error-600 focus:border-error-600' : 'border-gray-300 focus:border-primary-300'
-                ]"
-                @input="handlePhoneInput"
-            />
+            <div class="relative">
+                <input
+                    ref="phoneInputElementRef"
+                    :type="type"
+                    :id="id"
+                    :name="name"
+                    v-model="value"
+                    :placeholder="placeholder"
+                    :readonly="readOnly"
+                    :class="[
+                        `!pl-[47px] peer`,
+                        formControlSizeClass,
+                        formControlClass,
+                        readOnly ? 'text-gray-500 focus:!border-gray-300' : '',
+                        errorMessage ? 'border-error-600 focus:border-error-600' : 'border-gray-300 focus:border-primary-300'
+                    ]"
+                />
+                <div class="absolute top-1/2 left-[14px] -translate-y-1/2 flex gap-2 items-center text-gray-500 peer-focus:text-gray-900">
+                    <NuxtImg width="20" height="20" src="/images/romanian-flag.svg" alt="romanian-flag" />
+                    <!-- +40 - -->
+                </div>
+            </div>
             <app-input-error v-if="showErrorMessage" :error-message="errorMessage"/>
         </div>
     </template>

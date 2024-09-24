@@ -293,7 +293,7 @@
                                                     <i class="dt-icon-archive"/> My Orders
                                                 </button>
                                             </MenuItem>
-                                            <MenuItem v-slot="{ active }">
+                                            <!--<MenuItem v-slot="{ active }">
                                                 <button
                                                     type="button"
                                                     class="flex items-center gap-2 px-4 py-2 text-gray-700 text-b4 hover:bg-gray-50 transition-all"
@@ -301,7 +301,7 @@
                                                 >
                                                     <i class="dt-icon-bookmark-check"/> Saved Machine
                                                 </button>
-                                            </MenuItem>
+                                            </MenuItem>-->
                                         </div>
                                         <MenuItem v-slot="{ active }">
                                             <button

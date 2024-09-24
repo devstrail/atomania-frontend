@@ -63,7 +63,7 @@
                 type="phone"
                 name="phone"
                 label="Phone number"
-                placeholder="Enter your phone number"
+                placeholder="+40 - Enter your phone number "
                 v-model="formData.phone"
             />
             <app-input
@@ -101,7 +101,7 @@
             />
             <p
                 v-if="errorStore.errorCode !== null && ![401,422].includes(errorStore.errorCode) && errorStore.errorMessage"
-                class="text-b6 mt-[0] mb-3 text-danger"
+                class="py-2 px-3 mb-3 text-error-600 text-b4 rounded-md bg-error-50"
             >
                 {{ errorStore.errorMessage }}
             </p>
