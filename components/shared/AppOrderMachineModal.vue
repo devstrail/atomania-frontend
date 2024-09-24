@@ -1,10 +1,17 @@
 <script setup lang="ts">
-    import {useMachineStore} from '~/store'
+    import {watch} from 'vue'
+    import {useMachineStore, useOrderStore} from '~/store'
     import AppModal from '~/components/shared/AppModal.vue'
     import AppButton from '~/components/shared/AppButton.vue'
-    import AppDateInput from "~/components/shared/inputs/AppDateInput.vue";
-    import AppCheckboxInput from "~/components/shared/inputs/AppCheckboxInput.vue";
-    import {watch} from "vue";
+    import AppDateInput from '~/components/shared/inputs/AppDateInput.vue'
+    import AppCheckboxInput from '~/components/shared/inputs/AppCheckboxInput.vue'
+
+    /* -- Define utils -- */
+    const router = useRouter()
+
+    /* -- Define store -- */
+    const orderStore = useOrderStore()
+    const machineStore = useMachineStore()
 
     const props = defineProps({
         isOpen: {
@@ -13,9 +20,6 @@
         },
         machine: {}
     })
-
-    const machineStore = useMachineStore()
-    const router = useRouter()
 
     const totalAmount = computed(() => {
         if (props.machine?.cost) {
@@ -26,13 +30,16 @@
     })
 
     /* -- Handle Order -- */
+    const loading = ref(false)
     const isAgreePrivacyPolicy = ref(false)
     const formData = reactive({
         starting_date: '',
         hector: ''
     })
-    const handleConfirmOrder = (): void => {
-        machineStore.isOrderMachineModalOpen = false
+    const handleConfirmOrder = async () => {
+        loading.value = true
+        await orderStore.storeOrder(formData)
+        loading.value = false
     }
 
     watch(() => props.isOpen, (val) => {

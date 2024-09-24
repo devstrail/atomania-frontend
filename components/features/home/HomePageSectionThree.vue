@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import Isotope from 'isotope-layout'
-    import {useAuthStore, useMachineStore} from '~/store'
+    import {useAuthStore, useErrorStore, useMachineStore} from '~/store'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
     import AppButton from '~/components/shared/AppButton.vue'
@@ -9,6 +9,7 @@
 
     /* -- Define stores -- */
     const authStore = useAuthStore()
+    const errorStore = useErrorStore()
     const machineStore = useMachineStore()
 
     /* -- Define utils -- */

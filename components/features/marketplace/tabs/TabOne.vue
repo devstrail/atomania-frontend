@@ -1,9 +1,10 @@
 <script setup lang="ts">
-    import {machines} from '~/config'
     import {useMachineStore, usePaginationStore} from '~/store'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import MarketplaceItemsFilter from '~/components/features/marketplace/MarketplaceItemsFilter.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
+    import AppSpinnerLoader from "~/components/shared/AppSpinnerLoader.vue";
+    import AppOrderMachineModal from "~/components/shared/AppOrderMachineModal.vue";
 
     /* -- Define stores -- */
     const paginationStore = usePaginationStore()
@@ -11,9 +12,10 @@
 
     /* -- Fetch Machines -- */
     const isLoading = ref(false)
+    const selectedMachine = ref(null)
     const fetchMachines = async (payload = {}) => {
         isLoading.value = true
-        await machineStore.fetchMachines(payload);
+        await machineStore.fetchMachines(payload)
         isLoading.value = false
     }
     const handleSearch = (query: string) => {
@@ -21,14 +23,13 @@
     }
     const debouncedUpdate = debounce(async (query: string) => {
         await paginationStore.setCurrentPage(1)
-        await fetchMachines({query: query})
+        await fetchMachines({name: query})
     }, 800)
     const handleFilter = (payload: object) => {
         fetchMachines(payload)
     }
-
     onMounted(() => {
-        fetchMachines();
+        fetchMachines()
     })
 </script>
 
@@ -45,13 +46,28 @@
             @change:search="handleSearch"
             @change:payload="handleFilter"
         />
-        <div class="grid laptop:grid-cols-3 gap-8">
-            <template
-                v-for="(machine, machineIndex) in machines"
-                :key="machine.id"
+        <div class="relative">
+            <div
+                v-if="isLoading"
+                class="w-full h-full min-h-[400px] absolute top-0 left-0 z-10 grid place-items-center rounded-lg bg-primary-25"
             >
-                <app-machine-card :machine="machine"/>
-            </template>
+                <app-spinner-loader spinner-style="w-10 h-10 text-primary-600 fill-white"/>
+            </div>
+            <div v-else class="grid laptop:grid-cols-3 gap-8">
+                <template
+                    v-for="(machine, machineIndex) in machineStore.machines"
+                    :key="machine.id"
+                >
+                    <app-machine-card
+                        :machine="machine"
+                        @open-order-modal="(value) => selectedMachine = value"
+                    />
+                </template>
+            </div>
         </div>
+        <app-order-machine-modal
+            v-model:isOpen="machineStore.isOrderMachineModalOpen"
+            :machine="selectedMachine"
+        />
     </div>
 </template>

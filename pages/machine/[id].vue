@@ -92,13 +92,13 @@
                                 {{ machine?.author?.name }}
                             </div>-->
                             <p class="mb-3 text-gray-500 text-b1">{{ machineStore.machine?.description }}</p>
-                            <button
+                            <!--<button
                                 type="button"
                                 class="inline-flex items-center gap-2 text-primary-600 font-medium text-b4"
                                 @click="isViewMoreModalOpen = true"
                             >
                                 View more <i class="dt-icon-chevron-down"/>
-                            </button>
+                            </button>-->
                             <div class="mt-4 grid grid-cols-2 laptop:grid-cols-4 laptop:divide-x divide-gray-200 justify-center">
                                 <template v-for="(machineConfig, machineConfigIndex) in machineStore.machine?.configurations">
                                     <div class="flex flex-col items-center py-2 px-4">
@@ -117,7 +117,7 @@
                                 <h4 class="text-royal-flycatcher-crest-500 font-semibold">
                                     €{{ machineStore.machine?.cost }}
                                 </h4>
-                                <span class="text-gray-500 text-b4">/ {{ machineStore.machine?.cost_unit }}</span>
+                                <span class="text-gray-500 text-b4">/ {{ machineStore.machine?.costUnit }}</span>
                             </div>
                             <button
                                 type="button"

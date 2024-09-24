@@ -35,7 +35,7 @@
 
 <template>
     <div
-        class="h-full flex flex-col justify-between"
+        class="h-full laptop:min-h-[493px] flex flex-col justify-between"
         v-motion="{
           initial: {
             y: 30,

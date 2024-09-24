@@ -1,5 +1,9 @@
 <script setup lang="ts">
+    import {useAuthStore} from '~/store'
     import AppButton from '~/components/shared/AppButton.vue'
+
+    /* -- Define store -- */
+    const authStore = useAuthStore()
 </script>
 
 <template>
@@ -36,8 +40,8 @@
                     </p>
                 </div>
                 <app-button
-                    url="/sign-up"
-                    title="Join us"
+                    :url="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? '/marketplace' : '/sign-up'"
+                    :title="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 'Explore Marketplace' : 'Join us'"
                     class="!text-primary-700 !bg-primary-50 hover:!bg-primary-100"
                 />
             </div>
