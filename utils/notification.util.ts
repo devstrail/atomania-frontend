@@ -38,7 +38,7 @@ export function showToast(message, options = {}) {
           class="inline-flex items-center gap-1 py-2 px-[10px] text-b5 rounded-[26px]"
           style="background-color: ${buttonBackground}"
         >
-        <i class="icon-check"></i> Got it
+        <!--<i class="icon-check"></i> Got it-->
       </button>
     </div>
   `;
@@ -54,13 +54,14 @@ export function showToast(message, options = {}) {
 
 export function showSuccessMessage(message = null) {
     if (!message) {
-        return;
+        return
     }
     const options = {
         background: 'linear-gradient(269.1deg, #259660 0%, #197348 100%)',
+        progressBackground: 'rgba(19, 19, 20, 0.2)',
         buttonBackground: 'rgba(19, 19, 20, 0.3)'
     };
-    showToast(message, options);
+    showToast(message, options)
 }
 
 export function showInfoMessage(message = null) {
@@ -91,6 +92,7 @@ export function showWarningMessage(message = null) {
     }
     const options = {
         background: 'linear-gradient(269.1deg, #259660 0%, #197348 100%)',
+        progressBackground: 'rgba(19, 19, 20, 0.2)',
         buttonBackground: 'rgba(19, 19, 20, 0.3)'
     };
     showToast(message, options);

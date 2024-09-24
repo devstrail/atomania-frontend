@@ -1,32 +1,32 @@
 export const services = [
     {
-        title: 'On-Demand Machinery Access',
-        description: 'Rent the machinery you need, exactly when you need it, without the high costs of ownership.',
+        title: 'Acces la utilaje la cerere',
+        description: 'Închiriați utilajele de care aveți nevoie, exact când aveți nevoie, fără costurile ridicate de proprietate.',
         url: '/'
     },
     {
-        title: 'Skilled Operators',
-        description: 'Hire expert operators to ensure your machinery is used efficiently and effectively.',
+        title: 'Operatori calificați',
+        description: 'Angajați operatori experți pentru a vă asigura că utilajele dumneavoastră sunt utilizate eficient.',
         url: '/'
     },
     {
-        title: 'Expert Consultations',
-        description: 'Get advice from agricultural experts to boost your farm’s productivity and sustainability.',
+        title: 'Consultanță din partea experților',
+        description: 'Obțineți sfaturi de la experți în agricultură pentru a crește productivitatea și durabilitatea fermei dvs.',
         url: '/'
     },
     {
-        title: 'IoT Weather Stations',
-        description: 'Access real-time weather data to make smarter decisions for your farm.',
+        title: 'Stații meteo Io',
+        description: 'Accesați datele meteo în timp real pentru a lua decizii mai inteligente pentru ferma dvs.',
         url: '/'
     },
     {
-        title: 'Satellite & Drone Technology',
-        description: 'Use cutting-edge tools to monitor crops, optimize fields, and enhance precision farming.',
+        title: 'Tehnologie prin satelit și drone',
+        description: 'Folosiți instrumente de ultimă oră pentru a monitoriza culturile, a optimiza câmpurile și a îmbunătăți agricultura cu precizie.',
         url: '/'
     },
     {
-        title: 'Market Insights',
-        description: 'Stay ahead with the latest market trends and reports to make informed decisions.',
+        title: 'Informații despre piață',
+        description: 'Fiți la curent cu cele mai recente tendințe ale pieței și rapoarte pentru a lua decizii informate.',
         url: '/'
     }
 ]

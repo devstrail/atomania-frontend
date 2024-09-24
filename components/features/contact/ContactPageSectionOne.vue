@@ -29,7 +29,7 @@
                       }
                     }"
                 >
-                    <div class="size-12 grid place-items-center mb-16 text-white rounded-[10px] bg-primary-500">
+                    <div class="size-12 grid place-items-center mb-5 laptop:mb-16 text-white rounded-[10px] bg-primary-500">
                         <i class="dt-icon-message-smile-circle text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
@@ -59,7 +59,7 @@
                       }
                     }"
                 >
-                    <div class="size-12 grid place-items-center mb-16 text-white rounded-[10px] bg-primary-500">
+                    <div class="size-12 grid place-items-center mb-5 laptop:mb-16 text-white rounded-[10px] bg-primary-500">
                         <i class="dt-icon-message-chat-circle text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
@@ -89,7 +89,7 @@
                       }
                     }"
                 >
-                    <div class="size-12 grid place-items-center mb-16 text-white rounded-[10px] bg-primary-500">
+                    <div class="size-12 grid place-items-center mb-5 laptop:mb-16 text-white rounded-[10px] bg-primary-500">
                         <i class="dt-icon-marker-pin-02 text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
@@ -119,7 +119,7 @@
                       }
                     }"
                 >
-                    <div class="size-12 grid place-items-center mb-16 text-white rounded-[10px] bg-primary-500">
+                    <div class="size-12 grid place-items-center mb-5 laptop:mb-16 text-white rounded-[10px] bg-primary-500">
                         <i class="dt-icon-phone text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">

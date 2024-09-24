@@ -81,7 +81,7 @@
         await fetchNotifications()
     }
     onMounted(() => {
-        fetchNotifications();
+        // fetchNotifications();
     })
 
     /* -- Handle Logout -- */
@@ -144,28 +144,35 @@
                 </nav>
 
                 <!-- Mobile Menu Toggle Button -->
-                <button
-                    class="laptop:hidden flex flex-col justify-around w-6 h-5 bg-transparent border-none cursor-pointer p-0 z-10 focus:outline-none"
-                    @click="toggleMobileMenu"
-                >
-                    <span class="sr-only">Toggle menu</span>
-                    <span
-                        class="w-6 h-[3px] bg-gray-700 rounded-full transform transition-all duration-300 ease-in-out"
-                        :class="{'rotate-45 translate-y-[6px]': isMobileMenuOpen}"
-                    />
-                    <span
-                        class="w-6 h-[3px] bg-gray-700 rounded-full transform transition-all duration-300 ease-in-out"
-                        :class="{'opacity-0 translate-x-5': isMobileMenuOpen}"
-                    />
-                    <span
-                        class="w-6 h-[3px] bg-gray-700 rounded-full transform transition-all duration-300 ease-in-out"
-                        :class="{'-rotate-45 -translate-y-[7px]': isMobileMenuOpen}"
-                    />
-                </button>
 
-                <ul class="hidden laptop:flex items-center justify-center laptop:justify-end gap-3">
+
+                <ul
+                    :class="[
+                        `flex items-center justify-center laptop:justify-end gap-3`
+                    ]"
+                >
+                    <li class="laptop:hidden">
+                        <button
+                            class="flex flex-col justify-around w-6 h-5 bg-transparent border-none cursor-pointer p-0 z-10 focus:outline-none"
+                            @click="toggleMobileMenu"
+                        >
+                            <span class="sr-only">Toggle menu</span>
+                            <span
+                                class="w-6 h-[3px] bg-gray-700 rounded-full transform transition-all duration-300 ease-in-out"
+                                :class="{'rotate-45 translate-y-[6px]': isMobileMenuOpen}"
+                            />
+                            <span
+                                class="w-6 h-[3px] bg-gray-700 rounded-full transform transition-all duration-300 ease-in-out"
+                                :class="{'opacity-0 translate-x-5': isMobileMenuOpen}"
+                            />
+                            <span
+                                class="w-6 h-[3px] bg-gray-700 rounded-full transform transition-all duration-300 ease-in-out"
+                                :class="{'-rotate-45 -translate-y-[7px]': isMobileMenuOpen}"
+                            />
+                        </button>
+                    </li>
                     <template v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'">
-                        <li>
+                        <li class="hidden laptop:block">
                             <Menu as="div" class="relative inline-block">
                                 <div>
                                     <MenuButton
@@ -223,7 +230,7 @@
                                 </transition>
                             </Menu>
                         </li>
-                        <li>
+                        <li class="flex">
                             <Menu as="div" class="relative inline-block">
                                 <div>
                                     <MenuButton
@@ -236,11 +243,11 @@
                                             :alt="authStore?.user?.name"
                                             class="rounded-full"
                                         />
-                                        <div class="text-right">
+                                        <div class="hidden laptop:block text-right">
                                             <p class="text-gray-700 text-b4">{{ authStore?.user?.name }}</p>
                                             <p class="text-gray-500 text-b5">{{ authStore?.user?.phone }}</p>
                                         </div>
-                                        <i class="dt-icon-chevron-down text-b5"/>
+                                        <i class="hidden laptop:block dt-icon-chevron-down text-b5"/>
                                     </MenuButton>
                                 </div>
                                 <transition
@@ -311,20 +318,20 @@
                         </li>
                     </template>
                     <template v-else>
-                        <li>
+                        <li class="hidden laptop:block">
                             <AppButton
                                 url="/login"
                                 button-color="secondary"
                                 class="border-transparent"
                             >
-                                Log in
+                                Autentificare
                             </AppButton>
                         </li>
-                        <li>
+                        <li class="hidden laptop:block">
                             <AppButton
                                 url="/sign-up"
                             >
-                                Sign up
+                                Înscriere
                             </AppButton>
                         </li>
                     </template>
@@ -339,37 +346,47 @@
                 class="flex flex-col justify-between laptop:hidden h-[calc(100vh-72px)] bg-white"
             >
                 <ul class="container flex flex-col gap-2 py-4">
-                    <li v-for="(navItem, navItemIndex) in navItems" :key="navItemIndex"
+                    <li v-for="(navItem, navItemIndex) in menuItems" :key="navItemIndex"
                         :style="{ animationDelay: `${navItemIndex * 0.1}s` }"
                         class="nav-item">
                         <NuxtLink
+                            v-if="navItem?.url"
                             :to="navItem?.url"
                             class="block py-3 text-gray-700 hover:text-gray-900 font-medium text-b3 transition"
                             @click="isMobileMenuOpen = false"
                         >
                             {{ navItem?.title }}
                         </NuxtLink>
+                        <a
+                            v-else
+                            class="block py-3 text-gray-700 hover:text-gray-900 font-medium text-b3 transition"
+                            @click.prevent="navigateToSection(navItem?.sectionId); isMobileMenuOpen = false;"
+                        >
+                            {{ navItem?.title }}
+                        </a>
                     </li>
                 </ul>
-                <ul class="container grid grid-cols-2 gap-3 py-4 mt-auto">
-                    <li class="nav-item" style="animation-delay: 0.6s;">
-                        <AppButton
-                            url="/login"
-                            button-color="secondary"
-                            full-width
-                        >
-                            Sign in
-                        </AppButton>
-                    </li>
-                    <li class="nav-item" style="animation-delay: 0.6s;">
-                        <AppButton
-                            url="/login"
-                            full-width
-                        >
-                            Sign up
-                        </AppButton>
-                    </li>
-                </ul>
+                <template v-if="authStore.user?.userRoles[0] !== 'farmer'">
+                    <ul class="container grid grid-cols-2 gap-3 py-4 mt-auto">
+                        <li class="nav-item" style="animation-delay: 0.6s;">
+                            <AppButton
+                                url="/login"
+                                button-color="secondary"
+                                full-width
+                            >
+                                Sign in
+                            </AppButton>
+                        </li>
+                        <li class="nav-item" style="animation-delay: 0.6s;">
+                            <AppButton
+                                url="/login"
+                                full-width
+                            >
+                                Sign up
+                            </AppButton>
+                        </li>
+                    </ul>
+                </template>
             </nav>
         </transition>
     </header>

@@ -29,15 +29,15 @@
             title-class="!mb-2"
             description="We have all the best farming expert in country."
         />
-        <marketplace-items-filter
+        <!--<marketplace-items-filter
             :searchable="false"
             :show-farm-type="false"
             :show-farm-activity="false"
             :show-machine-type="false"
             :show-designation="true"
             @change:payload="handleFilter"
-        />
-        <div class="grid grid-cols-3 gap-8">
+        />-->
+        <div class="grid laptop:grid-cols-3 gap-8">
             <template
                 v-for="(expert, expertIndex) in experts"
                 :key="expert.id"

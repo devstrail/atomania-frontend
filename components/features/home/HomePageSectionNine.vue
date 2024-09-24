@@ -33,15 +33,15 @@
                 </div>
                 <div class="text-center">
                     <p class="mb-2 text-creamy-avocado-500 text-b3 laptop:text-b1 font-medium">
-                        10,000+ people are already connected
+                        Peste 10.000 de persoane sunt deja conectate
                     </p>
                     <p class="mb-2 text-white text-b4 laptop:text-b2">
-                        Join us to transform our farming industry
+                        Alăturați-vă nouă pentru a ne transforma industria agricolă
                     </p>
                 </div>
                 <app-button
                     :url="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? '/marketplace' : '/sign-up'"
-                    :title="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 'Explore Marketplace' : 'Join us'"
+                    :title="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 'Explorați piața' : 'Alăturaţi-ne'"
                     class="!text-primary-700 !bg-primary-50 hover:!bg-primary-100"
                 />
             </div>

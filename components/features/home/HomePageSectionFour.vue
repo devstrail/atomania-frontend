@@ -9,7 +9,7 @@
         <div class="container">
             <app-breadcrumb
                 class="mb-7 laptop:mb-14"
-                title="We connect farmers and machine suppliers"
+                title="Conectăm fermierii cu utilajele necesare"
                 align="center"
             />
             <div class="grid laptop:grid-cols-2 gap-7 laptop:gap-[96px] items-center">
@@ -32,20 +32,20 @@
                 >
                     <app-icon class="mb-6" icon="dt-icon-message-chat-circle"/>
                     <h5 class="mb-4 text-gray-900 font-semibold">
-                        Benefits for Farmers:
+                        Beneficii pentru fermieri
                     </h5>
                     <p class="mb-2 text-gray-700 font-semibold text-b1">
-                        Boost Your Farm’s Productivity with Atomania
+                        Creșteți productivitatea fermei dvs. cu Atomania
                     </p>
                     <p class="mb-6 text-gray-500 text-b2">
-                        Atomania provides Romanian farmers with cost-effective access to the latest agricultural
-                        machinery and expert support, helping you achieve higher yields and more efficient operations.
+                        Atomania oferă fermierilor români acces rentabil la cele mai noi utilaje agricole și asistență
+                        de specialitate, ajutându-vă să obțineți recolte mai mari și operațiuni mai eficiente.
                     </p>
                     <app-list
                         :items="[
-                            'Save Costs: Access top-tier equipment without the burden of ownership.',
-                            'Increase Efficiency: Hire skilled operators for optimal machinery use.',
-                            'Gain Insights: Leverage expert advice and advanced technology to improve farm management.'
+                            'Economisiți costuri: Accesați echipamente de top fără sarcina proprietății.',
+                            'Măriți eficiența: Angajați operatori calificați pentru utilizarea optimă a utilajelor.',
+                            'Obțineți informații: Folosiți sfatul experților și tehnologia avansată pentru a îmbunătăți managementul fermei.'
                         ]"
                     />
                 </div>
@@ -118,20 +118,21 @@
                 >
                     <app-icon class="mb-6" icon="dt-icon-zap-fast"/>
                     <h5 class="mb-4 text-gray-900 font-semibold">
-                        Benefits for Suppliers (Machinery Providers)
+                        Beneficii pentru furnizori (furnizori de utilaje)
                     </h5>
                     <p class="mb-2 text-gray-700 font-semibold text-b1">
-                        Maximize Your Equipment's Potential with Atomania
+                        Maximizați potențialul echipamentului dvs. cu Atomania.
                     </p>
                     <p class="mb-6 text-gray-500 text-b2">
-                        Atomania allows machinery providers to generate additional revenue by renting out their
-                        equipment to farmers in need, while also expanding their reach across Romania.
+                        Atomania permite furnizorilor de utilaje să genereze venituri suplimentare prin închirierea
+                        echipamentelor lor fermierilor care au nevoie de acestea, extinzându-și în același timp
+                        acoperirea în România.
                     </p>
                     <app-list
                         :items="[
-                            'Increase Income: Turn idle machinery into a steady income stream.',
-                            'Expand Reach: Connect with a wider network of farmers and grow your business.',
-                            'Optimize Use: Ensure your machinery is utilized to its full potential.'
+                            'Creșteți veniturile: Transformați utilajele inactive într-un flux constant de venituri.',
+                            'Extindeți acoperirea: Conectați-vă cu o rețea mai largă de fermieri și dezvoltați-vă afacerea.',
+                            'Optimizați utilizarea: Asigurați-vă că utilajele dvs. sunt utilizate la întregul său potențial.'
                         ]"
                     />
                 </div>

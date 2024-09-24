@@ -14,8 +14,8 @@
         <div class="container">
             <AppBreadcrumb
                 class="mb-6 laptop:mb-14"
-                title="Frequently asked questions"
-                description="Everything you need to know about the product and billing."
+                title="ÎNTREBĂRI FRECVENTE"
+                description="Tot ce trebuie să știți despre produs și facturare."
                 align="center"
             />
             <ul class="max-w-[768px] flex flex-col space-y-8 mx-auto divide-y divide-gray-200">
@@ -37,7 +37,6 @@
                             >
                                 <i v-if="expandedIndex === faqIndex" class="dt-icon-minus text-b5"/>
                                 <i v-else class="dt-icon-plus text-b5"/>
-<!--                                {{ expandedIndex === faqIndex ? '-' : '+' }}-->
                             </span>
                         </div>
                     </div>

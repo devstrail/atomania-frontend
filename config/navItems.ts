@@ -1,6 +1,6 @@
 export const navItems = [
     {
-        title: 'Service',
+        title: 'Servicii',
         sectionId: '#serviceSection',
     },
     {
@@ -8,15 +8,15 @@ export const navItems = [
         sectionId: '#marketplaceSection',
     },
     {
-        title: 'Benefits',
+        title: 'Beneficii',
         sectionId: '#benefitsSection',
     },
+    // {
+    //     title: 'Blog',
+    //     sectionId: '#blogSection',
+    // },
     {
-        title: 'Blog',
-        sectionId: '#blogSection',
-    },
-    {
-        title: 'About',
+        title: 'Despre',
         url: '/about'
     },
     {
@@ -32,7 +32,7 @@ export const navItemsFarmer = [
     },
     {
         title: 'My Orders',
-        url: '/'
+        url: '/orders'
     },
     {
         title: 'Blog',

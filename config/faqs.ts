@@ -1,52 +1,52 @@
 export const faqs = [
     {
         id: 1,
-        question: 'What is Atomania?',
-        answer: 'Atomania is a marketplace that connects Romanian farmers with agricultural machinery, skilled operators, and advanced technology. We provide detailed information on equipment, costs, and availability, and manage all aspects of the rental and service process.'
+        question: 'Ce este Atomania?',
+        answer: 'Atomania este un marketplace care conectează fermierii români cu utilaje agricole, operatori calificați și tehnologie avansată. Oferim informații detaliate despre echipamente, costuri și disponibilitate și gestionăm toate aspectele procesului de închiriere și service.'
     },
     {
         id: 2,
-        question: 'How does Atomania work?',
-        answer: 'Farmers can browse and book agricultural machinery directly through our website. Each booking includes a skilled operator to ensure the equipment is used effectively. Atomania handles the arrangements and service delivery.'
+        question: 'Cum funcționează Atomania?',
+        answer: 'Fermierii pot căuta și rezerva utilaje agricole direct prin intermediul site-ului nostru web. Fiecare rezervare include un operator calificat pentru a se asigura că echipamentul este utilizat în mod eficient. Atomania se ocupă de aranjamentele necesare și de livrarea serviciilor.'
     },
     {
         id: 3,
-        question: 'What types of machinery can I rent through Atomania?',
-        answer: 'Our platform offers a wide variety of agricultural machinery, including tractors, plows, harvesters, seeders, and sprayers. We also provide access to advanced technologies like drones and IoT weather stations.'
+        question: 'Ce tipuri de utilaje pot închiria prin Atomania?',
+        answer: 'Platforma noastră oferă o mare varietate de utilaje agricole, inclusiv tractoare, pluguri, secerătoare, semănători și pulverizatoare. De asemenea, oferim acces la tehnologii avansate precum drone și stații meteo IoT.'
     },
     {
         id: 4,
-        question: 'How do I book machinery on Atomania?',
-        answer: 'Search for the machinery you need on our website. You can view detailed information, including costs and availability, and make a booking directly through the platform. Atomania will manage the rental and provide a skilled operator as part of the service.'
+        question: 'Cum rezerv un utilaj pe Atomania?',
+        answer: 'Căutați utilajele de care aveți nevoie pe site-ul nostru web. Puteți vizualiza informații detaliate, inclusiv costuri și disponibilitate și puteți face o rezervare direct prin platformă. Atomania va gestiona închirierea și va oferi un operator calificat ca parte a serviciului.'
     },
     {
         id: 5,
-        question: 'Are skilled operators included with the machinery rentals?',
-        answer: 'Yes, each machinery rental through Atomania includes a skilled operator at no extra charge. The operator will handle the equipment and ensure it is used efficiently on your farm.'
+        question: 'Odată cu închirierea utilajelor sunt incluși și operatorii calificați?',
+        answer: 'Da, fiecare închiriere de utilaje prin Atomania include un operator calificat fără costuri suplimentare. Operatorul se va ocupa de echipament și se va asigura că este utilizat eficient în ferma dvs.'
     },
     {
         id: 6,
-        question: 'What types of expert consultations are available?',
-        answer: 'We offer consultations on various farming topics, such as crop management, soil health, pest control, and technology integration. Our experts provide tailored advice to help improve your farm’s productivity and efficiency.'
+        question: 'Ce tipuri de consultanță a experților este disponibilă?',
+        answer: 'Oferim consultanță pe diverse teme legate de agricultură, cum ar fi managementul culturilor, sănătatea solului, controlul dăunătorilor și integrarea tehnologiei. Experții noștri oferă sfaturi personalizate pentru a ajuta la îmbunătățirea productivității și eficienței fermei dvs.'
     },
     {
         id: 7,
-        question: 'How can I access drone and satellite technology?',
-        answer: 'You can book drone and satellite services through our platform. These services include aerial monitoring, crop health analysis, and field mapping, all designed to enhance your farming operations.'
+        question: 'Cum pot accesa dronele și tehnologia prin satelit?',
+        answer: 'Puteți rezerva servicii legate de drone și satelit prin platforma noastră. Aceste servicii includ monitorizarea aeriană, analiza sănătății culturilor și cartografierea câmpului, toate concepute pentru a vă îmbunătăți operațiunile agricole.'
     },
     {
         id: 8,
-        question: 'What information is included in the market insights section?',
-        answer: 'Our market insights section features up-to-date reports and analyses on agricultural markets, including pricing trends, crop forecasts, and industry developments, to help you make informed farming decisions.'
+        question: 'Ce informații sunt incluse în secțiunea de informații despre piață?',
+        answer: 'Secțiunea noastră de informații despre piață conține rapoarte și analize actualizate ale piețelor agricole, inclusiv tendințele prețurilor, prognozele recoltelor și evoluțiile din industrie, pentru a vă ajuta să luați decizii informate în domeniul agriculturii.'
     },
     {
         id: 9,
-        question: 'How do I become a machinery provider or operator on Atomania?',
-        answer: 'To list your machinery or offer your services, sign up on our platform as a provider. Complete the registration process to create your profile, list your equipment or services, and Atomania will connect you with farmers.'
+        question: 'Cum devin un furnizor de utilaje sau operator pe Atomania?',
+        answer: 'Pentru a vă lista utilajele sau pentru a vă oferi serviciile, înscrieți-vă pe platforma noastră ca furnizor. Finalizați procesul de înregistrare pentru a vă crea profilul, a vă lista echipamentele sau serviciile, iar Atomania vă va pune în legătură cu fermierii.'
     },
     {
         id: 10,
-        question: 'How do I pay for machinery rentals?',
-        answer: 'Payments for machinery rentals are securely processed through our platform. We offer various payment methods, and you will receive payment details during the booking process. Atomania ensures that all transactions are handled securely and efficiently.'
+        question: 'Cum plătesc pentru închirierile de utilaje?',
+        answer: 'Plățile pentru închirierea utilajelor sunt procesate în siguranță prin platforma noastră. Oferim diverse metode de plată și veți primi detalii de plată în timpul procesului de rezervare. Atomania se asigură că toate tranzacțiile sunt gestionate în siguranță și eficient.'
     },
 ]

@@ -43,24 +43,22 @@
         <div class="container">
             <div class="p-8 laptop:p-16 grid laptop:grid-cols-3 gap-8 justify-center rounded-2xl bg-warning-50">
                 <div id="counter-section" class="text-center">
-                    <h2 class="flex items-center justify-center mb-3 text-primary-600 font-semibold">
-                        <count-up v-if="isInView" :end-val="200" :duration="10"/>
-                        +
+                    <h2 class="flex gap-3 items-center justify-center mb-3 text-primary-600 font-semibold">
+                        Peste <count-up v-if="isInView" :end-val="200" :duration="10"/>
                     </h2>
-                    <p class="text-primary-900">Farmers joined</p>
+                    <p class="text-primary-900">de fermieri s-au alăturat</p>
                 </div>
                 <div class="text-center">
                     <h2 class="mb-3 text-primary-600 font-semibold">
                         <count-up v-if="isInView" :end-val="8000" :duration="10"/>
                     </h2>
-                    <p class="text-primary-900">HA Land covered</p>
+                    <p class="text-primary-900">ha de teren acoperit</p>
                 </div>
                 <div class="text-center">
-                    <h2 class="flex items-center justify-center mb-3 text-primary-600 font-semibold">
-                        <count-up v-if="isInView" :end-val="350" :duration="10"/>
-                        +
+                    <h2 class="flex gap-3 items-center justify-center mb-3 text-primary-600 font-semibold">
+                        Peste <count-up v-if="isInView" :end-val="350" :duration="10"/>
                     </h2>
-                    <p class="text-primary-900">Machines Listed</p>
+                    <p class="text-primary-900">de utilaje listate</p>
                 </div>
             </div>
         </div>

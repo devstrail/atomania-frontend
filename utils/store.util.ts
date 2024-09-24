@@ -1,13 +1,13 @@
-import { useErrorStore } from '~/store'
+import {useErrorStore} from '~/store'
 
 export const handleCommonActions = async (actionCallback) => {
-    const errorStore = useErrorStore();
+    const errorStore = useErrorStore()
     
     try {
-        errorStore.setError();
+        errorStore.setError()
 
-        await actionCallback();
+        return await actionCallback()
     } catch (error) {
-        errorStore.setError(error);
+        errorStore.setError(error)
     }
 };

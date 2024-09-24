@@ -4,6 +4,7 @@
     import {useAuthStore, useErrorStore} from '~/store'
     import AppInput from '~/components/shared/inputs/AppInput.vue'
     import AppButton from '~/components/shared/AppButton.vue'
+    import {showSuccessMessage} from "~/utils";
 
     const {login} = useAuth()
     const router = useRouter()
@@ -20,10 +21,14 @@
     })
 
     const onSubmit = async (values, actions) => {
-        console.log(values)
         loading.value = true;
-        await authStore.register(values);
+        const response = await authStore.register(values);
         loading.value = false;
+
+        console.log(response)
+        if (response?.data?.success) {
+            router.push('/login')
+        }
 
         if (errorStore.errorCode === 422) {
             actions.setErrors(errorStore.formErrors)

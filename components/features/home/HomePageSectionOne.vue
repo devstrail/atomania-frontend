@@ -73,9 +73,10 @@
                             Machines for Better <span class="text-royal-flycatcher-crest-500">Farming.</span>
                         </template>
                         <template v-else>
-                            Connecting Romanian <span class="text-royal-flycatcher-crest-500">Farmers</span> with the <span
-                            class="text-royal-flycatcher-crest-500">Machinery</span> and <span
-                            class="text-royal-flycatcher-crest-500">Expertise</span> They Need, When They Need It.
+                            Conectarea <span class="text-royal-flycatcher-crest-500">fermierilor</span> români cu <span
+                            class="text-royal-flycatcher-crest-500">utilajele</span> și <span
+                            class="text-royal-flycatcher-crest-500">experiența</span> de care au nevoie, atunci când au
+                            nevoie
                         </template>
                     </h3>
                     <p
@@ -91,9 +92,9 @@
                           }
                         }"
                     >
-                        Atomania is transforming the way Romanian farmers access and utilize agricultural machinery and
-                        expertise. By connecting farmers with machinery owners, skilled operators, and cutting-edge
-                        technology, we’re making farming more efficient and profitable.
+                        Atomania transformă modul în care fermierii români accesează și utilizează utilaje agricole și
+                        expertiză. Prin conectarea fermierilor cu proprietarii de utilaje, operatori calificați și
+                        tehnologie de ultimă oră, facem agricultura mai eficientă și mai profitabilă.
                     </p>
                     <div
                         class="max-w-[504px]"
@@ -112,13 +113,13 @@
                             v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'"
                             url="/marketplace"
                             class="!px-10"
-                            title="Explore marketplace"
+                            title="Explorați piața"
                         />
                         <app-button
                             v-else
                             url="/login"
                             class="!px-10"
-                            title="Get started"
+                            title="Începeți"
                         />
                     </div>
                     <!--<div

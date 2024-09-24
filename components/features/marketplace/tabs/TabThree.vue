@@ -25,7 +25,7 @@
             title-class="!mb-2"
             description="We have all the best drone in country."
         />
-        <div class="grid grid-cols-3 gap-8">
+        <div class="grid laptop:grid-cols-3 gap-8">
             <template
                 v-for="(drone, droneIndex) in drones"
                 :key="drone.id"

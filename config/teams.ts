@@ -2,31 +2,31 @@ export const teams = [
     {
         id: 1,
         name: 'Abu Naim Ahmad',
-        designation: 'Founder & CEO',
+        designation: 'Fondator și CEO ',
         avatar: '/images/teams/team-member-1.png',
     },
     {
         id: 2,
         name: 'Mihaela Dobirceanu',
-        designation: 'Co-founder & BusDev',
+        designation: 'Co-fondator & BusDev',
         avatar: '/images/teams/team-member-2.png',
     },
     {
         id: 3,
         name: 'Alina Chiteala',
-        designation: 'Co-founder & COO',
+        designation: 'Co-fondator & COO',
         avatar: '/images/teams/team-member-3.png',
     },
     {
         id: 4,
         name: 'Ghaith Hamadeh',
-        designation: 'Co-founder & CFO',
+        designation: 'Co-fondator și CFO',
         avatar: '/images/teams/team-member-4.png',
     },
     {
         id: 5,
-        name: 'Abu Naim Ahmad',
-        designation: 'Co-founder & CSO',
+        name: 'Rafael Marian',
+        designation: 'Co-fondator și CSO',
         avatar: '/images/teams/team-member-5.png',
     },
     {

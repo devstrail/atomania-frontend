@@ -23,11 +23,11 @@
             <div class="mb-7 laptop:mb-14 flex flex-col laptop:flex-row laptop:items-center justify-between gap-5">
                 <app-breadcrumb
                     class="max-w-[780px]"
-                    title="Elevate Your Farming with Drone Technology"
-                    description="Leverage Cutting-Edge Aerial Drones to Gain Comprehensive Insights into Crop Health, Optimize Field Management, and Maximize Efficiency Across Your Farm Operations."
+                    title="Du la următorul nivel modul în care faci agricultură cu tehnologia dronelor"
+                    description="Folosiți drone aeriene de ultimă generație pentru a obține informații cuprinzătoare asupra sănătății culturilor, pentru a optimiza gestionarea câmpului și pentru a maximiza eficiența în cadrul operațiunilor agricole."
                 />
                 <app-button
-                    title="Hire Drone"
+                    title="Închiriază drone"
                     :on-click-button="() => handleHireDrone()"
                 />
             </div>

@@ -15,7 +15,7 @@ export const useAuthStore = defineStore({
     actions: {
         async register(payload) {
             return await handleCommonActions(async () => {
-                await authService.register(payload)
+                return await authService.register(payload)
             })
         },
         async login(payload) {

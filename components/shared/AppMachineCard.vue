@@ -108,13 +108,13 @@
         </div>
         <div class="grid grid-cols-2 gap-3">
             <app-button
-                title="View details"
+                title="Vezi detalii"
                 full-width
                 button-color="secondary"
                 :on-click-button="() => handleViewDetails(machine?.id)"
             />
             <app-button
-                title="Order now"
+                title="Comanda acum"
                 full-width
                 :on-click-button="() => handleOrderNow(machine)"
             />

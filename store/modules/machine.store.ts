@@ -9,6 +9,7 @@ export const useMachineStore = defineStore({
         searchParam: {
             query: null
         },
+        filters: {},
         machines: [],
         machine: null,
         isOrderMachineModalOpen: false,
@@ -38,6 +39,26 @@ export const useMachineStore = defineStore({
                 const response = await machineService.get(this.getPayload(payload))
                 this.machines = response.data?.data?.data ?? []
                 paginationStore.setPaginationData(response.data?.meta ?? {})
+
+                // Extract filters data (address, type, farmType, farmActivity)
+                const addresses = new Set()
+                const types = new Set()
+                const farmTypes = new Set()
+                const farmActivities = new Set()
+
+                this.machines.forEach(machine => {
+                    if (machine.address) addresses.add(machine.address)
+                    if (machine.type) types.add(machine.type)
+                    if (machine.farmType) farmTypes.add(machine.farmType)
+                    if (machine.farmActivity) farmActivities.add(machine.farmActivity)
+                })
+
+                this.filters = {
+                    address: Array.from(addresses),
+                    type: Array.from(types),
+                    farmType: Array.from(farmTypes),
+                    farmActivity: Array.from(farmActivities),
+                }
             });
         },
         async getMachine(id) {

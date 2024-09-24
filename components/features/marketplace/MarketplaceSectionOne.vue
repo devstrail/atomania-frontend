@@ -55,13 +55,13 @@
 <template>
     <section class="py-8 laptop:py-10 bg-white">
         <div class="container">
-            <div class="mb-10 border-b border-gray-200">
+            <div class="mb-10 laptop:border-b border-gray-200">
                 <ul class="flex gap-4 flex-col laptop:flex-row">
                     <li v-for="(tab, tabIndex) in tabs">
                         <button
                             type="button"
                             :class="[
-                                `relative px-1 laptop:pb-[18px] font-medium before:w-full before:h-[2px] before:absolute before:left-0 before:bottom-0 before:bg-royal-flycatcher-crest-600 before:transition-all`,
+                                `relative px-3 laptop:px-1 laptop:pb-[18px] font-medium before:w-[2px] laptop:before:w-full before:h-full laptop:before:h-[2px] before:absolute before:left-0 before:bottom-0 before:bg-royal-flycatcher-crest-600 before:transition-all`,
                                 activeTab === tabIndex + 1 ? 'text-royal-flycatcher-crest-600 before:opacity-1 before:visible' : 'text-gray-500 before:opacity-0 before:invisible',
                             ]"
                             @click="handleTabChange(tabIndex)"

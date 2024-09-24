@@ -73,14 +73,15 @@
 <template>
     <section id="marketplaceSection" class="pt-10 pb-2 laptop:pt-[96px] laptop:pb-8 bg-wispy-white-25">
         <div class="container">
-            <div class="flex gap-5 items-center justify-between">
+            <div class="flex flex-col laptop:flex-row gap-5 items-start laptop:items-center justify-between">
                 <app-breadcrumb
-                    class="mb-8"
-                    title="Find machines"
-                    description="All machines are available to us."
+                    class="laptop:mb-8"
+                    title="Găsiți mașini"
+                    description="Toate utilajele sunt disponibile pentru noi."
                 />
                 <app-button
-                    title="Show all machine"
+                    class="mb-5 laptop:mb-0"
+                    title="Arată toată mașina"
                     :on-click-button="() => handleShowAllMachine()"
                 />
             </div>

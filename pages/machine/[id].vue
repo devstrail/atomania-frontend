@@ -7,6 +7,7 @@
 
     import AppModal from '~/components/shared/AppModal.vue'
     import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue'
+    import AppOrderMachineModal from '~/components/shared/AppOrderMachineModal.vue'
 
     /* -- Define stores -- */
     const machineStore = useMachineStore()
@@ -122,6 +123,7 @@
                             <button
                                 type="button"
                                 class="inline-flex py-5 px-14 text-white text-h6 font-bold bg-primary-500 hover:bg-primary-700 rounded transition-all"
+                                @click="machineStore.isOrderMachineModalOpen = true"
                             >
                                 Order now
                             </button>
@@ -170,4 +172,9 @@
             </div>
         </div>
     </app-modal>
+
+    <app-order-machine-modal
+        v-model:isOpen="machineStore.isOrderMachineModalOpen"
+        :machine="machineStore.machine"
+    />
 </template>

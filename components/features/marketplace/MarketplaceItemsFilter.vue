@@ -1,6 +1,9 @@
 <script setup lang="ts">
+    import {useMachineStore} from '~/store'
     import AppSelectInput from '~/components/shared/inputs/AppSelectInput.vue'
-    import {EXPERT_DESIGNATIONS, FARM_ACTIVITIES, FARM_TYPES, LOCATIONS, MACHINE_TYPES} from '~/config/constants'
+
+    /* -- Define stores -- */
+    const machineStore = useMachineStore()
 
     const props = defineProps({
         searchable: {
@@ -46,20 +49,37 @@
 
     /* -- Handle Filters -- */
     const filters = reactive({
-        location: '',
-        farm_type: '',
-        farm_activity: '',
-        machine_type: '',
-        designation: '',
+        address: '',
+        type: '',
+        farmType: '',
+        farmActivity: '',
+        // designation: '',
     })
+    const hasActiveFilters = computed(() => {
+        return filters.address || filters.type || filters.farmType || filters.farmActivity
+    })
+    const resetFilters = () => {
+        filters.address = ''
+        filters.type = ''
+        filters.farmType = ''
+        filters.farmActivity = ''
+        searchQuery.value = ''
+
+        // emit('change:payload', {
+        //     address: null,
+        //     type: null,
+        //     farmType: null,
+        //     farmActivity: null,
+        // });
+    }
     watch(() => filters, (val) => {
         const filterPayload = {}
 
-        filterPayload.location = val.location ? val.location : null
-        filterPayload.farm_type = val.farm_type ? val.farm_type : null
-        filterPayload.farm_activity = val.farm_activity ? val.farm_activity : null
-        filterPayload.machine_type = val.machine_type ? val.machine_type : null
-        filterPayload.designation = val.designation ? val.designation : null
+        filterPayload.address = val.address ? val.address : null
+        filterPayload.type = val.type ? val.type : null
+        filterPayload.farmType = val.farmType ? val.farmType : null
+        filterPayload.farmActivity = val.farmActivity ? val.farmActivity : null
+        // filterPayload.designation = val.designation ? val.designation : null
 
         emit('change:payload', filterPayload)
     }, {deep: true})
@@ -67,7 +87,7 @@
 
 <template>
     <div
-        class="relative z-50 flex flex-wrap laptop:flex-nowrap items-center gap-4 mb-10"
+        class="relative z-10 flex flex-wrap laptop:flex-nowrap items-center gap-4 mb-10"
         v-motion="{
           initial: {
             y: 30,
@@ -94,53 +114,53 @@
         </div>
         <div v-if="showLocation" class="w-full laptop:max-w-[195px]">
             <app-select-input
-                id="location"
+                id="address"
                 type="select"
-                name="location"
+                name="address"
                 :appearance-filter="true"
                 placeholder="Select Location"
                 form-group-class="mb-0"
-                :options="LOCATIONS?.map(location => ({ id: location?.id, value: location?.name }))"
-                v-model="filters.location"
-            />
-        </div>
-        <div v-if="showFarmType" class="w-full laptop:max-w-[195px]">
-            <app-select-input
-                id="farm_type"
-                type="select"
-                name="farm_type"
-                :appearance-filter="true"
-                placeholder="Farm type"
-                form-group-class="mb-0"
-                :options="FARM_TYPES?.map(type => ({ id: type?.id, value: type?.name }))"
-                v-model="filters.farm_type"
-            />
-        </div>
-        <div v-if="showFarmActivity" class="w-full laptop:max-w-[195px]">
-            <app-select-input
-                id="farm_activity"
-                type="select"
-                name="farm_activity"
-                :appearance-filter="true"
-                placeholder="Farm Activity"
-                form-group-class="mb-0"
-                :options="FARM_ACTIVITIES?.map(activity => ({ id: activity?.id, value: activity?.name }))"
-                v-model="filters.farm_activity"
+                :options="machineStore?.filters?.address?.map(location => ({ id: location, value: location }))"
+                v-model="filters.address"
             />
         </div>
         <div v-if="showMachineType" class="w-full laptop:max-w-[195px]">
             <app-select-input
-                id="machine_type"
+                id="type"
                 type="select"
-                name="machine_type"
+                name="type"
                 :appearance-filter="true"
-                placeholder="Machine type"
+                placeholder="Machine Type"
                 form-group-class="mb-0"
-                :options="MACHINE_TYPES?.map(machine => ({ id: machine?.id, value: machine?.name }))"
-                v-model="filters.machine_type"
+                :options="machineStore?.filters?.type?.map(type => ({ id: type, value: type }))"
+                v-model="filters.type"
             />
         </div>
-        <div v-if="showDesignation" class="w-full laptop:max-w-[195px]">
+        <div v-if="showFarmType" class="w-full laptop:max-w-[195px]">
+            <app-select-input
+                id="farmType"
+                type="select"
+                name="farmType"
+                :appearance-filter="true"
+                placeholder="Farm Type"
+                form-group-class="mb-0"
+                :options="machineStore?.filters?.farmType?.map(type => ({ id: type, value: type }))"
+                v-model="filters.farmType"
+            />
+        </div>
+        <div v-if="showFarmActivity" class="w-full laptop:max-w-[195px]">
+            <app-select-input
+                id="farmActivity"
+                type="select"
+                name="farmActivity"
+                :appearance-filter="true"
+                placeholder="Farm Activity"
+                form-group-class="mb-0"
+                :options="machineStore?.filters?.farmActivity?.map(activity => ({ id: activity, value: activity }))"
+                v-model="filters.farmActivity"
+            />
+        </div>
+        <!--<div v-if="showDesignation" class="w-full laptop:max-w-[195px]">
             <app-select-input
                 id="designation"
                 type="select"
@@ -151,6 +171,14 @@
                 :options="EXPERT_DESIGNATIONS?.map(designation => ({ id: designation?.id, value: designation?.name }))"
                 v-model="filters.designation"
             />
-        </div>
+        </div>-->
+        <button
+            v-if="hasActiveFilters"
+            type="button"
+            class="flex gap-2 items-center py-2 px-4 text-error-600 font-medium text-b4 rounded-3xl bg-error-100"
+            @click="resetFilters"
+        >
+            <i class="dt-icon-x-close"/> Reset
+        </button>
     </div>
 </template>

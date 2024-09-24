@@ -29,11 +29,11 @@
                     <app-blog-card :post="blog"/>
                 </template>
             </div>
-            <app-pagination
+            <!--<app-pagination
                 :current-page="currentPage"
                 :total-pages="totalPages"
                 @page-change="handlePageChange"
-            />
+            />-->
         </div>
     </section>
 </template>

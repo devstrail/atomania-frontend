@@ -47,7 +47,7 @@
                                     <i class="dt-icon-star-01 text-warning-300"/>
                                 </template>
                             </div>
-                            <h3
+                            <h5
                                 class="text-gray-900 font-medium"
                                 v-motion="{
                                   initial: {
@@ -65,7 +65,7 @@
                                 }"
                             >
                                 {{ testimonial?.quote }}
-                            </h3>
+                            </h5>
                             <div
                                 class="flex items-center justify-between"
                                 v-motion="{

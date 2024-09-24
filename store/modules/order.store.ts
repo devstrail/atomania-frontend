@@ -35,13 +35,13 @@ export const useOrderStore = defineStore({
 
             return await handleCommonActions(async () => {
                 const response = await orderService.get(this.getPayload(payload))
-                this.order = response.data?.data?.data ?? []
+                this.orders = response.data?.data?.data ?? []
                 paginationStore.setPaginationData(response.data?.meta ?? {})
             });
         },
         async storeOrder(payload) {
             return await handleCommonActions(async () => {
-                await orderService.store(payload)
+                return await orderService.store(payload)
             });
         },
         async getOrder(id) {

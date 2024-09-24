@@ -18,8 +18,8 @@
         <div class="container overflow-visible">
             <div class="mb-7 laptop:mb-14 laptop:flex justify-between gap-5">
                 <app-breadcrumb
-                    title="Access Expert Agricultural Guidance"
-                    description="Unlock Your Farm's Potential with Tailored Advice from Seasoned Professionals"
+                    title="Accesați serviciile de consultanță ale experților în agricultură"
+                    description="Deblocați potențialul fermei dvs. cu sfaturi personalizate de la profesioniști experimentați"
                 />
                 <div class="mt-5 laptop:mt-0 flex items-center justify-end laptop:justify-start gap-5">
                     <button

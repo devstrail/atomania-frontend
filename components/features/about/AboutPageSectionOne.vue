@@ -57,7 +57,7 @@
                           }
                         }"
                     >
-                        Nice to meet you
+                        Încântați de cunoștință!
                     </p>
                     <h3
                         class="mb-6 text-gray-900 font-bold"
@@ -72,8 +72,8 @@
                           }
                         }"
                     >
-                        To be the premier platform connecting agricultural suppliers and farmers, fostering a
-                        sustainable and prosperous farming community.
+                        Ne propunem să fim principala platformă care conectează furnizorii agricoli și fermierii,
+                        promovând o comunitate agricolă durabilă și prosperă.
                     </h3>
                     <p
                         class="text-gray-500 text-b2"
@@ -88,9 +88,9 @@
                           }
                         }"
                     >
-                        To revolutionize agriculture by providing innovative solutions that improve productivity and
-                        sustainability, ensuring that every farmer has access to the best tools and resources for
-                        success.
+                        Dorim să revoluționăm agricultura, oferind soluții inovatoare care îmbunătățesc productivitatea
+                        și durabilitatea, asigurându-ne că fiecare fermier are acces la cele mai bune instrumente și
+                        resurse pentru succes.
                     </p>
                 </div>
                 <NuxtImg

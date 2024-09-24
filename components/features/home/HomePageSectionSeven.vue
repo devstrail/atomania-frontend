@@ -11,10 +11,10 @@
             <div class="mb-7 laptop:mb-14 flex flex-col laptop:flex-row laptop:items-center justify-between gap-5">
                 <app-breadcrumb
                     class="max-w-[780px]"
-                    title="Stay Ahead with Expert Market Insights"
-                    description="Dive into our comprehensive blog posts for in-depth analysis, trends, and updates on the agricultural market. Gain valuable knowledge to make informed decisions, understand market dynamics, and stay ahead of industry changes to enhance your farming strategy and profitability."
+                    title="Fii întotdeauna la curent cu informații despre piață de la experți"
+                    description="Explorați postările noastre cuprinzătoare de pe blog pentru analize aprofundate, tendințe și actualizări privind piața agricolă. Dobândiți cunoștințe valoroase pentru a lua decizii în cunoștință de cauză, a înțelege dinamica pieței și a vă situa în fața schimbărilor din industrie pentru a vă îmbunătăți strategia agricolă și profitabilitatea."
                 />
-                <app-button title="View All Posts" url="/blog"/>
+                <app-button title="Vezi toate postările" url="/blog"/>
             </div>
             <div class="grid laptop:grid-cols-3 gap-8">
                 <template v-for="(blog, blogIndex) in blogs.slice(0, 3)">
