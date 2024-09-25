@@ -299,7 +299,7 @@
                                                     class="flex items-center gap-2 px-4 py-2 text-gray-700 text-b4 hover:bg-gray-50 transition-all"
                                                     @click="router.push({ path: '/marketplace', query: { tab: 4 } })"
                                                 >
-                                                    <i class="dt-icon-bookmark-check"/> Saved Machine
+                                                    <i class="dt-icon-bookmark-check"/> Mașină salvată
                                                 </button>
                                             </MenuItem>-->
                                         </div>

@@ -12,7 +12,7 @@
     const isLoading = ref(false)
     const fetchDrones = async (payload = {}) => {
         isLoading.value = true
-        await droneStore.fetchDrones(payload)
+        // await droneStore.fetchDrones(payload)
         isLoading.value = false
     }
 </script>
@@ -21,9 +21,9 @@
     <div>
         <app-breadcrumb
             class="mb-8"
-            title="Find your farming drone"
+            title="Găsește-ți drona agricolă"
             title-class="!mb-2"
-            description="We have all the best drone in country."
+            description="Avem toate cele mai bune drone din țară."
         />
         <div class="grid laptop:grid-cols-3 gap-8">
             <template

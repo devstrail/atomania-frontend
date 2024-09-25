@@ -13,7 +13,7 @@
     const isLoading = ref(false)
     const fetchExperts = async (payload = {}) => {
         isLoading.value = true
-        await expertStore.fetchExperts(payload);
+        // await expertStore.fetchExperts(payload);
         isLoading.value = false
     }
     const handleFilter = (payload: object) => {
@@ -25,9 +25,9 @@
     <div>
         <app-breadcrumb
             class="mb-8"
-            title="Find your farming expert"
+            title="Găsiți-vă expertul în agricultură"
             title-class="!mb-2"
-            description="We have all the best farming expert in country."
+            description="Avem toți cei mai buni experți în agricultură din țară."
         />
         <!--<marketplace-items-filter
             :searchable="false"

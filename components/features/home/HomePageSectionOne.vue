@@ -69,8 +69,8 @@
                         }"
                     >
                         <template v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'">
-                            We offer <span class="text-royal-flycatcher-crest-500">Smart & Affordable</span>
-                            Machines for Better <span class="text-royal-flycatcher-crest-500">Farming.</span>
+                            Oferim <span class="text-royal-flycatcher-crest-500">Inteligent și accesibil</span>
+                            Mașini pentru o mai bună <span class="text-royal-flycatcher-crest-500">Agricultura.</span>
                         </template>
                         <template v-else>
                             Conectarea <span class="text-royal-flycatcher-crest-500">fermierilor</span> români cu <span

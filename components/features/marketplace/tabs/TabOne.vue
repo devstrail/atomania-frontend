@@ -37,12 +37,12 @@
     <div>
         <app-breadcrumb
             class="mb-8"
-            title="Find your machines"
+            title="Găsiți-vă mașinile"
             title-class="!mb-2"
-            description="We have all the best farming machine in country"
+            description="Avem toate cele mai bune mașini agricole din țară"
         />
         <marketplace-items-filter
-            search-placeholder="Search machine"
+            search-placeholder="Mașină de căutare"
             @change:search="handleSearch"
             @change:payload="handleFilter"
         />
@@ -51,7 +51,9 @@
                 v-if="isLoading"
                 class="w-full h-full min-h-[400px] absolute top-0 left-0 z-10 grid place-items-center rounded-lg bg-primary-25"
             >
-                <app-spinner-loader spinner-style="w-10 h-10 text-primary-600 fill-white"/>
+                <app-spinner-loader
+                    spinner-style="w-10 h-10 text-primary-600 fill-white"
+                />
             </div>
             <div v-else class="grid laptop:grid-cols-3 gap-8">
                 <template

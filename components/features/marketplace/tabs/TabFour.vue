@@ -1,5 +1,4 @@
 <script setup lang="ts">
-    import {machines} from '~/config'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
     import AppButton from '~/components/shared/AppButton.vue'
@@ -11,9 +10,8 @@
     <div>
         <app-breadcrumb
             class="mb-8"
-            title="Saved machine"
+            title="Mașină salvată"
             title-class="!mb-2"
-            description="We have all the best drone in country."
         />
 
         <div class="min-h-[380px] flex gap-6 flex-col items-center justify-center text-center">
@@ -24,8 +22,8 @@
                 alt="Empty icon"
             />
             <div>
-                <p class="mb-2 text-gray-700 font-semibold text-b2">Empty list</p>
-                <p class="text-gray-500 text-b4">There is no saved machine in your list.</p>
+                <p class="mb-2 text-gray-700 font-semibold text-b2">Lista goală</p>
+                <p class="text-gray-500 text-b4">Nu există nicio mașină salvată în lista dvs.</p>
             </div>
             <app-button
                 title="Find machine"

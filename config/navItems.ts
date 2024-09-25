@@ -31,7 +31,7 @@ export const navItemsFarmer = [
         url: '/marketplace',
     },
     {
-        title: 'My Orders',
+        title: 'Ordinele mele',
         url: '/orders'
     },
     {
@@ -39,7 +39,7 @@ export const navItemsFarmer = [
         url: '/blog'
     },
     {
-        title: 'About',
+        title: 'Despre',
         url: '/about'
     },
     {
