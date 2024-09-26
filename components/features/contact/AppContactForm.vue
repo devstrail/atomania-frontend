@@ -1,13 +1,14 @@
 <script setup lang="ts">
     import {Form} from 'vee-validate'
     import {contactSchema} from '~/config/validationSchema'
-    import {useErrorStore} from '~/store'
+    import {useContactStore, useErrorStore} from '~/store'
     import AppInput from '~/components/shared/inputs/AppInput.vue'
     import AppButton from '~/components/shared/AppButton.vue'
     import AppCheckboxInput from '~/components/shared/inputs/AppCheckboxInput.vue'
-    import AppTextareaInput from "~/components/shared/inputs/AppTextareaInput.vue";
+    import AppTextareaInput from '~/components/shared/inputs/AppTextareaInput.vue'
 
     const errorStore = useErrorStore()
+    const contactStore = useContactStore()
 
     const loading = ref(false)
     const formData = reactive({
@@ -21,12 +22,12 @@
 
     const onSubmit = async (values, actions) => {
         console.log(values)
-        loading.value = true;
-        // await authStore.login(values);
-        loading.value = false;
+        loading.value = true
+        await contactStore.sendContact(values)
+        loading.value = false
 
         if (errorStore.errorCode === 422) {
-            actions.setErrors(errorStore.formErrors);
+            actions.setErrors(errorStore.formErrors)
         }
     }
 </script>
@@ -67,7 +68,7 @@
             type="phone"
             name="phone"
             label="Phone number"
-            placeholder="+1 (555) 000-0000"
+            placeholder="+40 - Enter your phone number"
             v-model="formData.phone"
         />
         <app-textarea-input
