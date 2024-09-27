@@ -1,14 +1,20 @@
 <script setup lang="ts">
     import dayjs from 'dayjs'
-    import {Form} from 'vee-validate';
+    import Swal from 'sweetalert2'
     import tippy from 'tippy.js'
-    import type {Instance as TippyInstance} from 'tippy.js'
     import 'tippy.js/dist/tippy.css'
-    import {blogs} from '~/config'
     import {slugify} from '~/utils'
+    import {blogs} from '~/config'
+    import {Form} from 'vee-validate';
+    import {useErrorStore, useSubscriberStore} from '~/store'
     import {subscriptionSchema} from '~/config/validationSchema'
+    import type {Instance as TippyInstance} from 'tippy.js'
     import AppButton from '~/components/shared/AppButton.vue'
     import AppInput from '~/components/shared/inputs/AppInput.vue'
+
+    /* -- Define stores -- */
+    const errorStore = useErrorStore()
+    const subscriberStore = useSubscriberStore()
 
     const route = useRoute()
     const blog = ref(null)
@@ -55,10 +61,25 @@
         email: ''
     })
     const onSubmit = async (values, actions) => {
-        console.log(values)
         loading.value = true
-        // await authStore.login(values)
+        const response = await subscriberStore.storeSubscriber(values)
         loading.value = false
+
+        if (response?.data?.success) {
+            Swal.fire({
+                title: 'Mulțumim pentru abonare!',
+                text: 'Ați fost abonat cu succes la newsletter-ul nostru. Vă vom ține la curent cu cele mai recente știri și actualizări.',
+                icon: 'success',
+                timer: 5000,
+                showConfirmButton: true,
+                confirmButtonText: 'Închide',
+                customClass: {
+                    confirmButton: 'inline-flex gap-2 text-white border border-primary-600 disabled:border-primary-200 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-200 disabled:cursor-not-allowed font-medium items-center justify-center h-[44px] py-[12px] px-[18px] text-[16px] leading-[24px] rounded-[8px] transition-all w-full laptop:w-[initial] shrink-0'
+                },
+                timerProgressBar: true
+            })
+            actions.resetForm()
+        }
 
         if (errorStore.errorCode === 422) {
             actions.setErrors(errorStore.formErrors)
@@ -127,10 +148,10 @@
                             :show-error-message="false"
                             v-model="formData.email"
                         />
-                        <p class="mb-4 text-gray-500 text-b4">
+                        <!--<p class="mb-4 text-gray-500 text-b4">
                             Read about our
                             <NuxtLink to="/"><u>privacy policy</u>.</NuxtLink>
-                        </p>
+                        </p>-->
                         <app-button
                             button-type="submit"
                             full-width

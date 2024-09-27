@@ -6,6 +6,7 @@
     import AppButton from '~/components/shared/AppButton.vue'
     import AppCheckboxInput from '~/components/shared/inputs/AppCheckboxInput.vue'
     import AppTextareaInput from '~/components/shared/inputs/AppTextareaInput.vue'
+    import Swal from "sweetalert2";
 
     const errorStore = useErrorStore()
     const contactStore = useContactStore()
@@ -21,10 +22,25 @@
     const isAgreePrivacyPolicy = ref(false)
 
     const onSubmit = async (values, actions) => {
-        console.log(values)
         loading.value = true
-        await contactStore.sendContact(values)
+        const response = await contactStore.sendContact(values)
         loading.value = false
+
+        if (response?.data?.success) {
+            Swal.fire({
+                title: 'Mulțumim că ne-ați contactat!',
+                text: 'Mesajul dumneavoastră a fost primit și vă vom răspunde în cel mai scurt timp.',
+                icon: 'success',
+                timer: 5000,
+                showConfirmButton: true,
+                confirmButtonText: 'Închide',
+                customClass: {
+                    confirmButton: 'inline-flex gap-2 text-white border border-primary-600 disabled:border-primary-200 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-200 disabled:cursor-not-allowed font-medium items-center justify-center h-[44px] py-[12px] px-[18px] text-[16px] leading-[24px] rounded-[8px] transition-all w-full laptop:w-[initial] shrink-0'
+                },
+                timerProgressBar: true
+            });
+            actions.resetForm()
+        }
 
         if (errorStore.errorCode === 422) {
             actions.setErrors(errorStore.formErrors)

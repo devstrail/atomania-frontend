@@ -24,7 +24,6 @@
 
     const updatePosition = async () => {
         await nextTick();
-        console.log(props.targetRef)
         if (props.targetRef && props.targetRef instanceof HTMLElement) {
             const rect = props.targetRef.getBoundingClientRect();
             x.value = rect.left + rect.width / 2;

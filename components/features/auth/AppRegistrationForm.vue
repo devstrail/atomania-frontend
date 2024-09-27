@@ -25,9 +25,9 @@
         const response = await authStore.register(values);
         loading.value = false;
 
-        console.log(response)
         if (response?.data?.success) {
             router.push('/login')
+            actions.resetForm()
         }
 
         if (errorStore.errorCode === 422) {
@@ -113,9 +113,7 @@
                 :loading="loading"
             />
             <p class="text-gray-700 text-b4">
-                By clicking “Create account” You agree to our
-                <NuxtLink to="/" class="text-[#1570EF]">Terms of Use</NuxtLink> and
-                <NuxtLink to="/" class="text-[#1570EF]">Privacy Policy</NuxtLink>
+                By clicking “Create account” You agree to our Terms of Use and Privacy Policy
             </p>
             <div class="flex items-center justify-center mt-8 gap-1 text-gray-500 text-b4">
                 Already have an account?

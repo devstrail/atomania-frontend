@@ -47,7 +47,6 @@
         // confirm_password: '',
     })
     const onSubmit = async (values, actions) => {
-        console.log(values)
         loading.value = true
         // await profileStore.updateProfileInfo(values)
         loading.value = false

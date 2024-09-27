@@ -30,7 +30,6 @@
         phone: ''
     })
     const onSubmit = async (values, actions) => {
-        console.log(values)
         loading.value = true;
         // await authStore.login(values);
         loading.value = false;

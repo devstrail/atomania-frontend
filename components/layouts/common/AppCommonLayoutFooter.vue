@@ -1,13 +1,19 @@
 <script setup lang="ts">
-    import dayjs from 'dayjs';
+    import dayjs from 'dayjs'
+    import Swal from 'sweetalert2'
     import {Form} from 'vee-validate'
     import {navItems} from '~/config'
     import {subscriptionSchema} from '~/config/validationSchema'
+    import {useErrorStore, useSubscriberStore} from '~/store'
     import AppLogo from '~/components/shared/AppLogo.vue'
     import AppInput from '~/components/shared/inputs/AppInput.vue'
     import AppButton from '~/components/shared/AppButton.vue'
 
     const {locale, setLocale} = useI18n()
+
+    /* -- Define stores -- */
+    const errorStore = useErrorStore()
+    const subscriberStore = useSubscriberStore()
 
     /* -- Handle Subscription -- */
     const loading = ref(false)
@@ -15,10 +21,25 @@
         email: ''
     })
     const onSubmit = async (values, actions) => {
-        console.log(values)
         loading.value = true
-        // await authStore.login(values)
+        const response = await subscriberStore.storeSubscriber(values)
         loading.value = false
+
+        if (response?.data?.success) {
+            Swal.fire({
+                title: 'Mulțumim pentru abonare!',
+                text: 'Ați fost abonat cu succes la newsletter-ul nostru. Vă vom ține la curent cu cele mai recente știri și actualizări.',
+                icon: 'success',
+                timer: 5000,
+                showConfirmButton: true,
+                confirmButtonText: 'Închide',
+                customClass: {
+                    confirmButton: 'inline-flex gap-2 text-white border border-primary-600 disabled:border-primary-200 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-200 disabled:cursor-not-allowed font-medium items-center justify-center h-[44px] py-[12px] px-[18px] text-[16px] leading-[24px] rounded-[8px] transition-all w-full laptop:w-[initial] shrink-0'
+                },
+                timerProgressBar: true
+            })
+            actions.resetForm()
+        }
 
         if (errorStore.errorCode === 422) {
             actions.setErrors(errorStore.formErrors)
@@ -90,7 +111,7 @@
             <div class="py-8 flex flex-wrap gap-2 items-center justify-center laptop:justify-between border-t border-gray-200">
                 <p class="text-gray-400 text-[15px]">© {{ dayjs().year() }} Atomania | All rights reserved.</p>
                 <div class="flex items-center gap-4">
-                    <ul class="flex items-center gap-4">
+                    <!--<ul class="flex items-center gap-4">
                         <li>
                             <NuxtLink to="/" class="text-gray-400 hover:text-gray-900 text-[15px] transition">
                                 Terms
@@ -101,7 +122,7 @@
                                 Privacy Policy
                             </NuxtLink>
                         </li>
-                    </ul>
+                    </ul>-->
                     <ul class="flex items-center gap-3">
                         <li>
                             <a href="/" target="_blank" class="text-gray-400 hover:text-gray-900 transition">

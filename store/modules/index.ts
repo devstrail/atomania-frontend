@@ -6,4 +6,5 @@ export {useExpertStore} from './expert.store'
 export {useDroneStore} from './drone.store'
 export {useOrderStore} from './order.store'
 export {useContactStore} from './contact.store'
+export {useSubscriberStore} from './subscriber.store'
 
