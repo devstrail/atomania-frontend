@@ -83,6 +83,13 @@
 
         emit('change:payload', filterPayload)
     }, {deep: true})
+
+    const fetchFilters = async () => {
+        await machineStore.fetchFilters()
+    }
+    onMounted(() => {
+        fetchFilters()
+    })
 </script>
 
 <template>

@@ -18,15 +18,9 @@ export const useProfileStore = defineStore({
                 this.user = response.data?.data ?? null;
             });
         },
-        async updateAvatar(payload) {
-            return await handleCommonActions(async () => {
-                return await profileService.updateAvatar(payload);
-                this.fetchProfile();
-            });
-        },
         async updateProfileInfo(payload) {
             return await handleCommonActions(async () => {
-                await profileService.updatePhone(payload);
+                await profileService.update(payload);
                 this.fetchProfile();
             });
         },

@@ -19,4 +19,10 @@ export const machineService = {
     async restore(id) {
         return apiClient.post(`/farming-tools/restore/${id}`)
     },
+    async save(payload) {
+        return apiClient.post('/favorites', payload)
+    },
+    async filters() {
+        return apiClient.get('/farming-tools/filters')
+    },
 };

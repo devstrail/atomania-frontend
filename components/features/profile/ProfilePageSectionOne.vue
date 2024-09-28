@@ -26,7 +26,7 @@
             const formData = new FormData()
             formData.append('avatar', selectedImage.value)
 
-            await profileStore.updateAvatar(formData)
+            await profileStore.updateProfileInfo(formData)
 
             if (errorStore.errorMessage) {
                 errorMessage.value = errorStore.errorMessage

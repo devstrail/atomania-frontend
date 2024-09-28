@@ -1,8 +1,23 @@
 <script setup lang="ts">
     import {blogs} from '~/config'
+    import {useBlogStore} from '~/store'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppButton from '~/components/shared/AppButton.vue'
     import AppBlogCard from '~/components/shared/AppBlogCard.vue'
+
+    /* -- Define Store -- */
+    const blogStore = useBlogStore()
+
+    /* -- Fetch Blogs -- */
+    const loading = ref(false)
+    const fetchBlogs = async () => {
+        loading.value = true
+        await blogStore.fetchBlogs()
+        loading.value = false
+    }
+    onMounted(() => {
+        fetchBlogs()
+    })
 </script>
 
 <template>
@@ -17,7 +32,7 @@
                 <app-button title="Vezi toate postările" url="/blog"/>
             </div>
             <div class="grid laptop:grid-cols-3 gap-8">
-                <template v-for="(blog, blogIndex) in blogs.slice(0, 3)">
+                <template v-for="(blog, blogIndex) in blogStore.blogs.slice(0, 3)">
                     <app-blog-card :post="blog"/>
                 </template>
             </div>

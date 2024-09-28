@@ -1,6 +1,8 @@
 <script setup lang="ts">
     import {useAuthStore, useMachineStore} from '~/store'
     import AppButton from '~/components/shared/AppButton.vue'
+    import Swal from "sweetalert2";
+    import AppSpinnerLoader from "~/components/shared/AppSpinnerLoader.vue";
 
     const authStore = useAuthStore()
     const machineStore = useMachineStore()
@@ -14,6 +16,30 @@
     })
 
     const emit = defineEmits(['openOrderModal'])
+
+    const loading = ref(false)
+    const handleSaveMachine = async (id) => {
+        loading.value = true
+
+        const payload = {
+            type: 'FarmingTool',
+            type_id: id
+        }
+
+
+        const response = await machineStore.saveMachine(payload)
+        loading.value = false
+
+        if (response?.data?.success) {
+            Swal.fire({
+                title: 'Mașina a fost salvată cu succes!',
+                icon: 'success',
+                timer: 5000,
+                showConfirmButton: false,
+                timerProgressBar: true
+            });
+        }
+    }
 
     const handleViewDetails = (id) => {
         if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
@@ -51,13 +77,26 @@
         }"
     >
         <div>
-            <NuxtImg
-                width="384"
-                height="220"
-                :src="machine?.thumbnail ? machine?.thumbnail : '/images/placeholder-image.png'"
-                :alt="machine?.name"
-                class="mb-4 rounded-2xl"
-            />
+            <div class="relative">
+                <NuxtImg
+                    width="384"
+                    height="220"
+                    :src="machine?.thumbnail ? machine?.thumbnail : '/images/placeholder-image.png'"
+                    :alt="machine?.name"
+                    class="mb-4 rounded-2xl"
+                />
+                <!--<button
+                    type="button"
+                    class="size-9 absolute top-3 right-3 grid place-items-center text-gray-700 text-b2 rounded-md bg-white"
+                    @click="handleSaveMachine(machine?.id)"
+                >
+                    <app-spinner-loader
+                        v-if="loading"
+                        spinner-style="w-5 h-5 text-gray-100 fill-primary-600"
+                    />
+                    <i v-else class="dt-icon-bookmark-add"/>
+                </button>-->
+            </div>
             <div class="flex items-center justify-between">
                 <div class="mb-1 flex items-center gap-1">
                     <h6 class="text-royal-flycatcher-crest-500 font-semibold">

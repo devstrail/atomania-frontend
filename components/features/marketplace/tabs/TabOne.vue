@@ -3,8 +3,9 @@
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import MarketplaceItemsFilter from '~/components/features/marketplace/MarketplaceItemsFilter.vue'
     import AppMachineCard from '~/components/shared/AppMachineCard.vue'
-    import AppSpinnerLoader from "~/components/shared/AppSpinnerLoader.vue";
-    import AppOrderMachineModal from "~/components/shared/AppOrderMachineModal.vue";
+    import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue'
+    import AppOrderMachineModal from '~/components/shared/AppOrderMachineModal.vue'
+    import AppEmptyStateCard from '~/components/shared/AppEmptyStateCard.vue'
 
     /* -- Define stores -- */
     const paginationStore = usePaginationStore()
@@ -55,8 +56,15 @@
                     spinner-style="w-10 h-10 text-primary-600 fill-white"
                 />
             </div>
-            <div v-else class="grid laptop:grid-cols-3 gap-8">
+            <div
+                v-else
+                :class="[
+                    `grid gap-8`,
+                    {'laptop:grid-cols-3': machineStore.machines.length}
+                ]"
+            >
                 <template
+                    v-if="machineStore.machines.length"
                     v-for="(machine, machineIndex) in machineStore.machines"
                     :key="machine.id"
                 >
@@ -64,6 +72,9 @@
                         :machine="machine"
                         @open-order-modal="(value) => selectedMachine = value"
                     />
+                </template>
+                <template v-else>
+                    <app-empty-state-card/>
                 </template>
             </div>
         </div>
