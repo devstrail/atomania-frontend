@@ -60,28 +60,13 @@
 </script>
 
 <template>
-    <div
-        class="h-full laptop:min-h-[493px] flex flex-col justify-between"
-        v-motion="{
-          initial: {
-            y: 30,
-            opacity: 0
-          },
-          visibleOnce: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 700
-            },
-          }
-        }"
-    >
+    <div class="h-full laptop:min-h-[493px] flex flex-col justify-between">
         <div>
             <div class="relative">
                 <NuxtImg
                     width="384"
-                    height="220"
-                    :src="machine?.thumbnail ? machine?.thumbnail : '/images/placeholder-image.png'"
+                    height="284"
+                    :src="machine?.images ? machine?.images[0] : '/images/placeholder-image.png'"
                     :alt="machine?.name"
                     class="mb-4 rounded-2xl"
                 />

@@ -31,7 +31,7 @@
         <NuxtImg
             width="384"
             height="240"
-            :src="post?.thumbnail"
+            :src="post?.image"
             :alt="post?.title"
             class="mb-4 rounded-2xl"
         />
@@ -45,7 +45,7 @@
             <i class="dt-icon-arrow-up-right text-b1 transition"/>
         </div>
         <p class="mb-6 text-gray-500 text-b3 line-clamp-3 overflow-hidden">{{ post?.excerpts }}</p>
-        <div class="flex items-center gap-3">
+        <!--<div class="flex items-center gap-3">
             <NuxtImg
                 width="40"
                 height="40"
@@ -56,6 +56,6 @@
                 <p class="text-gray-900 text-b4">{{ post?.author?.name }}</p>
                 <p class="text-gray-500 text-b5">{{ dayjs(post?.created_at).format('DD MMM YYYY') }}</p>
             </div>
-        </div>
+        </div>-->
     </NuxtLink>
 </template>

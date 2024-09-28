@@ -20,7 +20,7 @@ export const useProfileStore = defineStore({
         },
         async updateProfileInfo(payload) {
             return await handleCommonActions(async () => {
-                await profileService.update(payload);
+                await profileService.update(payload, this.user.id);
                 this.fetchProfile();
             });
         },

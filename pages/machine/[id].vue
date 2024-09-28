@@ -61,7 +61,7 @@
                 </div>
                 <div class="grid laptop:grid-cols-[488px_auto] gap-10">
                     <div
-                        :style="{ backgroundImage: `url(${machineStore.machine?.thumbnail ? machineStore.machine?.thumbnail : '/images/placeholder-image.png'})` }"
+                        :style="{ backgroundImage: `url(${machineStore?.machine?.images ? machineStore?.machine?.images[0] : '/images/placeholder-image.png'})` }"
                         class="min-h-[400px] laptop:min-h-[630px] overflow-hidden rounded-2xl bg-cover bg-center"
                     />
                     <div class="flex flex-col justify-between">

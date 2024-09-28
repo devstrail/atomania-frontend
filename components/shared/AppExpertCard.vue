@@ -53,7 +53,7 @@
                     {{ expert?.designation }}
                 </p>
             </div>
-            <div
+            <!--<div
                 :class="[
                     `py-1 px-3 flex items-center gap-[6px] text-b4 rounded-3xl`,
                     expert?.available ? 'text-success-700 bg-success-50' : 'text-royal-flycatcher-crest-700 bg-royal-flycatcher-crest-50'
@@ -66,7 +66,7 @@
                     ]"
                 />
                 {{ expert?.available ? 'Available' : 'Unavailable' }}
-            </div>
+            </div>-->
         </div>
         <div class="mb-4 flex items-center justify-between">
             <div class="flex items-center gap-1">

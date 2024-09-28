@@ -47,8 +47,12 @@
         // confirm_password: '',
     })
     const onSubmit = async (values, actions) => {
+        const payload = {
+            name: values.name,
+        }
+
         loading.value = true
-        // await profileStore.updateProfileInfo(values)
+        await profileStore.updateProfileInfo(payload)
         loading.value = false
 
         if (errorStore.errorCode === 422) {
@@ -61,10 +65,6 @@
         loading.value = true
         await profileStore.fetchProfile()
         loading.value = false
-
-        if (errorStore.errorCode === 422) {
-            actions.setErrors(errorStore.formErrors)
-        }
     }
     onMounted(async () => {
         await fetchProfile();
@@ -90,7 +90,15 @@
                     <div
                         class="relative size-[100px] laptop:size-[160px] grid place-items-center rounded-full border-4 border-white bg-gray-50 shadow-elevation-1"
                     >
-                        <i class="dt-icon-user-01 text-[60px]"/>
+                        <img
+                            v-if="profileStore?.user?.avatar"
+                            width="100"
+                            height="100"
+                            :src="profileStore?.user?.avatar ? profileStore?.user?.avatar : '/images/avatar-placeholder.svg'"
+                            :alt="profileStore?.user?.name"
+                            class="size-[100px] laptop:size-[160px] object-cover rounded-full"
+                        />
+                        <i v-else class="dt-icon-user-01 text-[60px]"/>
                         <label
                             for="profileImage"
                             class="size-9 laptop:size-11 absolute right-0 bottom-0 grid place-items-center text-primary-600 hover:text-white cursor-pointer rounded-full bg-white hover:bg-primary-500 transition-all"
@@ -139,6 +147,7 @@
                                     type="phone"
                                     name="phone"
                                     label="Phone number"
+                                    read-only
                                     placeholder="Enter your phone number"
                                     v-model="formData.phone"
                                 />

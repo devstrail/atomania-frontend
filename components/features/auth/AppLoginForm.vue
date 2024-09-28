@@ -13,7 +13,7 @@
 
     const loading = ref(false)
     const formData = reactive({
-        email: '',
+        username: '',
         password: ''
     })
     const rememberMe = ref(false)
@@ -52,12 +52,12 @@
             :validation-schema="loginSchema"
         >
             <app-input
-                id="email"
-                type="email"
-                name="email"
+                id="username"
+                type="text"
+                name="username"
                 label="Email or Phone"
                 placeholder="Enter your email or phone number"
-                v-model="formData.email"
+                v-model="formData.username"
             />
             <app-input
                 id="password"

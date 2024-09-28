@@ -172,7 +172,7 @@
                         </button>
                     </li>
                     <template v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'">
-                        <li class="hidden laptop:block">
+                        <!--<li class="hidden laptop:block">
                             <Menu as="div" class="relative inline-block">
                                 <div>
                                     <MenuButton
@@ -229,7 +229,7 @@
                                     </MenuItems>
                                 </transition>
                             </Menu>
-                        </li>
+                        </li>-->
                         <li class="flex">
                             <Menu as="div" class="relative inline-block">
                                 <div>
@@ -241,7 +241,7 @@
                                             height="32"
                                             :src="authStore?.user?.avatar ? authStore?.user?.avatar : '/images/avatar-placeholder.svg'"
                                             :alt="authStore?.user?.name"
-                                            class="rounded-full"
+                                            class="w-8 h-8 object-cover rounded-full"
                                         />
                                         <div class="hidden laptop:block text-right">
                                             <p class="text-gray-700 text-b4">{{ authStore?.user?.name }}</p>
@@ -267,11 +267,11 @@
                                                 height="32"
                                                 :src="authStore?.user?.avatar ? authStore?.user?.avatar : '/images/avatar-placeholder.svg'"
                                                 :alt="authStore?.user?.name"
-                                                class="rounded-full"
+                                                class="size-8 object-cover rounded-full"
                                             />
                                             <div>
-                                                <p class="text-gray-700 text-b4">{{ authStore?.user?.first_name }}</p>
-                                                <p class="text-gray-500 text-b5">+4089823279</p>
+                                                <p class="text-gray-700 text-b4">{{ authStore?.user?.name }}</p>
+                                                <p class="text-gray-500 text-b5">{{ authStore?.user?.phone }}</p>
                                             </div>
                                         </div>
                                         <div class="flex flex-col py-1 border-b border-gray-200">
