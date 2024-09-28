@@ -1,6 +1,5 @@
 <script setup lang="ts">
     import dayjs from 'dayjs'
-    import {slugify} from '~/utils'
 
     const props = defineProps({
         post: {
@@ -12,7 +11,7 @@
 
 <template>
     <NuxtLink
-        :to="`/blog/${slugify(post?.title)}`"
+        :to="`/blog/${post?.id}`"
         class="flex flex-col justify-between group"
         v-motion="{
           initial: {

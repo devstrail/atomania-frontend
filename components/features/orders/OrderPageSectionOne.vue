@@ -77,20 +77,20 @@
                             <template v-for="(order, orderIndex) in orderStore.orders">
                                 <tr>
                                     <td class="border border-l-0 border-gray-200 px-6 py-2 text-gray-900 font-medium text-b5 text-left">
-                                        #3066
+                                        #{{ order?.transaction_id }}
                                     </td>
                                     <td class="border border-gray-200 px-6 py-2 text-left">
                                         <div class="flex flex-col laptop:flex-row gap-2">
                                             <NuxtImg
                                                 width="32"
                                                 height="32"
-                                                :src="order?.machine?.thumbnail ? order?.machine?.thumbnail : '/images/placeholder-image.png'"
+                                                :src="order?.farming_tool?.cover_photo ? order?.farming_tool?.cover_photo : '/images/placeholder-image.png'"
                                                 alt="Machine name"
                                                 class="object-cover"
                                             />
                                             <div>
-                                                <p class="text-gray-700 text-b4">Herbicide Spraying Machine</p>
-                                                <p class="text-gray-500 text-b6">€2700/ hector</p>
+                                                <p class="text-gray-700 text-b4 capitalize">{{ order?.farming_tool?.name }}</p>
+                                                <p class="text-gray-500 text-b6">€{{ order?.farming_tool?.cost }}/ hector</p>
                                             </div>
                                         </div>
                                     </td>

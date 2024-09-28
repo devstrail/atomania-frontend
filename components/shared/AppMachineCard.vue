@@ -66,7 +66,7 @@
                 <NuxtImg
                     width="384"
                     height="284"
-                    :src="machine?.images ? machine?.images[0] : '/images/placeholder-image.png'"
+                    :src="machine?.cover_photo ? machine?.cover_photo : '/images/placeholder-image.png'"
                     :alt="machine?.name"
                     class="mb-4 rounded-2xl"
                 />

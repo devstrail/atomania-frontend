@@ -3,10 +3,8 @@
     import Swal from 'sweetalert2'
     import tippy from 'tippy.js'
     import 'tippy.js/dist/tippy.css'
-    import {slugify} from '~/utils'
-    import {blogs} from '~/config'
     import {Form} from 'vee-validate';
-    import {useErrorStore, useSubscriberStore} from '~/store'
+    import {useBlogStore, useErrorStore, useSubscriberStore} from '~/store'
     import {subscriptionSchema} from '~/config/validationSchema'
     import type {Instance as TippyInstance} from 'tippy.js'
     import AppButton from '~/components/shared/AppButton.vue'
@@ -15,17 +13,18 @@
     /* -- Define stores -- */
     const errorStore = useErrorStore()
     const subscriberStore = useSubscriberStore()
+    const blogStore = useBlogStore()
 
     const route = useRoute()
     const blog = ref(null)
 
-    const findBlogBySlug = (slug) => {
-        return blogs.find(post => slugify(post.title) === slug)
+    /* -- Fetch Blog -- */
+    const findBlogById = async (id) => {
+        await blogStore.getBlog(id)
     }
-
     onMounted(() => {
-        const slug = route.params.slug
-        blog.value = findBlogBySlug(slug)
+        const id = route.params.id
+        findBlogById(id)
     })
 
     /* -- Handle Copy Blog Url -- */
@@ -33,7 +32,7 @@
     const copyButtonElementRef = ref<HTMLButtonElement | null>(null)
     const copyBlogUrl = async () => {
         try {
-            await navigator.clipboard.writeText('http://localhost:3000/blog/drone-technology-revolutionizing-precision-agriculture')
+            await navigator.clipboard.writeText(`https://www.atomania.ro/blog/${blogStore?.blog?.id}`)
             if (tippyInstance) {
                 tippyInstance?.setContent('Copied!')
                 tippyInstance?.show()
@@ -91,25 +90,25 @@
     <section class="py-10 laptop:py-14 bg-white">
         <div class="container">
             <h3 class="mb-8 laptop:mb-16 text-gray-900 font-semibold">
-                {{ blog?.title }}
+                {{ blogStore?.blog?.title }}
             </h3>
             <NuxtImg
                 width="1216"
                 height="516"
-                :src="blog?.thumbnail"
-                :alt="blog?.title"
+                :src="blogStore?.blog?.image"
+                :alt="blogStore?.blog?.title"
                 class="w-full mb-8 rounded-2xl"
             />
             <div class="mb-7 laptop:mb-14 flex gap-5 flex-wrap items-start justify-between">
                 <div class="flex gap-16">
-                    <div>
+                    <!--<div>
                         <p class="mb-3 text-primary-600 font-semibold text-b4">Credit by</p>
-                        <p class="text-gray-900 font-medium text-b2">{{ blog?.author?.name }}</p>
-                    </div>
+                        <p class="text-gray-900 font-medium text-b2">{{ blogStore?.blog?.author?.name }}</p>
+                    </div>-->
                     <div>
                         <p class="mb-3 text-primary-600 font-semibold text-b4">Published on</p>
                         <p class="text-gray-900 font-medium text-b2">
-                            {{ dayjs(post?.created_at).format('DD MMM YYYY') }}
+                            {{ dayjs(blogStore?.blog?.updated_at).format('DD MMM YYYY') }}
                         </p>
                     </div>
                 </div>
@@ -123,7 +122,7 @@
                 </button>
             </div>
             <div class="grid laptop:grid-cols-[auto_384px] gap-10 laptop:gap-[96px] items-start">
-                <div class="blog-content" v-html="blog?.description"/>
+                <div class="blog-content" v-html="blogStore?.blog?.content"/>
                 <div class="sticky top-10 py-10 px-8 bg-gray-50 border-t-4 border-primary-700">
                     <div class="size-14 grid place-items-center mb-8 text-primary-600 text-b1 rounded-full bg-success-100">
                         <i class="dt-icon-send-01"/>
