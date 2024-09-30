@@ -16,6 +16,13 @@ export const useProfileStore = defineStore({
             return await handleCommonActions(async () => {
                 const response = await profileService.get();
                 this.user = response.data?.data ?? null;
+                authStore.user = response.data?.data ?? null;
+            });
+        },
+        async updateAvatar(payload) {
+            return await handleCommonActions(async () => {
+                await profileService.updateAvatar(payload)
+                this.fetchProfile();
             });
         },
         async updateProfileInfo(payload) {
