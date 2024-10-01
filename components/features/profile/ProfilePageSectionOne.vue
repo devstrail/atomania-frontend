@@ -77,7 +77,7 @@
         loading.value = false
     }
     onMounted(async () => {
-        await fetchProfile();
+        await fetchProfile()
 
         formData.phone = profileStore?.user?.phone ?? ''
         formData.email = profileStore?.user?.email ?? ''
