@@ -21,13 +21,13 @@
     })
 
     const onSubmit = async (values, actions) => {
-        loading.value = true;
+        loading.value = true
         const response = await authStore.register(values);
-        loading.value = false;
+        loading.value = false
 
         if (response?.data?.success) {
-            router.push('/login')
             actions.resetForm()
+            await router.push('/login')
         }
 
         if (errorStore.errorCode === 422) {

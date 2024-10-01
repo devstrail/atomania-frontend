@@ -36,7 +36,7 @@ export const useAuthStore = defineStore({
                 return await handleCommonActions(async () => {
                     await this.getAuthUser()
                     this.isAuthCalled = true
-                });
+                })
             }
         },
         async getAuthUser() {
@@ -67,7 +67,7 @@ export const useAuthStore = defineStore({
                 // Clear user from cookie
                 const userCookie = useCookie('user')
                 userCookie.value = null
-            });
+            })
         },
         async forgotPassword(payload) {
             return await handleCommonActions(async () => {
@@ -95,4 +95,4 @@ export const useAuthStore = defineStore({
             }
         },
     }
-});
+})

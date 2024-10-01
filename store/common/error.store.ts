@@ -25,7 +25,7 @@ export const useErrorStore = defineStore('error', {
             return state.showableErrorCodes.includes(state.errorCode);
         },
         errorMessage: (state) => {
-            return state.error?.response?.data?.message ?? null;
+            return state.error?.response?.data?.data?.error ?? null;
         },
     },
     actions: {

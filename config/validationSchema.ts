@@ -9,6 +9,7 @@ export const loginSchema = Yup.object().shape({
 
 export const signUpSchema = Yup.object().shape({
     phone: Yup.string()
+        .max(15, 'Phone number must not exceed 15 characters.')
         .required('Phone number is required'),
     email: Yup.string()
         .email('Invalid email address')

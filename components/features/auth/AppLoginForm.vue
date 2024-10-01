@@ -6,7 +6,6 @@
     import AppButton from '~/components/shared/AppButton.vue'
     import AppCheckboxInput from '~/components/shared/inputs/AppCheckboxInput.vue'
 
-    const {login} = useAuth()
     const router = useRouter()
     const authStore = useAuthStore()
     const errorStore = useErrorStore()
@@ -83,7 +82,7 @@
                 </NuxtLink>
             </div>-->
             <p
-                v-if="errorStore.errorCode !== null && ![401,422].includes(errorStore.errorCode) && errorStore.errorMessage"
+                v-if="errorStore.errorCode !== null && errorStore.errorMessage"
                 class="py-2 px-3 mb-3 text-error-600 text-b4 rounded-md bg-error-50"
             >
                 {{ errorStore.errorMessage }}

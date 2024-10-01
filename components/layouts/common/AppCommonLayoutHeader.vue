@@ -1,15 +1,17 @@
 <script setup lang="ts">
     import {ref, onMounted, onUnmounted} from 'vue'
     import {Menu, MenuButton, MenuItems, MenuItem} from '@headlessui/vue'
-    import {useAuthStore, useNotificationStore} from '~/store'
+    import {useAuthStore, useNotificationStore, useProfileStore} from '~/store'
     import {navItems, navItemsFarmer} from '~/config'
     import AppLogo from '~/components/shared/AppLogo.vue'
     import AppButton from '~/components/shared/AppButton.vue'
+    import AppSpinnerLoader from "~/components/shared/AppSpinnerLoader.vue";
 
     /* -- Define Utilities -- */
     const router = useRouter()
 
     // Define stores
+    const profileStore = useProfileStore()
     const authStore = useAuthStore()
     const notificationStore = useNotificationStore()
 
@@ -143,9 +145,6 @@
                     </ul>
                 </nav>
 
-                <!-- Mobile Menu Toggle Button -->
-
-
                 <ul
                     :class="[
                         `flex items-center justify-center laptop:justify-end gap-3`
@@ -230,8 +229,12 @@
                                 </transition>
                             </Menu>
                         </li>-->
-                        <li class="flex">
-                            <Menu as="div" class="relative inline-block">
+                        <li class="flex items-center">
+                            <app-spinner-loader
+                                v-if="profileStore.loading"
+                                spinner-style="size-6 text-primary-500 fill-primary-50"
+                            />
+                            <Menu v-else as="div" class="relative inline-block">
                                 <div>
                                     <MenuButton
                                         class="flex gap-2 items-center justify-center"

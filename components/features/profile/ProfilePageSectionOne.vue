@@ -90,15 +90,24 @@
                     <div
                         class="relative size-[100px] laptop:size-[160px] grid place-items-center rounded-full border-4 border-white bg-gray-50 shadow-elevation-1"
                     >
-                        <img
-                            v-if="profileStore?.user?.avatar"
-                            width="100"
-                            height="100"
-                            :src="profileStore?.user?.avatar ? profileStore?.user?.avatar : '/images/avatar-placeholder.svg'"
-                            :alt="profileStore?.user?.name"
-                            class="size-[100px] laptop:size-[160px] object-cover rounded-full"
-                        />
-                        <i v-else class="dt-icon-user-01 text-[60px]"/>
+                        <template v-if="profileStore.loading">
+                            <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                                <app-spinner-loader
+                                    spinner-style="size-10 text-primary-500 fill-primary-50"
+                                />
+                            </div>
+                        </template>
+                        <template v-else>
+                            <img
+                                v-if="profileStore?.user?.avatar"
+                                width="100"
+                                height="100"
+                                :src="profileStore?.user?.avatar ? profileStore?.user?.avatar : '/images/avatar-placeholder.svg'"
+                                :alt="profileStore?.user?.name"
+                                class="size-[100px] laptop:size-[160px] object-cover rounded-full"
+                            />
+                            <i v-else class="dt-icon-user-01 text-[60px]"/>
+                        </template>
                         <label
                             for="profileImage"
                             class="size-9 laptop:size-11 absolute right-0 bottom-0 grid place-items-center text-primary-600 hover:text-white cursor-pointer rounded-full bg-white hover:bg-primary-500 transition-all"
