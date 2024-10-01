@@ -27,17 +27,19 @@ export const useProfileStore = defineStore({
         async updateAvatar(payload) {
             return await handleCommonActions(async () => {
                 this.loading = true
-                await profileService.updateAvatar(payload)
+                const response = await profileService.updateAvatar(payload)
                 await this.fetchProfile()
                 this.loading = false
+                return response
             });
         },
         async updateProfileInfo(payload) {
             return await handleCommonActions(async () => {
                 this.loading = true
-                await profileService.update(payload, this.user.id)
+                const response = await profileService.update(payload, this.user.id)
                 await this.fetchProfile()
                 this.loading = false
+                return response
             });
         },
     }

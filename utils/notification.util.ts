@@ -9,17 +9,20 @@ export function showToast(message, options = {}) {
     const body = document.body;
     const container = document.querySelector('.container');
     const containerPosition = container?.getBoundingClientRect();
+    const isMobile = window.innerWidth <= 768;
 
-    const toastRightPosition = body.clientWidth - containerPosition?.right;
+    const toastRightPosition = body.clientWidth - containerPosition?.right + 16;
     const toastElement = document.createElement('div');
     toastElement.classList.add('toast', 'fade');
 
     // Set the styling for the toast container
     toastElement.style.width = 'max-content';
     toastElement.style.minWidth = '360px';
+    toastElement.style.minHeight = '50px';
     toastElement.style.position = 'fixed';
     toastElement.style.top = '110px';
     toastElement.style.right = !container ? `50px` : `${toastRightPosition}px`;
+    toastElement.style.left = isMobile ? '16px' : 'auto';
     toastElement.style.overflow = 'hidden';
     toastElement.style.transform = 'translateY(-45px)';
     toastElement.style.zIndex = '100';
@@ -29,19 +32,22 @@ export function showToast(message, options = {}) {
 
     // Set the message content
     toastElement.innerHTML = `
-    <div class="flex items-center justify-between gap-5 p-[10px] pl-6 text-white font-semibold">
-      <div class="w-full h-full absolute top-0 left-0 z-[-1] opacity-20 transition progressbar" style="background-color: ${progressBackground}; animation: progressAnimation ${duration}ms linear forwards;"></div>
-      <span class="text-b4 capitalize">${message}</span>
-      <button
-          type="button"
-          aria-label="Close"
-          class="inline-flex items-center gap-1 py-2 px-[10px] text-b5 rounded-[26px]"
-          style="background-color: ${buttonBackground}"
-        >
-        <!--<i class="icon-check"></i> Got it-->
-      </button>
-    </div>
-  `;
+        <div class="flex items-center justify-between gap-5 p-[10px] pl-6 text-white font-semibold" style="min-height: 50px;">
+          <div 
+            class="w-full h-full absolute top-0 left-0 z-[-1] opacity-20 transition progressbar" 
+            style="background-color: ${progressBackground}; animation: progressAnimation ${duration}ms linear forwards;">   
+          </div>
+          <span class="text-b4 capitalize">${message}</span>
+          <button
+              type="button"
+              aria-label="Close"
+              class="inline-flex items-center gap-1 py-2 px-[10px] text-b5 rounded-[26px]"
+              style="background-color: ${buttonBackground}"
+            >
+            <!--<i class="icon-check"></i> Got it-->
+          </button>
+        </div>
+    `;
 
     // Show the toast
     document.body.appendChild(toastElement);
@@ -57,8 +63,8 @@ export function showSuccessMessage(message = null) {
         return
     }
     const options = {
-        background: 'linear-gradient(269.1deg, #259660 0%, #197348 100%)',
-        progressBackground: 'rgba(19, 19, 20, 0.2)',
+        background: 'linear-gradient(to top, #0ba360 0%, #3cba92 100%)',
+        progressBackground: 'rgba(19, 19, 20, 0.1)',
         buttonBackground: 'rgba(19, 19, 20, 0.3)'
     };
     showToast(message, options)

@@ -1,11 +1,12 @@
 <script setup lang="ts">
+    import {Form} from 'vee-validate';
+    import {profileSchema} from '~/config/validationSchema'
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
+    import {showSuccessMessage} from '~/utils'
     import {useAuthStore, useErrorStore, useProfileStore} from '~/store'
-    import {profileSchema, signUpSchema} from "~/config/validationSchema";
-    import AppButton from "~/components/shared/AppButton.vue";
-    import {Form} from "vee-validate";
-    import AppInput from "~/components/shared/inputs/AppInput.vue";
-    import AppSpinnerLoader from "~/components/shared/AppSpinnerLoader.vue";
+    import AppButton from '~/components/shared/AppButton.vue'
+    import AppInput from '~/components/shared/inputs/AppInput.vue'
+    import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue'
 
     /* -- Define stores -- */
     const errorStore = useErrorStore()
@@ -26,7 +27,11 @@
             const formData = new FormData()
             formData.append('avatar', selectedImage.value)
 
-            await profileStore.updateAvatar(formData)
+            const response = await profileStore.updateAvatar(formData)
+
+            if (response?.data?.success) {
+                showSuccessMessage('Fotografia de profil a fost actualizată cu succes')
+            }
 
             if (errorStore.errorMessage) {
                 errorMessage.value = errorStore.errorMessage
@@ -49,11 +54,16 @@
     const onSubmit = async (values, actions) => {
         const payload = {
             name: values.name,
+            phone: values.phone,
         }
 
         loading.value = true
-        await profileStore.updateProfileInfo(payload)
+        const response = await profileStore.updateProfileInfo(payload)
         loading.value = false
+
+        if (response?.data?.success) {
+            showSuccessMessage('Profil actualizat cu succes')
+        }
 
         if (errorStore.errorCode === 422) {
             actions.setErrors(errorStore.formErrors)
@@ -156,7 +166,6 @@
                                     type="phone"
                                     name="phone"
                                     label="Phone number"
-                                    read-only
                                     placeholder="Enter your phone number"
                                     v-model="formData.phone"
                                 />
