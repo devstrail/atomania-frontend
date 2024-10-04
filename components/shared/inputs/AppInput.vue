@@ -179,14 +179,14 @@
                     ]"
                 />
                 <slot name="input-prepend-action"/>
-                <!--<button
+                <button
                     v-if="type === 'password'"
                     type="button"
-                    class="absolute top-[10px] right-4 text-light"
+                    class="absolute top-[9px] right-4 text-gray-500 text-b2"
                     @click="passwordType = passwordType === 'password' ? 'text' : 'password'"
                 >
-                    <i :class="passwordType === 'password' ? 'icon-eye-regular' : 'icon-eye-slash-regular'"/>
-                </button>-->
+                    <i :class="passwordType === 'password' ? 'dt-icon-eye' : 'dt-icon-eye-off'"/>
+                </button>
             </div>
             <span
                 v-if="inputIcon && type !== 'password'"

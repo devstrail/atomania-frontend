@@ -5,6 +5,7 @@
     import AppInput from '~/components/shared/inputs/AppInput.vue'
     import AppButton from '~/components/shared/AppButton.vue'
     import {showSuccessMessage} from "~/utils";
+    import Swal from "sweetalert2";
 
     const {login} = useAuth()
     const router = useRouter()
@@ -28,6 +29,18 @@
         if (response?.data?.success) {
             actions.resetForm()
             await router.push('/login')
+            await Swal.fire({
+                title: 'Înregistrare cu Succes',
+                text: 'Vă rugăm să vă conectați pentru a continua',
+                icon: 'success',
+                timer: 7000,
+                showConfirmButton: true,
+                confirmButtonText: 'Închide',
+                customClass: {
+                    confirmButton: 'inline-flex gap-2 text-white border border-primary-600 disabled:border-primary-200 bg-primary-600 hover:bg-primary-700 disabled:bg-primary-200 disabled:cursor-not-allowed font-medium items-center justify-center h-[44px] py-[12px] px-[18px] text-[16px] leading-[24px] rounded-[8px] transition-all w-full laptop:w-[initial] shrink-0'
+                },
+                timerProgressBar: true
+            })
         }
 
         if (errorStore.errorCode === 422) {
