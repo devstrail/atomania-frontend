@@ -7,9 +7,9 @@
         <div class="container">
             <app-breadcrumb
                 class="mb-8 laptop:mb-[96px]"
-                title="We’d love to hear from you"
-                subtitle="Contact us"
-                description="Our friendly team is always here to contact with you."
+                title="Ne-ar plăcea să auzim mesajele dvs"
+                subtitle="Contactați-ne"
+                description="Echipa noastră prietenoasă este întotdeauna aici pentru a vă sprijini"
             />
             <div class="grid laptop:grid-cols-4 gap-6">
                 <div
@@ -33,13 +33,13 @@
                         <i class="dt-icon-message-smile-circle text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
-                        Chat to sales
+                        Discutați prin chat cu echipa de vânzări,
                     </p>
                     <p class="mb-5 text-gray-500">
-                        Speak to our friendly team.
+                        Vorbiți cu echipa noastră prietenoasă.
                     </p>
-                    <a href="mailto:sales@atomania" class="text-primary-700 font-medium">
-                        sales@atomania
+                    <a href="mailto:sales@atomania.ro" class="text-primary-700 font-medium">
+                        sales@atomania.ro
                     </a>
                 </div>
                 <div
@@ -63,13 +63,13 @@
                         <i class="dt-icon-message-chat-circle text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
-                        Chat to support
+                        Discutați prin chat cu echipa de asistență
                     </p>
                     <p class="mb-5 text-gray-500">
-                        We’re here to help.
+                        Suntem aici să vă ajutăm
                     </p>
-                    <a href="mailto:support@atomania" class="text-primary-700 font-medium">
-                        support@atomania
+                    <a href="mailto:info@atomania.ro" class="text-primary-700 font-medium">
+                        info@atomania.ro
                     </a>
                 </div>
                 <div
@@ -93,13 +93,13 @@
                         <i class="dt-icon-marker-pin-02 text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
-                        Visit us
+                        Vizitați-ne
                     </p>
                     <p class="mb-5 text-gray-500">
-                        Visit our office HQ.
+                        Sunteți întotdeauna bineveniți
                     </p>
                     <p class="text-primary-700 font-medium">
-                        100 Smith Street <br> Collingwood VIC 3066 AU
+                        Strada Nerva Traian 27-33 <br> București 031044
                     </p>
                 </div>
                 <div
@@ -123,13 +123,13 @@
                         <i class="dt-icon-phone text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
-                        Call us
+                        Sunați-ne
                     </p>
                     <p class="mb-5 text-gray-500">
-                        Mon-Fri from 8am to 5pm.
+                        Oricând, pentru orice, doar sunați
                     </p>
-                    <a href="tel:+1 (555) 000-0000" class="text-primary-700 font-medium">
-                        +1 (555) 000-0000
+                    <a href="tel:+40773852475" class="text-primary-700 font-medium">
+                        +40773852475
                     </a>
                 </div>
             </div>

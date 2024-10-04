@@ -71,7 +71,7 @@
                 type="email"
                 name="email"
                 label="Email"
-                placeholder="Enter your email"
+                placeholder="Introduceți adresa de e-mail"
                 v-model="formData.email"
             />
             <app-input

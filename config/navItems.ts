@@ -31,7 +31,7 @@ export const navItemsFarmer = [
         url: '/marketplace',
     },
     {
-        title: 'Ordinele mele',
+        title: 'Comenzile mele',
         url: '/orders'
     },
     {

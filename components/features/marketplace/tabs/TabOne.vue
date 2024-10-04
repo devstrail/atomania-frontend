@@ -38,12 +38,12 @@
     <div>
         <app-breadcrumb
             class="mb-8"
-            title="Găsiți-vă mașinile"
+            title="Găsiți utilaje"
             title-class="!mb-2"
-            description="Avem toate cele mai bune mașini agricole din țară"
+            description="Obțineți cel mai bun utilaj agricol disponibil în apropiere de dvs"
         />
         <marketplace-items-filter
-            search-placeholder="Mașină de căutare"
+            search-placeholder="Căutare după cuvinte cheie"
             @change:search="handleSearch"
             @change:payload="handleFilter"
         />

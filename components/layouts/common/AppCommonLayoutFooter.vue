@@ -88,20 +88,20 @@
                         @submit="onSubmit"
                         :validation-schema="subscriptionSchema"
                     >
-                        <p class="mb-4 text-gray-900 text-center laptop:text-left">Stay up to date</p>
+                        <p class="mb-4 text-gray-900 text-center laptop:text-left">Rămâneți la curent cu noutățile</p>
                         <div class="flex flex-col laptop:flex-row items-center gap-2 laptop:gap-4">
                             <app-input
                                 id="email"
                                 type="email"
                                 name="email"
-                                placeholder="Enter your email"
+                                placeholder="Introduceți adresa de e-mail"
                                 form-group-class="mb-0"
                                 v-model="formData.email"
                             />
                             <app-button
                                 class="w-full laptop:w-[initial] shrink-0"
                                 button-type="submit"
-                                title="Subscribe"
+                                title="Abonați-vă"
                                 :loading="loading"
                             />
                         </div>
@@ -125,20 +125,20 @@
                     </ul>-->
                     <ul class="flex items-center gap-3">
                         <li>
-                            <a href="/" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
-                                <img width="20" src="/images/icons/twitter.svg" alt="Twitter icon">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
+                            <a href="https://www.linkedin.com/company/atomania/?viewAsMember=true" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
                                 <img width="20" src="/images/icons/linkedin.svg" alt="Linkedin icon">
                             </a>
                         </li>
                         <li>
-                            <a href="/" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
+                            <a href="https://www.facebook.com/atomania.ro" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
                                 <img width="20" src="/images/icons/facebook.svg" alt="Facebook icon">
                             </a>
                         </li>
+                        <!--<li>
+                            <a href="/" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
+                                <img width="20" src="/images/icons/tiktok.svg" alt="Tiktok icon">
+                            </a>
+                        </li>-->
                     </ul>
                 </div>
             </div>

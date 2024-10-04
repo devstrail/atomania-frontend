@@ -25,17 +25,17 @@
         <div class="container">
             <div class="mb-5 laptop:mb-10 flex gap-4 flex-col laptop:flex-row laptop:items-center justify-between">
                 <app-breadcrumb
-                    title="Ordinele mele"
+                    title="Comenzile mele"
                     title-class="!mb-2"
                 />
                 <div class="flex gap-2 p-4 rounded-xl border border-primary-100 bg-primary-25">
                     <i class="dt-icon-info-circle text-primary-600"/>
                     <div>
                         <p class="mb-2 text-gray-700 font-medium text-b4">
-                            Pentru a afla orice tip de comenzi va rugam sa sunati la numarul de mai jos
+                            Pentru informații despre orice tip de comenzi, vă rugăm să sunați la numărul de mai jos.
                         </p>
-                        <a href="tel:+440157986574" class="text-primary-600 font-bold text-h6">
-                            +440157986574
+                        <a href="tel:+40773852475" class="text-primary-600 font-bold text-h6">
+                            +40773852475
                         </a>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
                                     ID comandă
                                 </th>
                                 <th class="border border-t-0 border-gray-200 px-6 py-2 text-gray-500 font-medium text-b5 text-left">
-                                    Maşină
+                                    Detalii comandă
                                 </th>
                                 <th class="border border-t-0 border-gray-200 px-6 py-2 text-gray-500 font-medium text-b5 text-left">
-                                    Data comandată
+                                    Data comenzii
                                 </th>
                                 <!--<th class="border border-t-0 border-gray-200 px-6 py-2 text-gray-500 font-medium text-b5 text-left">
                                     Data finalizarii
@@ -69,7 +69,7 @@
                                     Stare
                                 </th>
                                 <th class="border border-t-0 border-r-0 border-gray-200 px-6 py-2 text-gray-500 font-medium text-b5 text-left">
-                                    Pret comandat
+                                    Preț comandat
                                 </th>
                             </tr>
                         </thead>

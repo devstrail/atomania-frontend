@@ -119,11 +119,11 @@
                     <p class="mb-2 text-gray-700 font-semibold">Pretul include:</p>
                     <ul class="grid laptop:grid-cols-2 gap-y-1 gap-x-4 list-disc pl-4 text-gray-500 text-b4">
                         <li>Inspecție pe teren</li>
-                        <li>Toate cheltuielile pentru mașină</li>
-                        <li>Analiză și consiliere experți</li>
+                        <li>Toate costurile pentru utilaj</li>
+                        <li>Analiză și consiliere din partea experților</li>
                         <li>Operatori calificați</li>
-                        <li>Livrați direct pe teren</li>
-                        <li>Asigurare pentru mașină</li>
+                        <li>Livrare direct pe teren</li>
+                        <li>Asigurare pentru utilaj</li>
                         <li>Reparație și înlocuire rapidă</li>
                     </ul>
                 </div>
@@ -132,7 +132,7 @@
                     <p class="my-2 text-gray-700 font-medium text-b4">
                         Dacă întâmpinați orice problemă la plasarea comenzii, vă rugăm să ne contactați
                     </p>
-                    <a href="tel:+440157986574" class="text-primary-600 font-semibold text-b2">+440157986574</a>
+                    <a href="tel:+40773852475" class="text-primary-600 font-semibold text-b2">+40773852475</a>
                 </div>
             </div>
             <div class="mt-6 flex gap-5 flex-col laptop:flex-row items-center justify-between">

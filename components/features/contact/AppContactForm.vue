@@ -58,16 +58,16 @@
                 id="first_name"
                 type="text"
                 name="first_name"
-                label="First name"
-                placeholder="First name"
+                label="Prenume"
+                placeholder="Prenume"
                 v-model="formData.first_name"
             />
             <app-input
                 id="last_name"
                 type="text"
                 name="last_name"
-                label="Last name"
-                placeholder="Last name"
+                label="Nume"
+                placeholder="Nume"
                 v-model="formData.last_name"
             />
         </div>
@@ -75,7 +75,7 @@
             id="email"
             type="email"
             name="email"
-            label="Email"
+            label="E-mail"
             placeholder="you@company.com"
             v-model="formData.email"
         />
@@ -83,7 +83,7 @@
             id="phone"
             type="phone"
             name="phone"
-            label="Phone number"
+            label="Număr de telefon"
             placeholder="+40 - Enter your phone number"
             v-model="formData.phone"
         />
@@ -91,15 +91,15 @@
             id="message"
             type="textarea"
             name="message"
-            label="Message"
-            placeholder="Leave us a message..."
+            label="Mesaj"
+            placeholder="Lăsați-ne un mesaj..."
             v-model="formData.message"
         />
         <div class="flex items-center justify-between gap-4 my-8">
             <app-checkbox-input
                 name="isAgreePrivacyPolicy"
                 id="isAgreePrivacyPolicy"
-                label="You agree to our friendly privacy policy."
+                label="Sunteți de acord cu politica noastră de confidențialitate prietenoasă"
                 v-model="isAgreePrivacyPolicy"
             />
         </div>
@@ -111,7 +111,7 @@
         </p>
         <app-button
             button-type="submit"
-            title="Send message"
+            title="Trimiteți mesaj"
             full-width
             :loading="loading"
         />

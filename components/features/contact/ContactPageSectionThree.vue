@@ -8,9 +8,9 @@
         <div class="container">
             <app-breadcrumb
                 class="mb-8 laptop:mb-16"
-                title="Contact us"
-                subtitle="Get in touch"
-                description="We’d love to hear from you. Please fill out this form."
+                title="Contactați-ne"
+                subtitle="Luați legătura cu noi"
+                description="Ne-ar plăcea să auzim mesajele dvs. Vă rugăm să completați acest formular"
                 align="center"
             />
             <div class="max-w-[480px] mx-auto">

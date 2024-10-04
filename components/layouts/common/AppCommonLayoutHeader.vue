@@ -284,7 +284,7 @@
                                                     class="flex items-center gap-2 px-4 py-2 text-gray-700 text-b4 hover:bg-gray-50 transition-all"
                                                     @click="router.push('/profile')"
                                                 >
-                                                    <i class="dt-icon-user-01"/> My Profile
+                                                    <i class="dt-icon-user-01"/> Profilul meu
                                                 </button>
                                             </MenuItem>
                                             <MenuItem v-slot="{ active }">
@@ -293,7 +293,7 @@
                                                     class="flex items-center gap-2 px-4 py-2 text-gray-700 text-b4 hover:bg-gray-50 transition-all"
                                                     @click="router.push('/orders')"
                                                 >
-                                                    <i class="dt-icon-archive"/> My Orders
+                                                    <i class="dt-icon-archive"/> Comenzile mele
                                                 </button>
                                             </MenuItem>
                                             <!--<MenuItem v-slot="{ active }">
@@ -312,7 +312,7 @@
                                                 class="flex items-center gap-2 px-4 py-2 text-error-500 text-b4 hover:bg-gray-50 transition-all"
                                                 @click="handleLogout"
                                             >
-                                                <i class="dt-icon-log-out-01"/> Logout
+                                                <i class="dt-icon-log-out-01"/> Deconectare
                                             </button>
                                         </MenuItem>
                                     </MenuItems>

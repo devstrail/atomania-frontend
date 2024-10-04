@@ -16,7 +16,7 @@
         <h1 class="text-2xl font-bold mb-4">Farmer Dashboard</h1>
         <p>Welcome, Farmer!</p>
         <button @click="handleLogout" class="mt-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-            Logout
+            Deconectare
         </button>
     </div>
 </template>

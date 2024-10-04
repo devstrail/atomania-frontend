@@ -41,7 +41,7 @@
                 </div>
                 <app-button
                     :url="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? '/marketplace' : '/sign-up'"
-                    :title="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 'Explorați piața' : 'Alăturaţi-ne'"
+                    :title="authStore.user && authStore.user?.userRoles[0] === 'farmer' ? 'Explorați Marketplace-ul' : 'Alăturaţi-ne'"
                     class="!text-primary-700 !bg-primary-50 hover:!bg-primary-100"
                 />
             </div>

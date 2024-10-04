@@ -138,7 +138,7 @@
                 :on-click-button="() => handleViewDetails(machine?.id)"
             />
             <app-button
-                title="Comanda acum"
+                title="Comandați acum"
                 full-width
                 :on-click-button="() => handleOrderNow(machine)"
             />

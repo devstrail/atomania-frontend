@@ -88,7 +88,7 @@
 <template>
     <section class="py-8 bg-white">
         <div class="container">
-            <app-breadcrumb class="mb-6" title="My Profile"/>
+            <app-breadcrumb class="mb-6" title="Profilul meu"/>
             <div class="relative">
                 <div
                     v-if="loading"
@@ -141,10 +141,10 @@
                 <div class="grid laptop:grid-cols-[280px_auto] gap-8">
                     <div>
                         <p class="mb-1 text-gray-700 font-medium text-b4">
-                            Personal info
+                            Informații personale
                         </p>
                         <p class="text-gray-500 text-b4">
-                            Update your photo and personal details.
+                            Actualizați fotografia și detaliile personale
                         </p>
                     </div>
                     <div class="rounded-lg border border-gray-200 shadow-elevation-1">
@@ -157,7 +157,7 @@
                                     id="name"
                                     type="text"
                                     name="name"
-                                    label="Full Name"
+                                    label="Nume complet"
                                     placeholder="Enter your full name"
                                     v-model="formData.name"
                                 />
@@ -165,7 +165,7 @@
                                     id="phone"
                                     type="phone"
                                     name="phone"
-                                    label="Phone number"
+                                    label="Număr de telefon"
                                     placeholder="Enter your phone number"
                                     v-model="formData.phone"
                                 />
@@ -173,9 +173,9 @@
                                     id="email"
                                     type="email"
                                     name="email"
-                                    label="Email"
+                                    label="E-mail"
                                     read-only
-                                    placeholder="Enter your email"
+                                    placeholder="Introduceți adresa de e-mail"
                                     v-model="formData.email"
                                 />
                                 <!--<app-input
@@ -197,7 +197,7 @@
                             <div class="flex items-center gap-2 justify-end p-6">
                                 <app-button
                                     button-type="submit"
-                                    title="Save changes"
+                                    title="Salvare modificări"
                                     :loading="loading"
                                 />
                             </div>

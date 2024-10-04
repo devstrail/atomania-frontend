@@ -15,7 +15,7 @@
             <!--<p class="text-gray-500 text-b4">Nu există nicio mașină salvată în lista dvs.</p>-->
         </div>
         <!--<app-button
-            title="Find machine"
+            title="Găsiți un utilaj"
             class="!px-20"
             :on-click-button="() => emit('switchTab', 1)"
         />-->

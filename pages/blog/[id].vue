@@ -142,7 +142,7 @@
                             id="email"
                             type="email"
                             name="email"
-                            placeholder="Enter your email"
+                            placeholder="Introduceți adresa de e-mail"
                             form-group-class="mb-1"
                             :show-error-message="false"
                             v-model="formData.email"
@@ -154,7 +154,7 @@
                         <app-button
                             button-type="submit"
                             full-width
-                            title="Subscribe"
+                            title="Abonați-vă"
                             :loading="loading"
                         />
                     </Form>

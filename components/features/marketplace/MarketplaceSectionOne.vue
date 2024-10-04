@@ -9,19 +9,19 @@
     const tabs = [
         {
             id: 1,
-            title: 'Mașini',
+            title: 'Utilaje',
         },
         {
             id: 2,
-            title: 'Experți în agricultură',
+            title: 'Profesioniști',
         },
         {
             id: 3,
-            title: 'Drones',
+            title: 'Drone',
         },
         /*{
             id: 4,
-            title: 'Mașină salvată',
+            title: 'Utilaj salvat',
         }*/
     ]
     const activeTab = ref(Number(route.query.tab) || 1)

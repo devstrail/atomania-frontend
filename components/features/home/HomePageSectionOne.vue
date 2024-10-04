@@ -68,8 +68,9 @@
                         }"
                     >
                         <template v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'">
-                            Oferim <span class="text-royal-flycatcher-crest-500">Inteligent și accesibil</span>
-                            Mașini pentru o mai bună <span class="text-royal-flycatcher-crest-500">Agricultura.</span>
+                            Oferim <span
+                            class="text-royal-flycatcher-crest-500">utilaje inteligente și accesibile</span>
+                            pentru o <span class="text-royal-flycatcher-crest-500">agricultură </span> mai bună
                         </template>
                         <template v-else>
                             Conectarea <span class="text-royal-flycatcher-crest-500">fermierilor</span> români cu <span
@@ -91,9 +92,9 @@
                           }
                         }"
                     >
-                        Atomania transformă modul în care fermierii români accesează și utilizează utilaje agricole și
-                        expertiză. Prin conectarea fermierilor cu proprietarii de utilaje, operatori calificați și
-                        tehnologie de ultimă oră, facem agricultura mai eficientă și mai profitabilă.
+                        Atomania transformă modul în care fermierii români accesează și utilizează utilajele agricole
+                        și expertiza. Prin conectarea fermierilor cu proprietarii de mașini, operatori calificați și
+                        tehnologie de ultimă oră, facem agricultura mai eficientă și mai profitabilă
                     </p>
                     <div
                         class="max-w-[504px]"
@@ -112,7 +113,7 @@
                             v-if="authStore.user && authStore.user?.userRoles[0] === 'farmer'"
                             url="/marketplace"
                             class="!px-10"
-                            title="Explorați piața"
+                            title="Explorați Marketplace-ul"
                         />
                         <app-button
                             v-else

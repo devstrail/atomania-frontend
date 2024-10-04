@@ -27,7 +27,7 @@
             class="mb-8"
             title="Găsiți-vă expertul în agricultură"
             title-class="!mb-2"
-            description="Avem toți cei mai buni experți în agricultură din țară."
+            description="Primiți sfaturi de la cei mai buni profesioniști. Desemnare"
         />
         <!--<marketplace-items-filter
             :searchable="false"
