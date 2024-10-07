@@ -38,20 +38,22 @@
           }
         }"
     >
-        <NuxtImg
-            width="384"
-            height="296"
-            :src="drone?.image"
-            :alt="drone?.name"
-            class="mb-4 rounded-2xl"
-        />
-        <p class="mb-3 text-primary-700 text-b4">
-            {{ drone?.drone_type }}
-        </p>
-        <h6 class="mb-2 text-gray-900 font-semibold">
-            {{ drone?.name }}
-        </h6>
-        <p class="mb-6 text-gray-500 text-b3">{{ drone?.description }}</p>
+        <div>
+            <NuxtImg
+                width="384"
+                height="296"
+                :src="drone?.image"
+                :alt="drone?.name"
+                class="mb-4 rounded-2xl"
+            />
+            <p class="mb-3 text-primary-700 text-b4">
+                {{ drone?.drone_type }}
+            </p>
+            <h6 class="mb-2 text-gray-900 font-semibold">
+                {{ drone?.name }}
+            </h6>
+            <p class="mb-6 text-gray-500 text-b3">{{ drone?.description }}</p>
+        </div>
         <app-button
             full-width
             button-color="secondary"
