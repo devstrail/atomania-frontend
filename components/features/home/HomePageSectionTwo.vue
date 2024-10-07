@@ -16,7 +16,7 @@
             </div>
             <div class="grid laptop:grid-cols-3 gap-x-8 gap-y-8 laptop:gap-y-16">
                 <div v-for="(service, serviceIndex) in services">
-                    <app-icon class="mb-5" icon="dt-icon-zap"/>
+                    <app-icon class="mb-5" :icon="service?.icon"/>
                     <p
                         class="mb-2 text-gray-900 font-medium text-b1"
                         v-motion="{

@@ -27,6 +27,7 @@
                     description="Folosiți drone aeriene de ultimă generație pentru a obține informații cuprinzătoare asupra sănătății culturilor, pentru a optimiza gestionarea câmpului și pentru a maximiza eficiența în cadrul operațiunilor agricole."
                 />
                 <app-button
+                    class="shrink-0"
                     title="Închiriază drone"
                     :on-click-button="() => handleHireDrone()"
                 />

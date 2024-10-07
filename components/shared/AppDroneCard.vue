@@ -57,7 +57,7 @@
             button-color="secondary"
             :on-click-button="() => isHireDroneModalOpen = true"
         >
-            <i class="dt-icon-phone"/> Contactați-ne pentru drone
+            <i class="dt-icon-phone"/> Contact pentru drone
         </app-button>
 
         <app-modal v-model:is-open="isHireDroneModalOpen">

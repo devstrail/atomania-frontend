@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import 'swiper/css'
-    import {experts, testimonials} from '~/config'
+    import {testimonials} from '~/config'
     import type {Swiper as SwiperType} from 'swiper'
     import {Swiper, SwiperSlide} from 'swiper/vue'
     import {register} from 'swiper/element/bundle'

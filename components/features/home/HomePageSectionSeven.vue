@@ -29,7 +29,7 @@
                     title="Fii întotdeauna la curent cu informații despre piață de la experți"
                     description="Explorați postările noastre cuprinzătoare de pe blog pentru analize aprofundate, tendințe și actualizări privind piața agricolă. Dobândiți cunoștințe valoroase pentru a lua decizii în cunoștință de cauză, a înțelege dinamica pieței și a vă situa în fața schimbărilor din industrie pentru a vă îmbunătăți strategia agricolă și profitabilitatea."
                 />
-                <app-button title="Vezi toate postările" url="/blog"/>
+                <app-button class="shrink-0" title="Vezi toate postările" url="/blog"/>
             </div>
             <div class="grid laptop:grid-cols-3 gap-8">
                 <template v-for="(blog, blogIndex) in blogStore.blogs.slice(0, 3)">

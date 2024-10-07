@@ -5,7 +5,11 @@ export const partners = [
     },
     {
         title: 'Partner Name',
-        logo: '/images/partners/partner-logo-2.png'
+        logo: '/images/partners/partner-logo-2.svg'
+    },
+    {
+        title: 'Partner Name',
+        logo: '/images/partners/partner-logo-8.png'
     },
     {
         title: 'Partner Name',
@@ -21,6 +25,14 @@ export const partners = [
     },
     {
         title: 'Partner Name',
-        logo: '/images/partners/partner-logo-6.png'
+        logo: '/images/partners/partner-logo-6.svg'
+    },
+    {
+        title: 'Partner Name',
+        logo: '/images/partners/partner-logo-7.png'
+    },
+    {
+        title: 'Partner Name',
+        logo: '/images/partners/partner-logo-9.png'
     }
 ]

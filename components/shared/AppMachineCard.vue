@@ -130,7 +130,7 @@
                 </template>
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid desktop:grid-cols-2 gap-3">
             <app-button
                 title="Vezi detalii"
                 full-width

@@ -41,7 +41,12 @@
                 }"
             >
                 <template v-for="(partner, partnerIndex) in partners">
-                    <img width="150" :src="partner?.logo" :alt="partner?.title">
+                    <img
+                        width="200"
+                        :src="partner?.logo"
+                        :alt="partner?.title"
+                        class="shrink-0"
+                    />
                 </template>
             </div>
         </div>
