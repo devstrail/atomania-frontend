@@ -1,7 +1,7 @@
 export const experts = [
     {
         id: 1,
-        name: 'Milasan Adrian',
+        name: 'Milășan Adrian',
         phone: '+40749105311',
         email: 'milasan_adrian@yahoo.com',
         designation: 'Specialist in agricultura',
@@ -29,7 +29,7 @@ export const experts = [
     },
     {
         id: 3,
-        name: 'Șerban Mădălina',
+        name: 'Mădălina Șerban',
         phone: '+40749339987',
         email: 'madalina.serban@droneagricole.ro',
         designation: 'Inginer agronom',
@@ -69,5 +69,4 @@ export const experts = [
         bio: 'Specialist în nutriția plantelor cu expertiză în tehnologii moderne de nutriție. Oferă consultanță pentru optimizarea producției agricole în sudul României.',
         expertise: ['Nutriția plantelor', 'Protecția culturilor', 'Tehnologii agricole']
     },
-
 ]
