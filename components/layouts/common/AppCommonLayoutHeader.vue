@@ -5,24 +5,17 @@
     import {navItems, navItemsFarmer} from '~/config'
     import AppLogo from '~/components/shared/AppLogo.vue'
     import AppButton from '~/components/shared/AppButton.vue'
-    import AppSpinnerLoader from "~/components/shared/AppSpinnerLoader.vue";
+    import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue'
 
     /* -- Define Utilities -- */
     const router = useRouter()
 
-    // Define stores
-    const profileStore = useProfileStore()
+    /* -- Define stores -- */
     const authStore = useAuthStore()
+    const profileStore = useProfileStore()
     const notificationStore = useNotificationStore()
 
-    // Data
-    let lastScrollTop = 0
-    const scrollThreshold = 50
-    const isHeaderVisible = ref(true)
-    const isScrollingUp = ref(false)
-    const isMobileMenuOpen = ref(false)
-
-    // Computed
+    /* -- Handle MenuItems -- */
     const menuItems = computed(() => {
         if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             return navItemsFarmer
@@ -30,43 +23,19 @@
             return navItems
         }
     })
-
-    // Methods
-    const handleScroll = () => {
-        const currentScrollTop = window.scrollY || document.documentElement.scrollTop
-
-        if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
-            isHeaderVisible.value = false
-            isScrollingUp.value = false
-        } else if (currentScrollTop < lastScrollTop) {
-            isHeaderVisible.value = true
-            isScrollingUp.value = true
-        }
-
-        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop
-    }
-
-    const toggleMobileMenu = () => {
-        isMobileMenuOpen.value = !isMobileMenuOpen.value
-    }
-
-    const toggleBodyScroll = (disable: boolean) => {
-        if (disable) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.style.overflow = ''
-        }
-    }
-
     const navigateToSection = (sectionId) => {
         const currentRoute = router.currentRoute.value
         if (currentRoute.path === '/') {
-            // If already on the homepage, simply scroll to the section
             document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' })
         } else {
-            // Navigate to the home page with the section ID
             router.push({ path: '/', hash: sectionId })
         }
+    }
+
+    /* -- Handle Mobile Menu -- */
+    const isMobileMenuOpen = ref(false)
+    const toggleMobileMenu = () => {
+        isMobileMenuOpen.value = !isMobileMenuOpen.value
     }
 
     /* -- Handle Notification -- */
@@ -91,16 +60,37 @@
         await authStore.logout()
     }
 
-    // Watchers
+    /* -- Handle Header Scroll -- */
+    let lastScrollTop = 0
+    const scrollThreshold = 50
+    const isHeaderVisible = ref(true)
+    const isScrollingUp = ref(false)
+    const handleScroll = () => {
+        const currentScrollTop = window.scrollY || document.documentElement.scrollTop
+
+        if (currentScrollTop > lastScrollTop && currentScrollTop > scrollThreshold) {
+            isHeaderVisible.value = false
+            isScrollingUp.value = false
+        } else if (currentScrollTop < lastScrollTop) {
+            isHeaderVisible.value = true
+            isScrollingUp.value = true
+        }
+
+        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop
+    }
+    const toggleBodyScroll = (disable: boolean) => {
+        if (disable) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+    }
     watch(isMobileMenuOpen, (newValue) => {
         toggleBodyScroll(newValue)
     })
-
-    // Lifecycle hooks
     onMounted(() => {
         window.addEventListener('scroll', handleScroll)
     })
-
     onUnmounted(() => {
         window.removeEventListener('scroll', handleScroll)
         toggleBodyScroll(false)

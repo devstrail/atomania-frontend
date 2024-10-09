@@ -57,7 +57,7 @@ export const useAuthStore = defineStore({
             const token = localStorage.getItem('auth_token')
 
             return await handleCommonActions(async () => {
-                // await authService.logout(token)
+                await authService.logout()
                 this.$reset()
                 await router.push('/login')
 

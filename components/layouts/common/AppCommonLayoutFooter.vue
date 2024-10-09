@@ -2,16 +2,19 @@
     import dayjs from 'dayjs'
     import Swal from 'sweetalert2'
     import {Form} from 'vee-validate'
-    import {navItems} from '~/config'
+    import {navItems, navItemsFarmer} from '~/config'
     import {subscriptionSchema} from '~/config/validationSchema'
-    import {useErrorStore, useSubscriberStore} from '~/store'
+    import {useAuthStore, useErrorStore, useSubscriberStore} from '~/store'
     import AppLogo from '~/components/shared/AppLogo.vue'
     import AppInput from '~/components/shared/inputs/AppInput.vue'
     import AppButton from '~/components/shared/AppButton.vue'
 
+    /* -- Define Utilities -- */
+    const router = useRouter()
     const {locale, setLocale} = useI18n()
 
     /* -- Define stores -- */
+    const authStore = useAuthStore()
     const errorStore = useErrorStore()
     const subscriberStore = useSubscriberStore()
 
@@ -45,6 +48,23 @@
             actions.setErrors(errorStore.formErrors)
         }
     }
+
+    /* -- Handle MenuItems -- */
+    const menuItems = computed(() => {
+        if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
+            return navItemsFarmer
+        } else {
+            return navItems
+        }
+    })
+    const navigateToSection = (sectionId) => {
+        const currentRoute = router.currentRoute.value
+        if (currentRoute.path === '/') {
+            document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' })
+        } else {
+            router.push({ path: '/', hash: sectionId })
+        }
+    }
 </script>
 
 <template>
@@ -72,13 +92,21 @@
                     </NuxtLink>
                     <nav class="mt-4 laptop:mt-8">
                         <ul class="flex flex-wrap items-center justify-center gap-3 laptop:gap-8">
-                            <li v-for="(navItem, navItemIndex) in navItems" :key="navItemIndex">
+                            <li v-for="(navItem, navItemIndex) in menuItems" :key="navItemIndex">
                                 <NuxtLink
+                                    v-if="navItem?.url"
                                     :to="navItem?.url"
-                                    class="text-gray-500 hover:text-gray-600 font-medium text-b4 laptop:text-b3 transition"
+                                    class="p-2 text-gray-500 hover:text-gray-600 font-medium text-b3 transition"
                                 >
                                     {{ navItem?.title }}
                                 </NuxtLink>
+                                <a
+                                    v-else
+                                    @click.prevent="navigateToSection(navItem?.sectionId)"
+                                    class="p-2 text-gray-500 hover:text-gray-600 font-medium cursor-pointer text-b3 transition"
+                                >
+                                    {{ navItem?.title }}
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -108,7 +136,8 @@
                     </Form>
                 </div>
             </div>
-            <div class="py-8 flex flex-wrap gap-2 items-center justify-center laptop:justify-between border-t border-gray-200">
+            <div
+                class="py-8 flex flex-wrap gap-2 items-center justify-center laptop:justify-between border-t border-gray-200">
                 <p class="text-gray-400 text-[15px]">© {{ dayjs().year() }} Atomania | All rights reserved.</p>
                 <div class="flex items-center gap-4">
                     <!--<ul class="flex items-center gap-4">
@@ -125,12 +154,14 @@
                     </ul>-->
                     <ul class="flex items-center gap-3">
                         <li>
-                            <a href="https://www.linkedin.com/company/atomania/?viewAsMember=true" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
+                            <a href="https://www.linkedin.com/company/atomania/?viewAsMember=true" target="_blank"
+                               class="text-gray-400 hover:text-gray-900 transition">
                                 <img width="20" src="/images/icons/linkedin.svg" alt="Linkedin icon">
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/atomania.ro" target="_blank" class="text-gray-400 hover:text-gray-900 transition">
+                            <a href="https://www.facebook.com/atomania.ro" target="_blank"
+                               class="text-gray-400 hover:text-gray-900 transition">
                                 <img width="20" src="/images/icons/facebook.svg" alt="Facebook icon">
                             </a>
                         </li>
@@ -140,6 +171,20 @@
                             </a>
                         </li>-->
                     </ul>
+                    <a
+                        href="https://devstrail.com/"
+                        target="_blank"
+                        class="relative flex items-center gap-3 text-gray-500 before:w-[1px] before:h-5 before:bg-gray-400"
+                    >
+                        Developed By
+                        <NuxtImg
+                            width="20"
+                            src="/images/devstrail.svg"
+                            alt="Devstrail icon"
+                            title="DevsTrail"
+                            class="w-5"
+                        />
+                    </a>
                 </div>
             </div>
         </div>
