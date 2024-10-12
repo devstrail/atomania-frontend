@@ -89,6 +89,7 @@
                                         height="40"
                                         :src="testimonial?.client?.avatar"
                                         :alt="testimonial?.client?.name"
+                                        class="size-10"
                                     />
                                     <div>
                                         <p class="text-gray-900 text-b4">
@@ -135,7 +136,13 @@
                               }
                             }"
                         >
-                            <NuxtImg width="576" height="592" :src="testimonial.thumbnail"/>
+                            <img
+                                width="576"
+                                height="592"
+                                :src="testimonial.thumbnail"
+                                :alt="testimonial?.client?.name"
+                                class="rounded-lg"
+                            />
                         </div>
                     </div>
                 </SwiperSlide>

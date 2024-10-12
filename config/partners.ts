@@ -34,5 +34,9 @@ export const partners = [
     {
         title: 'Partner Name',
         logo: '/images/partners/partner-logo-9.png'
+    },
+    {
+        title: 'DevsTrail',
+        logo: '/images/partners/devstrail.svg'
     }
 ]

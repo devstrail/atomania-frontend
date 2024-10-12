@@ -30,10 +30,10 @@
                 :delay="0"
             />
             <p class="mt-6 mb-2 text-gray-900 font-medium text-b2">
-                Login first to see details.
+                Conectați-vă pentru a vedea detalii.
             </p>
             <p class="text-gray-500 text-b4">
-                You need to login to get access to the details.
+                Trebuie să vă autentificați pentru a avea acces la detalii.
             </p>
             <div class="mt-6 grid grid-cols-2 gap-4">
                 <AppButton
@@ -41,13 +41,13 @@
                     full-width
                     :on-click-button="() => handleNavigation('/login')"
                 >
-                    Log in
+                    Autentificare
                 </AppButton>
                 <AppButton
                     full-width
                     :on-click-button="() => handleNavigation('/sign-up')"
                 >
-                    Registration
+                    Înscriere
                 </AppButton>
             </div>
         </div>

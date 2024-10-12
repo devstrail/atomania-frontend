@@ -3,6 +3,7 @@
     import AppBreadcrumb from '~/components/shared/AppBreadcrumb.vue'
     import AppSkeletonLoader from "~/components/shared/AppSkeletonLoader.vue";
     import dayjs from "dayjs";
+    import AppEmptyStateCard from "~/components/shared/AppEmptyStateCard.vue";
 
     /* -- Define stores -- */
     const paginationStore = usePaginationStore()
@@ -43,7 +44,7 @@
             <div class="overflow-hidden rounded-lg border border-gray-200">
                 <app-skeleton-loader v-if="isLoading"/>
                 <div v-else class="overflow-auto custom-scrollbar">
-                    <table class="min-w-full border-collapse">
+                    <table v-if="orderStore.orders.length" class="min-w-full border-collapse">
                         <colgroup>
                             <col style="min-width: 120px;">
                             <col style="min-width: 250px;">
@@ -126,6 +127,7 @@
                             </template>
                         </tbody>
                     </table>
+                    <app-empty-state-card v-else/>
                 </div>
             </div>
 

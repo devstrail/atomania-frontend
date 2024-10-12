@@ -1,7 +1,7 @@
 export const experts = [
     {
         id: 1,
-        name: 'Milasan Adrian',
+        name: 'Milășan Adrian',
         phone: '+40749105311',
         email: 'milasan_adrian@yahoo.com',
         designation: 'Specialist in agricultura',
@@ -29,11 +29,11 @@ export const experts = [
     },
     {
         id: 3,
-        name: 'Șerban Mădălina',
+        name: 'Mădălina Șerban',
         phone: '+40749339987',
         email: 'madalina.serban@droneagricole.ro',
         designation: 'Inginer agronom',
-        image: '/images/experts/expert-placeholder.jpg',
+        image: '/images/experts/madalina-serban.jpg',
         available: true,
         cost: 10,
         cost_unit: 'Hectare',
@@ -47,7 +47,7 @@ export const experts = [
         phone: '+40741212819',
         email: 'ileasa.ionel@yahoo.com',
         designation: 'Protecția plantelor',
-        image: '/images/experts/expert-placeholder.jpg',
+        image: '/images/experts/vali-ileasa.jpg',
         available: true,
         cost: 10,
         cost_unit: 'Hectare',
@@ -61,7 +61,7 @@ export const experts = [
         phone: '+40727811507',
         email: 'evoecocrop@gmail.com',
         designation: 'Specialist Nutritia Plantelor',
-        image: '/images/experts/expert-placeholder.jpg',
+        image: '/images/experts/vlad-cristian.jpg',
         available: true,
         cost: 10,
         cost_unit: 'Hectare',
@@ -69,5 +69,18 @@ export const experts = [
         bio: 'Specialist în nutriția plantelor cu expertiză în tehnologii moderne de nutriție. Oferă consultanță pentru optimizarea producției agricole în sudul României.',
         expertise: ['Nutriția plantelor', 'Protecția culturilor', 'Tehnologii agricole']
     },
-
+    {
+        id: 6,
+        name: 'Ioana Vermeșan',
+        phone: '+40743380220',
+        email: 'vermesan.ioana@yahoo.ro',
+        designation: 'Inginer agronom',
+        image: '/images/experts/ioana-vermesan.jpg',
+        available: true,
+        cost: 10,
+        cost_unit: 'Hectare',
+        address: 'Cluj, Bistrița, Alba-Iulia',
+        bio: 'Facultatea de Agricultura si Master - Managementul resurselor naturale și agroturistice, 2 ani de experienta în vânzări la firma Naturevo.',
+        expertise: ['Consultanță', 'Protecția culturilor']
+    },
 ]
