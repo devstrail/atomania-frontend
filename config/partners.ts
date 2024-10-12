@@ -9,7 +9,7 @@ export const partners = [
     },
     {
         title: 'Partner Name',
-        logo: '/images/partners/partner-logo-8.jpeg'
+        logo: '/images/partners/partner-logo-8.png'
     },
     {
         title: 'Partner Name',
