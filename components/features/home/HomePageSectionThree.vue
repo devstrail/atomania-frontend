@@ -29,19 +29,15 @@
         const types = machineStore.machines?.slice(0, 6)?.map((machine) => machine.type)
         return ['*', ...new Set(types)]
     })
-    const fetchMachines = async () => {
+    const fetchMachines = async (payload = {}) => {
         loading.value = true
-        await machineStore.fetchMachines()
+        await machineStore.fetchMachines(payload)
         loading.value = false
 
         initiateIsotope()
-
-        if (errorStore.errorCode === 422) {
-            actions.setErrors(errorStore.formErrors)
-        }
     }
     onMounted(() => {
-        fetchMachines();
+        fetchMachines({page: 1});
     })
 
     /* -- Handle Isotope Filter -- */

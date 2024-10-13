@@ -10,9 +10,9 @@
 
     /* -- Fetch Blogs -- */
     const loading = ref(false)
-    const fetchBlogs = async () => {
+    const fetchBlogs = async (page = 1) => {
         loading.value = true
-        await blogStore.fetchBlogs()
+        await blogStore.fetchBlogs({ page })
         loading.value = false
     }
     onMounted(() => {
