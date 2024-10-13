@@ -49,7 +49,9 @@
         }
     }
 
-    const handleOrderNow = (val) => {
+    const handleOrderNow = (val, event) => {
+        event.stopPropagation()
+
         if (authStore.user && authStore.user?.userRoles[0] === 'farmer') {
             machineStore.isOrderMachineModalOpen = true
             emit('openOrderModal', val)
@@ -60,15 +62,15 @@
 </script>
 
 <template>
-    <div class="h-full laptop:min-h-[493px] flex flex-col justify-between">
+    <div
+        class="h-full laptop:min-h-[493px] flex flex-col justify-between cursor-pointer"
+        @click="handleViewDetails(machine?.id)"
+    >
         <div>
             <div class="relative">
-                <NuxtImg
-                    width="384"
-                    height="284"
-                    :src="machine?.cover_photo ? machine?.cover_photo : '/images/placeholder-image.png'"
-                    :alt="machine?.name"
-                    class="mb-4 rounded-2xl"
+                <div
+                    :style="{ backgroundImage: `url(${machine?.cover_photo ? machine?.cover_photo : '/images/placeholder-image.png'})` }"
+                    class="min-h-[200px] laptop:min-h-[265px] mb-4 overflow-hidden rounded-2xl bg-cover bg-center"
                 />
                 <!--<button
                     type="button"
@@ -96,8 +98,7 @@
                     </span>
                 </div>
             </div>
-
-            <h6 class="mb-2 text-gray-900 font-semibold capitalize">
+            <h6 class="mb-2 text-gray-900 font-semibold capitalize line-clamp-1 overflow-hidden">
                 {{ machine?.name }}
             </h6>
             <!--<div class="mb-4 flex items-center justify-between">
@@ -140,7 +141,7 @@
             <app-button
                 title="Comandați acum"
                 full-width
-                :on-click-button="() => handleOrderNow(machine)"
+                :on-click-button="(event) => handleOrderNow(machine, event)"
             />
         </div>
     </div>

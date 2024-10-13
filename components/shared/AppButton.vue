@@ -5,7 +5,7 @@
     // Define props
     const props = defineProps({
         url: {
-            type: Object,
+            type: String,
             default: null
         },
         fullWidth: {

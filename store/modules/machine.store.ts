@@ -38,7 +38,17 @@ export const useMachineStore = defineStore({
             return await handleCommonActions(async () => {
                 const response = await machineService.get(this.getPayload(payload))
                 this.machines = response.data?.data?.data ?? []
-                paginationStore.setPaginationData(response.data?.meta ?? {})
+
+                if (response.data?.data) {
+                    paginationStore.updatePagination({
+                        current_page: response.data.data.current_page,
+                        last_page: response.data.data.last_page,
+                        total: response.data.data.total,
+                        per_page: response.data.data.per_page
+                    })
+                }
+
+                return response.data
             });
         },
         async getMachine(id) {

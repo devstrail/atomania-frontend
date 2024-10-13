@@ -43,7 +43,7 @@
             </h6>
             <i class="dt-icon-arrow-up-right text-b1 transition"/>
         </div>
-        <p class="mb-6 text-gray-500 text-b3 line-clamp-3 overflow-hidden">{{ post?.excerpts }}</p>
+        <!--<p class="mb-6 text-gray-500 text-b3 line-clamp-3 overflow-hidden">{{ post?.excerpts }}</p>-->
         <!--<div class="flex items-center gap-3">
             <NuxtImg
                 width="40"

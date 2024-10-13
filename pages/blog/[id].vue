@@ -9,6 +9,7 @@
     import type {Instance as TippyInstance} from 'tippy.js'
     import AppButton from '~/components/shared/AppButton.vue'
     import AppInput from '~/components/shared/inputs/AppInput.vue'
+    import AppSpinnerLoader from '~/components/shared/AppSpinnerLoader.vue'
 
     /* -- Define stores -- */
     const errorStore = useErrorStore()
@@ -19,8 +20,11 @@
     const blog = ref(null)
 
     /* -- Fetch Blog -- */
+    const isLoading = ref(false)
     const findBlogById = async (id) => {
+        isLoading.value = true
         await blogStore.getBlog(id)
+        isLoading.value = false
     }
     onMounted(() => {
         const id = route.params.id
@@ -89,77 +93,88 @@
 <template>
     <section class="py-10 laptop:py-14 bg-white">
         <div class="container">
-            <h3 class="mb-8 laptop:mb-16 text-gray-900 font-semibold">
-                {{ blogStore?.blog?.title }}
-            </h3>
-            <NuxtImg
-                width="1216"
-                height="516"
-                :src="blogStore?.blog?.image"
-                :alt="blogStore?.blog?.title"
-                class="w-full mb-8 rounded-2xl"
-            />
-            <div class="mb-7 laptop:mb-14 flex gap-5 flex-wrap items-start justify-between">
-                <div class="flex gap-16">
-                    <!--<div>
-                        <p class="mb-3 text-primary-600 font-semibold text-b4">Credit by</p>
-                        <p class="text-gray-900 font-medium text-b2">{{ blogStore?.blog?.author?.name }}</p>
-                    </div>-->
-                    <div>
-                        <p class="mb-3 text-primary-600 font-semibold text-b4">Published on</p>
-                        <p class="text-gray-900 font-medium text-b2">
-                            {{ dayjs(blogStore?.blog?.updated_at).format('DD MMM YYYY') }}
-                        </p>
+            <template v-if="isLoading">
+                <div class="relative">
+                    <div class="w-full h-full min-h-[400px] absolute top-0 left-0 z-10 grid place-items-center rounded-lg bg-primary-25">
+                        <app-spinner-loader
+                            spinner-style="w-10 h-10 text-primary-600 fill-white"
+                        />
                     </div>
                 </div>
-                <button
-                    ref="copyButtonElementRef"
-                    type="button"
-                    class="inline-flex gap-2 items-center py-3 px-4 text-gray-700 font-medium text-b4 border border-gray-300 rounded-[8px] bg-white hover:bg-gray-200 transition"
-                    @click="copyBlogUrl"
-                >
-                    <i class="dt-icon-copy-01"/> Copy link
-                </button>
-            </div>
-            <div class="grid laptop:grid-cols-[auto_384px] gap-10 laptop:gap-[96px] items-start">
-                <div class="blog-content" v-html="blogStore?.blog?.content"/>
-                <div class="sticky top-10 py-10 px-8 bg-gray-50 border-t-4 border-primary-700">
-                    <div class="size-14 grid place-items-center mb-8 text-primary-600 text-b1 rounded-full bg-success-100">
-                        <i class="dt-icon-send-01"/>
+            </template>
+            <template v-else>
+                <h3 class="mb-8 laptop:mb-16 text-gray-900 font-semibold">
+                    {{ blogStore?.blog?.title }}
+                </h3>
+                <NuxtImg
+                    width="1216"
+                    height="516"
+                    :src="blogStore?.blog?.image"
+                    :alt="blogStore?.blog?.title"
+                    class="w-full mb-8 rounded-2xl"
+                />
+                <div class="mb-7 laptop:mb-14 flex gap-5 flex-wrap items-start justify-between">
+                    <div class="flex gap-16">
+                        <!--<div>
+                            <p class="mb-3 text-primary-600 font-semibold text-b4">Credit by</p>
+                            <p class="text-gray-900 font-medium text-b2">{{ blogStore?.blog?.author?.name }}</p>
+                        </div>-->
+                        <div>
+                            <p class="mb-3 text-primary-600 font-semibold text-b4">Published on</p>
+                            <p class="text-gray-900 font-medium text-b2">
+                                {{ dayjs(blogStore?.blog?.updated_at).format('DD MMM YYYY') }}
+                            </p>
+                        </div>
                     </div>
-                    <h6 class="mb-2 text-gray-900 font-semibold">
-                        Weekly newsletter
-                    </h6>
-                    <p class="mb-8 text-gray-500">
-                        No spam. Just the latest releases and tips, interesting articles, and exclusive interviews in
-                        your inbox every week.
-                    </p>
-                    <Form
-                        @submit="onSubmit"
-                        :validation-schema="subscriptionSchema"
+                    <button
+                        ref="copyButtonElementRef"
+                        type="button"
+                        class="inline-flex gap-2 items-center py-3 px-4 text-gray-700 font-medium text-b4 border border-gray-300 rounded-[8px] bg-white hover:bg-gray-200 transition"
+                        @click="copyBlogUrl"
                     >
-                        <app-input
-                            id="email"
-                            type="email"
-                            name="email"
-                            placeholder="Introduceți adresa de e-mail"
-                            form-group-class="mb-1"
-                            :show-error-message="false"
-                            v-model="formData.email"
-                        />
-                        <!--<p class="mb-4 text-gray-500 text-b4">
-                            Read about our
-                            <NuxtLink to="/"><u>privacy policy</u>.</NuxtLink>
-                        </p>-->
-                        <app-button
-                            button-type="submit"
-                            full-width
-                            title="Abonați-vă"
-                            :loading="loading"
-                        />
-                    </Form>
+                        <i class="dt-icon-copy-01"/> Copy link
+                    </button>
                 </div>
-            </div>
+                <div class="grid laptop:grid-cols-[auto_384px] gap-10 laptop:gap-[96px] items-start">
+                    <div class="blog-content" v-html="blogStore?.blog?.content"/>
+                    <div class="sticky top-10 py-10 px-8 bg-gray-50 border-t-4 border-primary-700">
+                        <div class="size-14 grid place-items-center mb-8 text-primary-600 text-b1 rounded-full bg-success-100">
+                            <i class="dt-icon-send-01"/>
+                        </div>
+                        <h6 class="mb-2 text-gray-900 font-semibold">
+                            Weekly newsletter
+                        </h6>
+                        <p class="mb-8 text-gray-500">
+                            No spam. Just the latest releases and tips, interesting articles, and exclusive interviews in
+                            your inbox every week.
+                        </p>
+                        <Form
+                            @submit="onSubmit"
+                            :validation-schema="subscriptionSchema"
+                        >
+                            <app-input
+                                id="email"
+                                type="email"
+                                name="email"
+                                placeholder="Introduceți adresa de e-mail"
+                                form-group-class="mb-1"
+                                :show-error-message="false"
+                                v-model="formData.email"
+                            />
+                            <!--<p class="mb-4 text-gray-500 text-b4">
+                                Read about our
+                                <NuxtLink to="/"><u>privacy policy</u>.</NuxtLink>
+                            </p>-->
+                            <app-button
+                                button-type="submit"
+                                full-width
+                                title="Abonați-vă"
+                                :loading="loading"
+                            />
+                        </Form>
+                    </div>
+                </div>
+            </template>
         </div>
     </section>
 </template>

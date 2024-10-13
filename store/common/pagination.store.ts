@@ -51,6 +51,12 @@ export const usePaginationStore = defineStore({
         },
     },
     actions: {
+        updatePagination(payload) {
+            this.current_page = payload.current_page
+            this.last_page = payload.last_page
+            this.total = payload.total
+            this.per_page = payload.per_page
+        },
         async initiate(data = {}){
             this.current_page   = data.hasOwnProperty('current_page') ? data.current_page : 1;
             this.last_page      = data.hasOwnProperty('last_page') ? data.last_page : 1;

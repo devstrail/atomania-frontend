@@ -312,20 +312,20 @@
                     </template>
                     <template v-else>
                         <li class="hidden laptop:block">
-                            <AppButton
+                            <app-button
                                 url="/login"
                                 button-color="secondary"
                                 class="border-transparent"
                             >
                                 Autentificare
-                            </AppButton>
+                            </app-button>
                         </li>
                         <li class="hidden laptop:block">
-                            <AppButton
+                            <app-button
                                 url="/sign-up"
                             >
                                 Înscriere
-                            </AppButton>
+                            </app-button>
                         </li>
                     </template>
                 </ul>
@@ -362,21 +362,21 @@
                 <template v-if="authStore.user?.userRoles[0] !== 'farmer'">
                     <ul class="container grid grid-cols-2 gap-3 py-4 mt-auto">
                         <li class="nav-item" style="animation-delay: 0.6s;">
-                            <AppButton
+                            <app-button
                                 url="/login"
                                 button-color="secondary"
                                 full-width
                             >
                                 Sign in
-                            </AppButton>
+                            </app-button>
                         </li>
                         <li class="nav-item" style="animation-delay: 0.6s;">
-                            <AppButton
+                            <app-button
                                 url="/login"
                                 full-width
                             >
                                 Sign up
-                            </AppButton>
+                            </app-button>
                         </li>
                     </ul>
                 </template>
