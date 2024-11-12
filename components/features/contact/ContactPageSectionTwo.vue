@@ -8,7 +8,7 @@
             <div class="grid laptop:grid-cols-2 gap-8 laptop:gap-[96px] mb-8 laptop:mb-16">
                 <app-breadcrumb
                     title="Locațiile noastre"
-                    description="Veniți să ne vizitați echipa prietenoasă la unul dintre birourile noastre"
+                    description="Veniți să ne vizitați la unul dintre birourile noastre"
                 />
                 <div class="flex gap-6">
                     <div

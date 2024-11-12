@@ -10,7 +10,7 @@
                 class="mb-8 laptop:mb-16"
                 title="Contactați-ne"
                 subtitle="Luați legătura cu noi"
-                description="Ne-ar plăcea să auzim mesajele dvs. Vă rugăm să completați acest formular"
+                description="Ne-ar plăcea să auzim mesajele dumneavoastră. Vă rugăm să completați acest formular"
                 align="center"
             />
             <div class="max-w-[480px] mx-auto">

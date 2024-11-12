@@ -83,7 +83,7 @@
                 class="inline-flex gap-2 items-center text-b5 font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 <i class="dt-icon-arrow-left"/>
-                Previous
+                Înapoi
             </button>
         </div>
 
@@ -116,7 +116,7 @@
                 :disabled="currentPage === lastPage"
                 class="inline-flex gap-2 items-center text-b5 font-medium text-gray-500 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                Next
+                Următorul
                 <i class="dt-icon-arrow-right"/>
             </button>
         </div>

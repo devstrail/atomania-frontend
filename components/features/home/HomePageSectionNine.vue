@@ -36,7 +36,7 @@
                         Peste 10.000 de persoane sunt deja conectate
                     </p>
                     <p class="mb-2 text-white text-b4 laptop:text-b2">
-                        Alăturați-vă nouă pentru a ne transforma industria agricolă
+                        Împreună putem revoluționa industria agricolă
                     </p>
                 </div>
                 <app-button

@@ -9,7 +9,7 @@
             <app-breadcrumb
                 class="mb-8 laptop:mb-16 max-w-[768px] mx-auto"
                 title="Fă cunoștință cu echipa noastră"
-                description="Echipa noastră este compusă din profesioniști pasionați, cu o vastă experiență în agricultură, tehnologie și dezvoltare de afaceri. Membrii cheie includ"
+                description="Echipa noastră este compusă din profesioniști pasionați, cu o vastă experiență în agricultură, tehnologie și dezvoltare de afaceri. Iată mai jos principalii membrii ai Automania"
                 align="center"
             />
             <div class="max-w-[904px] mx-auto grid laptop:grid-cols-3 gap-8">

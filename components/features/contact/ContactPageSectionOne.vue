@@ -7,7 +7,7 @@
         <div class="container">
             <app-breadcrumb
                 class="mb-8 laptop:mb-[96px]"
-                title="Ne-ar plăcea să auzim mesajele dvs"
+                title="Ne-ar plăcea să auzim mesajele dumneavoastră"
                 subtitle="Contactați-ne"
                 description="Echipa noastră prietenoasă este întotdeauna aici pentru a vă sprijini"
             />
@@ -33,7 +33,7 @@
                         <i class="dt-icon-message-smile-circle text-[24px]"/>
                     </div>
                     <p class="mb-2 text-gray-900 font-medium text-b1">
-                        Discutați prin chat cu echipa de vânzări,
+                        Discutați prin chat cu echipa de vânzări
                     </p>
                     <p class="mb-5 text-gray-500">
                         Vorbiți cu echipa noastră prietenoasă.

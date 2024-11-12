@@ -72,12 +72,12 @@
             <div class="flex flex-col laptop:flex-row gap-5 items-start laptop:items-center justify-between">
                 <app-breadcrumb
                     class="laptop:mb-8"
-                    title="Găsiți mașini"
-                    description="Toate utilajele sunt disponibile pentru noi."
+                    title="Aici găsiți toate utilajele agricole de care aveți nevoie"
+                    description="Sunteți la un click distanță de o experiență profesională."
                 />
                 <app-button
                     class="mb-5 laptop:mb-0"
-                    title="Arată toată mașina"
+                    title="Afișați toate utilajele agricole"
                     :on-click-button="() => handleShowAllMachine()"
                 />
             </div>
@@ -115,7 +115,7 @@
                                 activeFilter === type ? 'bg-royal-flycatcher-crest-600 border-royal-flycatcher-crest-600 text-white' : 'text-gray-500 border-gray-200 bg-transparent',
                             ]"
                         >
-                            {{ type === '*' ? 'All Machine' : type }}
+                            {{ type === '*' ? 'Toate utilajele agricole' : type }}
                         </button>
                     </div>
                     <div ref="container" class="flex flex-wrap -mx-4">

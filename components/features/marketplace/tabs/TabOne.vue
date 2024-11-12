@@ -60,7 +60,7 @@
             class="mb-8"
             title="Găsiți utilaje"
             title-class="!mb-2"
-            description="Obțineți cel mai bun utilaj agricol disponibil în apropiere de dvs"
+            description="Obțineți cel mai bun utilaj agricol disponibil în apropiere de dumneavoastră"
         />
         <marketplace-items-filter
             search-placeholder="Căutare după cuvinte cheie"

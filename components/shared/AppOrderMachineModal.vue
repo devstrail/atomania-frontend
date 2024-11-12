@@ -81,10 +81,10 @@
             </h6>
             <div class="max-w-[220px]">
                 <app-date-input
-                    label="Data începerii închirierii mașinii:"
+                    label="Data începerii închirierii utilajului:"
                     label-class="!mb-2"
                     name="starting_date"
-                    placeholder="Selectați datele"
+                    placeholder="Selectați data"
                     auto-apply
                     v-model="formData.start_date"
                 />
@@ -97,13 +97,13 @@
                     <div
                         class="flex flex-col items-center justify-center py-6 px-4 rounded-xl border border-gray-200 bg-gray-25">
                         <h5 class="text-gray-700 font-semibold">€{{ machine?.cost }}</h5>
-                        <p class="text-gray-700">Pe hectare</p>
+                        <p class="text-gray-700">pe hectar</p>
                     </div>
                     <div class="grid place-items-center text-gray-900 font-semibold text-h4">X</div>
                     <input
                         type="number"
                         class="w-full max-w-full h-full py-6 px-4 text-gray-700 placeholder:text-gray-500 font-semibold text-h5 text-center rounded-xl border border-wispy-white-200 focus:border-wispy-white-700 bg-wispy-white-50 focus:ring-wispy-white-700"
-                        placeholder="Intră în Hectare"
+                        placeholder="Numărul de hectare"
                         v-model="formData.quantity"
                     />
                     <div class="grid place-items-center text-gray-900 font-semibold text-h4">=</div>
@@ -116,7 +116,7 @@
             </div>
             <div class="grid laptop:grid-cols-[auto_291px] gap-6">
                 <div class="p-4 border border-gray-200 bg-gray-25 rounded-xl">
-                    <p class="mb-2 text-gray-700 font-semibold">Pretul include:</p>
+                    <p class="mb-2 text-gray-700 font-semibold">Prețul include:</p>
                     <ul class="grid laptop:grid-cols-2 gap-y-1 gap-x-4 list-disc pl-4 text-gray-500 text-b4">
                         <li>Inspecție pe teren</li>
                         <li>Toate costurile pentru utilaj</li>
@@ -139,7 +139,7 @@
                 <app-checkbox-input
                     name="isAgreePrivacyPolicy"
                     id="isAgreePrivacyPolicy"
-                    label="Sunteți de acord cu politica noastră de confidențialitate prietenoasă."
+                    label="Sunteți de acord cu politica noastră de confidențialitate."
                     v-model="isAgreePrivacyPolicy"
                 />
                 <AppButton

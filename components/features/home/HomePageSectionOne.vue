@@ -73,10 +73,9 @@
                             pentru o <span class="text-royal-flycatcher-crest-500">agricultură </span> mai bună
                         </template>
                         <template v-else>
-                            Conectarea <span class="text-royal-flycatcher-crest-500">fermierilor</span> români cu <span
-                            class="text-royal-flycatcher-crest-500">utilajele</span> și <span
-                            class="text-royal-flycatcher-crest-500">experiența</span> de care au nevoie, atunci când au
-                            nevoie
+                            Conectam <span class="text-royal-flycatcher-crest-500">fermierii</span> romani cu <span
+                            class="text-royal-flycatcher-crest-500">utilajele</span> atunci cand au nevoie și asiguram
+                            tot suportul necesar.
                         </template>
                     </h3>
                     <p
@@ -92,9 +91,9 @@
                           }
                         }"
                     >
-                        Atomania transformă modul în care fermierii români accesează și utilizează utilajele agricole
-                        și expertiza. Prin conectarea fermierilor cu proprietarii de mașini, operatori calificați și
-                        tehnologie de ultimă oră, facem agricultura mai eficientă și mai profitabilă
+                        Atomania transformă modul în care fermierii români accesează și operează utilajele agricole,
+                        precum și expertiza acestora. Prin conectarea fermierilor cu proprietarii de mașini, operatori
+                        calificați și tehnologie de ultimă oră, facem agricultura mai eficientă și mai profitabilă
                     </p>
                     <div
                         class="max-w-[504px]"

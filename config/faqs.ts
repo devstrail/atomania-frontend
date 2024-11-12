@@ -12,7 +12,7 @@ export const faqs = [
     {
         id: 3,
         question: 'Ce tipuri de utilaje pot închiria prin Atomania?',
-        answer: 'Platforma noastră oferă o mare varietate de utilaje agricole, inclusiv tractoare, pluguri, secerătoare, semănători și pulverizatoare. De asemenea, oferim acces la tehnologii avansate precum drone și stații meteo IoT.'
+        answer: 'Platforma noastră oferă o mare varietate de utilaje agricole, inclusiv tractoare, pluguri, secerătoare, semănători și pulverizatoare. De asemenea, oferim acces la tehnologii avansate precum drone și stații meteo inteligente.'
     },
     {
         id: 4,

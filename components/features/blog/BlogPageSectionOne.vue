@@ -43,7 +43,7 @@
             <div class="container">
                 <app-breadcrumb
                     title="Blog"
-                    description="We love to share latest farming information with our user."
+                    description="Ne place să împărtășim cele mai recente informații despre agricultură cu utilizatorul nostru."
                 />
             </div>
         </div>

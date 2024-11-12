@@ -59,14 +59,14 @@
             button-color="secondary"
             :on-click-button="() => isHireDroneModalOpen = true"
         >
-            <i class="dt-icon-phone"/> Contact pentru drone
+            <i class="dt-icon-phone"/> Contact
         </app-button>
 
         <app-modal v-model:is-open="isHireDroneModalOpen">
             <div class="flex flex-col items-center justify-center text-center">
                 <app-icon icon="dt-icon-phone-outgoing-01" :delay="0"/>
                 <p class="mt-6 mb-3 text-gray-900">
-                    To hire this drone please call here
+                    Pentru a închiria această dronă, vă rugăm sunați la numărul:
                 </p>
                 <a href="tel:+40568987985" class="inline-block mb-6 text-primary-500 font-bold text-h6">
                     +40568987985

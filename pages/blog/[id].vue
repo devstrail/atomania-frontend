@@ -142,11 +142,10 @@
                             <i class="dt-icon-send-01"/>
                         </div>
                         <h6 class="mb-2 text-gray-900 font-semibold">
-                            Weekly newsletter
+                            Buletin informativ săptămânal
                         </h6>
                         <p class="mb-8 text-gray-500">
-                            No spam. Just the latest releases and tips, interesting articles, and exclusive interviews in
-                            your inbox every week.
+                            Fără spam. Doar cele mai recente versiuni și sfaturi, articole interesante și interviuri exclusive în căsuța dvs. de e-mail în fiecare săptămână.
                         </p>
                         <Form
                             @submit="onSubmit"

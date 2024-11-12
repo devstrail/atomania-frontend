@@ -26,7 +26,7 @@
             <div class="mb-7 laptop:mb-14 flex flex-col laptop:flex-row laptop:items-center justify-between gap-5">
                 <app-breadcrumb
                     class="max-w-[780px]"
-                    title="Fii întotdeauna la curent cu informații despre piață de la experți"
+                    title="Fii întotdeauna la curent cu actualele tendințe"
                     description="Explorați postările noastre cuprinzătoare de pe blog pentru analize aprofundate, tendințe și actualizări privind piața agricolă. Dobândiți cunoștințe valoroase pentru a lua decizii în cunoștință de cauză, a înțelege dinamica pieței și a vă situa în fața schimbărilor din industrie pentru a vă îmbunătăți strategia agricolă și profitabilitatea."
                 />
                 <app-button class="shrink-0" title="Vezi toate postările" url="/blog"/>

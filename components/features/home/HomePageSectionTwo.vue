@@ -10,8 +10,8 @@
             <div class="max-w-[780px]">
                 <app-breadcrumb
                     class="mb-8 laptop:mb-16"
-                    title="Serviciile noastre"
-                    description="Atomania conectează fermierii români cu utilajele, expertiza și tehnologia de care au nevoie, atunci când au nevoie. Platforma noastră oferă acces la cerere la echipamente, operatori calificați și instrumente avansate, făcând agricultura mai eficientă și mai rentabilă."
+                    title="Ce oferim..."
+                    description="Aș șterge complet fraza asta și aș adauga tot ca un punct urmatoarea: Platformă ușor accesibilă (titlu). Text: Platforma noastră oferă acces la cerere la echipamente, operatori calificați și instrumente avansate, făcând agricultura mai eficientă și mai rentabilă."
                 />
             </div>
             <div class="grid laptop:grid-cols-3 gap-x-8 gap-y-8 laptop:gap-y-16">

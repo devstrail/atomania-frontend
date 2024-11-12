@@ -103,7 +103,7 @@
                                 <div class="flex items-center justify-end laptop:justify-start gap-5">
                                     <button
                                         type="button"
-                                        aria-label="Previous"
+                                        aria-label="Înapoi"
                                         class="grid size-12 laptop:size-14 place-items-center text-h6 rounded-full border border-gray-200 text-gray-500 transition hover:bg-gray-100"
                                         @click="() => swiperElRef?.slidePrev()"
                                     >
@@ -111,7 +111,7 @@
                                     </button>
                                     <button
                                         type="button"
-                                        aria-label="Next"
+                                        aria-label="Următorul"
                                         class="grid size-12 laptop:size-14 place-items-center text-h6 rounded-full border border-gray-200 text-gray-500 transition hover:bg-gray-100"
                                         @click="() => swiperElRef?.slideNext()"
                                     >

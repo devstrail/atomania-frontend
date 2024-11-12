@@ -21,7 +21,7 @@
                   }
                 }"
             >
-                Official partner of these companies
+                Parteneri oficiali
             </p>
             <div
                 class="flex flex-wrap items-center justify-center gap-9"

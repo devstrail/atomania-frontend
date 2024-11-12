@@ -8,7 +8,7 @@
         <div class="container">
             <app-breadcrumb
                 class="mb-8 laptop:mb-16"
-                title="Construim o comunitate agricolă digitale "
+                title="Împreună construim o comunitate agricolă digitală"
                 subtitle="Povestea noastră"
                 description="Un marketplace pentru fermierii români, de la fermieri, la fermieri."
             />
@@ -24,11 +24,9 @@
                     agricole nu vă va da bătăi de cap.
                 </p>
                 <p class="text-gray-500">
-                    Oferiți, de asemenea, servicii expert, stație meteo bazată pe IoT și analiză imaginară prin satelit.
-                    Este la cerere, rapid și ușor de obținut. Deci, nicio bătaie de cap pentru partajarea mașinilor și
-                    tehnologiilor agricole.
+                    Oferim, de asemenea, servicii expert, stație meteo bazată pe IoT și analiză imaginară prin satelit. Totul la un click distanță.
                     <br><br>
-                    Partajează, evoluează, reușește cu Atomania
+                    Partajează, evoluează, reușește cu Atomania!
                 </p>
             </div>
         </div>

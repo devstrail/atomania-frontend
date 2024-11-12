@@ -9,7 +9,7 @@
         <div class="container">
             <app-breadcrumb
                 class="mb-7 laptop:mb-14"
-                title="Conectăm fermierii cu utilajele necesare"
+                title="Aducem fermierii împreună și le oferim utilajele necesare"
                 align="center"
             />
             <div class="grid laptop:grid-cols-2 gap-7 laptop:gap-[96px] items-center">
@@ -32,14 +32,13 @@
                 >
                     <app-icon class="mb-6" icon="dt-icon-message-chat-circle"/>
                     <h5 class="mb-4 text-gray-900 font-semibold">
-                        Beneficii pentru fermieri
+                        Avantaje pentru fermieri
                     </h5>
                     <p class="mb-2 text-gray-700 font-semibold text-b1">
-                        Creșteți productivitatea fermei dvs. cu Atomania
+                        Automania ajută la creșterea productivității fermei dumneavoastră
                     </p>
                     <p class="mb-6 text-gray-500 text-b2">
-                        Atomania oferă fermierilor români acces rentabil la cele mai noi utilaje agricole și asistență
-                        de specialitate, ajutându-vă să obțineți recolte mai mari și operațiuni mai eficiente.
+                        Oferim fermierilor români acces facil la cele mai noi utilaje agricole precum și asistență de specialitate, ajutându-vă să creșteți productivitatea recoltelor dumenavoastră.
                     </p>
                     <app-list
                         :items="[
@@ -118,15 +117,13 @@
                 >
                     <app-icon class="mb-6" icon="dt-icon-zap-fast"/>
                     <h5 class="mb-4 text-gray-900 font-semibold">
-                        Beneficii pentru furnizori (furnizori de utilaje)
+                        Avantaje pentru furnizorii de utilaje
                     </h5>
                     <p class="mb-2 text-gray-700 font-semibold text-b1">
-                        Maximizați potențialul echipamentului dvs. cu Atomania.
+                        Automania ajută la maximizarea potențialului dumneavoastră
                     </p>
                     <p class="mb-6 text-gray-500 text-b2">
-                        Atomania permite furnizorilor de utilaje să genereze venituri suplimentare prin închirierea
-                        echipamentelor lor fermierilor care au nevoie de acestea, extinzându-și în același timp
-                        acoperirea în România.
+                        Vă permitem în mod eficient să generați venituri suplimentare prin închirierea utilajelor dumneavoastră fermierilor.
                     </p>
                     <app-list
                         :items="[
