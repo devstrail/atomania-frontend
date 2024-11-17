@@ -11,7 +11,7 @@
                 <app-breadcrumb
                     class="mb-8 laptop:mb-16"
                     title="Ce oferim..."
-                    description="Aș șterge complet fraza asta și aș adauga tot ca un punct urmatoarea: Platformă ușor accesibilă (titlu). Text: Platforma noastră oferă acces la cerere la echipamente, operatori calificați și instrumente avansate, făcând agricultura mai eficientă și mai rentabilă."
+                    description="Platformă ușor accesibilă: Platforma noastră oferă acces la cerere la echipamente, operatori calificați și instrumente avansate, făcând agricultura mai eficientă și mai rentabilă."
                 />
             </div>
             <div class="grid laptop:grid-cols-3 gap-x-8 gap-y-8 laptop:gap-y-16">
