@@ -1,0 +1,20 @@
+name: atomania-app
+
+services:
+  - name: web
+    docker:
+      image: ${{ secrets.DOCKER_IMAGE_NAME }}:${{ secrets.BUILD_TAG }}
+      ports:
+        - port: 80
+          target_port: 3000
+    environment:
+      NODE_ENV: ${{ secrets.NODE_ENV }}
+      DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      DIGITALOCEAN_DROPLET_ID: ${{ secrets.DIGITALOCEAN_DROPLET_ID }}
+      DIGITALOCEAN_DROPLET_IP: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
+      DIGITALOCEAN_DROPLET_USER: ${{ secrets.DIGITALOCEAN_DROPLET_USER }}
+      DIGITALOCEAN_SSH_KEY: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+      DOCKER_BUILD_TAG: ${{ secrets.DOCKER_BUILD_TAG }}
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKER_IMAGE_NAME }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
