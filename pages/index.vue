@@ -13,16 +13,7 @@
 </script>
 
 <template>
-    <div class="bg-white h-screen flex flex-col items-center justify-center">
-        <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                504 Gateway Time-out
-            </h1>
-            <p class="text-lg text-gray-500">nginx</p>
-        </div>
-        <hr class="w-full border-t border-gray-300 mt-10" />
-    </div>
-    <!--<home-page-section-one/>
+    <home-page-section-one/>
     <home-page-section-two/>
     <ClientOnly>
         <home-page-section-three/>
@@ -34,5 +25,5 @@
     <home-page-section-eight/>
     <home-page-section-nine/>
     <home-page-section-ten/>
-    <home-page-section-eleven/>-->
+    <home-page-section-eleven/>
 </template>
